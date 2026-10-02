@@ -4057,8 +4057,7 @@ export interface components {
                         unit: string;
                     }[];
                     plans: {
-                        baseAmountMinor: null | number;
-                        basePrice?: {
+                        basePrice: {
                             /** @enum {string} */
                             billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
                             billingIntervalCount: number;
@@ -4068,7 +4067,7 @@ export interface components {
                             maximumQuantity: null | number;
                             minimumQuantity: number;
                             /** @enum {string} */
-                            pricingModel?: "flat" | "graduated" | "volume";
+                            pricingModel: "flat" | "graduated" | "volume";
                             providerBindings: {
                                 /** @enum {string} */
                                 channel: "ios" | "android" | "web";
@@ -4078,17 +4077,14 @@ export interface components {
                             }[];
                             /** @enum {string} */
                             taxBehavior: "inclusive" | "exclusive" | "unspecified";
-                            tiers?: {
-                                flatAmountMinor?: number;
+                            tiers: {
+                                flatAmountMinor: number;
                                 unitAmountMinor: number;
                                 upToQuantity: null | string;
                             }[];
                             unitAmountMinor: number;
                         } | null;
-                        /** @enum {string|null} */
-                        billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
-                        billingIntervalCount: null | number;
-                        controls?: {
+                        controls: {
                             /** @enum {string} */
                             controlKind: "spend_limit" | "usage_limit";
                             currency: null | string;
@@ -4098,51 +4094,40 @@ export interface components {
                             intervalCount: null | number;
                             limitValue: string;
                         }[];
-                        currency: null | string;
-                        customerBillingAccountId?: null | string;
+                        customerBillingAccountId: null | string;
                         /** @enum {string} */
-                        downgradeProrationBehavior?: "always_invoice" | "create_prorations" | "none";
-                        items: {
-                            /** @enum {string} */
-                            allocationScope?: "account" | "entity" | "license_pool";
-                            expiresAfterSeconds: null | number;
+                        downgradeProrationBehavior: "always_invoice" | "create_prorations" | "none";
+                        items: ({
                             featureKey: string;
                             /** @enum {string} */
-                            itemKind: "access" | "allocation" | "meter_limit" | "licensed_quantity";
+                            itemKind: "access";
+                        } | {
                             /** @enum {string} */
-                            overagePolicy: "blocked" | "allowed";
-                            price?: {
+                            allocationScope: "account" | "entity";
+                            expiry: {
                                 /** @enum {string} */
-                                billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
-                                billingIntervalCount: number;
-                                billingUnits: string;
-                                currency: string;
-                                key: string;
-                                maximumQuantity: null | number;
-                                minimumQuantity: number;
+                                mode: "forever";
+                            } | {
                                 /** @enum {string} */
-                                pricingModel?: "flat" | "graduated" | "volume";
-                                providerBindings: {
-                                    /** @enum {string} */
-                                    channel: "ios" | "android" | "web";
-                                    productKey: string;
-                                    /** @enum {string} */
-                                    provider: "google" | "apple" | "stripe";
-                                }[];
+                                interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                intervalCount: number;
                                 /** @enum {string} */
-                                taxBehavior: "inclusive" | "exclusive" | "unspecified";
-                                tiers?: {
-                                    flatAmountMinor?: number;
-                                    unitAmountMinor: number;
-                                    upToQuantity: null | string;
-                                }[];
-                                unitAmountMinor: number;
+                                mode: "after";
+                            } | {
+                                /** @enum {string} */
+                                mode: "after_seconds";
+                                seconds: number;
+                            };
+                            featureKey: string;
+                            /** @enum {string} */
+                            itemKind: "allocation";
+                            quantity: string;
+                            reset: {
+                                /** @enum {string} */
+                                interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                intervalCount: number;
                             } | null;
-                            quantity: null | string;
-                            /** @enum {string|null} */
-                            resetInterval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
-                            resetIntervalCount: null | number;
-                            rollover?: {
+                            rollover: {
                                 expiry: {
                                     /** @enum {string} */
                                     mode: "forever";
@@ -4155,45 +4140,147 @@ export interface components {
                                 };
                                 maxQuantity: null | string;
                             } | null;
-                        }[];
+                        } | {
+                            /** @enum {string} */
+                            allocationScope: "account" | "entity";
+                            featureKey: string;
+                            /** @enum {string} */
+                            itemKind: "meter_limit";
+                            overage: {
+                                /** @enum {string} */
+                                policy: "blocked";
+                            } | {
+                                /** @enum {string} */
+                                policy: "allowed";
+                                price: {
+                                    /** @enum {string} */
+                                    billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    billingIntervalCount: number;
+                                    billingUnits: string;
+                                    currency: string;
+                                    key: string;
+                                    maximumQuantity: null | number;
+                                    minimumQuantity: number;
+                                    /** @enum {string} */
+                                    pricingModel: "flat" | "graduated" | "volume";
+                                    providerBindings: {
+                                        /** @enum {string} */
+                                        channel: "ios" | "android" | "web";
+                                        productKey: string;
+                                        /** @enum {string} */
+                                        provider: "google" | "apple" | "stripe";
+                                    }[];
+                                    /** @enum {string} */
+                                    taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                    tiers: {
+                                        flatAmountMinor: number;
+                                        unitAmountMinor: number;
+                                        upToQuantity: null | string;
+                                    }[];
+                                    unitAmountMinor: number;
+                                };
+                            };
+                            quantity: string;
+                            reset: {
+                                /** @enum {string} */
+                                interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                intervalCount: number;
+                            };
+                        } | {
+                            /** @enum {string} */
+                            allocationScope: "account" | "license_pool";
+                            featureKey: string;
+                            /** @enum {string} */
+                            itemKind: "licensed_quantity";
+                            price: {
+                                /** @enum {string} */
+                                billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                billingIntervalCount: number;
+                                billingUnits: string;
+                                currency: string;
+                                key: string;
+                                maximumQuantity: null | number;
+                                minimumQuantity: number;
+                                /** @enum {string} */
+                                pricingModel: "flat" | "graduated" | "volume";
+                                providerBindings: {
+                                    /** @enum {string} */
+                                    channel: "ios" | "android" | "web";
+                                    productKey: string;
+                                    /** @enum {string} */
+                                    provider: "google" | "apple" | "stripe";
+                                }[];
+                                /** @enum {string} */
+                                taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                tiers: {
+                                    flatAmountMinor: number;
+                                    unitAmountMinor: number;
+                                    upToQuantity: null | string;
+                                }[];
+                                unitAmountMinor: number;
+                            };
+                            quantity: string;
+                        } | {
+                            featureKey: string;
+                            /** @enum {string} */
+                            itemKind: "unlimited_usage";
+                        })[];
                         key: string;
                         /** @enum {string} */
-                        kind?: "base" | "addon";
+                        kind: "base" | "addon";
                         name: string;
-                        providerBindings: {
-                            /** @enum {string} */
-                            channel: "ios" | "android" | "web";
-                            productKey: string;
-                            /** @enum {string} */
-                            provider: "google" | "apple" | "stripe";
-                        }[];
-                        tierRank?: number;
+                        providerPriced: {
+                            /** @enum {string|null} */
+                            billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
+                            billingIntervalCount: number;
+                            providerBindings: {
+                                /** @enum {string} */
+                                channel: "ios" | "android" | "web";
+                                productKey: string;
+                                /** @enum {string} */
+                                provider: "google" | "apple" | "stripe";
+                            }[];
+                        } | null;
+                        tierRank: number;
                         trialDays: null | number;
                         /** @enum {string} */
-                        trialEndBehavior?: "cancel" | "pause";
-                        trialRequiresPaymentMethod?: boolean;
+                        trialEndBehavior: "cancel" | "pause";
+                        trialRequiresPaymentMethod: boolean;
                         /** @enum {string} */
-                        upgradeProrationBehavior?: "always_invoice" | "create_prorations" | "none";
+                        upgradeProrationBehavior: "always_invoice" | "create_prorations" | "none";
                         version: number;
                         /** @enum {string} */
-                        visibility?: "public" | "customer_specific";
+                        visibility: "public" | "customer_specific";
                     }[];
                     rateCards: {
                         meterFeatureKey: string;
                         /** @enum {string} */
-                        pricingModel?: "flat" | "graduated";
+                        pricingModel: "flat" | "graduated";
                         ratePerUnit: string;
-                        tiers?: {
+                        tiers: {
                             ratePerUnit: string;
                             upToQuantity: null | string;
                         }[];
                         walletFeatureKey: string;
                     }[];
-                    retiredFeatureKeys?: string[];
-                    retiredPlanKeys?: string[];
-                    retiredTopupKeys?: string[];
+                    retiredFeatureKeys: string[];
+                    retiredPlanKeys: string[];
+                    retiredTopupKeys: string[];
                     topups: {
-                        expiresAfterSeconds: null | number;
+                        expiry: {
+                            /** @enum {string} */
+                            mode: "forever";
+                        } | {
+                            /** @enum {string} */
+                            interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                            intervalCount: number;
+                            /** @enum {string} */
+                            mode: "after";
+                        } | {
+                            /** @enum {string} */
+                            mode: "after_seconds";
+                            seconds: number;
+                        };
                         featureKey: string;
                         key: string;
                         providerBindings: {
@@ -5454,7 +5541,7 @@ export interface components {
         };
         getV1BillingAccountsByBillingAccountIdBalancesByFeatureKeyResponse200: {
             data: {
-                available: string;
+                available: null | string;
                 breakdown: {
                     allocationId: string;
                     available: string;
@@ -5475,10 +5562,16 @@ export interface components {
                 }[];
                 consumed: string;
                 featureKey: string;
-                granted: string;
+                granted: null | string;
                 held: string;
                 scale: number;
+                /** @enum {string} */
+                scope?: "account" | "entity";
                 unit: string;
+                /** @enum {boolean} */
+                unlimited?: true;
+                windowEndAt?: string;
+                windowStartAt?: string;
             };
             /** @enum {boolean} */
             success: true;
@@ -5491,11 +5584,17 @@ export interface components {
         getV1BillingAccountsByBillingAccountIdBillingSummaryResponse200: {
             data: {
                 balances: {
-                    available: string;
+                    available: null | string;
                     expiresAt: null | string;
                     featureKey: string;
                     held: string;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 }[];
                 billingAccountId: string;
                 customerExists: boolean;
@@ -5823,12 +5922,18 @@ export interface components {
                     /** @enum {boolean} */
                     allowed: true;
                     balance: {
-                        available: string;
+                        available: string | null;
                         consumed: string;
                         featureId: string;
-                        granted: string;
+                        granted: string | null;
                         held: string;
+                        /** @enum {string} */
+                        scope?: "account" | "entity";
                         unit: string;
+                        /** @enum {boolean} */
+                        unlimited?: true;
+                        windowEndAt?: string;
+                        windowStartAt?: string;
                     };
                     entityId: string | null;
                     featureId: string;
@@ -5847,16 +5952,23 @@ export interface components {
                         unit: string;
                         value: string;
                     };
+                    usageEventId: string;
                 } | {
                     /** @enum {boolean} */
                     allowed: false;
                     balance: {
-                        available: string;
+                        available: string | null;
                         consumed: string;
                         featureId: string;
-                        granted: string;
+                        granted: string | null;
                         held: string;
+                        /** @enum {string} */
+                        scope?: "account" | "entity";
                         unit: string;
+                        /** @enum {boolean} */
+                        unlimited?: true;
+                        windowEndAt?: string;
+                        windowStartAt?: string;
                     };
                     control?: {
                         currentValue: string;
@@ -5890,10 +6002,12 @@ export interface components {
                 }) | {
                     allowed: boolean;
                     balance: {
-                        available: string;
+                        available: null | string;
                         consumed: string;
                         featureKey: string;
                         held: string;
+                        /** @enum {boolean} */
+                        unlimited?: true;
                     };
                     expiresAt: null | string;
                     originalRecordedAt: null | string;
@@ -6271,7 +6385,17 @@ export interface components {
         };
         postV1AdminCatalogPreviewResponse200: {
             data: {
+                advisories: {
+                    message: string;
+                    path: string;
+                }[];
                 baseRevision: null | number;
+                deprecations: {
+                    canonical: string[];
+                    legacy: string[];
+                    message: string;
+                    path: string;
+                }[];
                 expiresAt: string;
                 impact: {
                     defaultPlanAccounts: number;
@@ -6290,6 +6414,21 @@ export interface components {
                 nextRevision: number;
                 previewToken: string;
                 providerCompatibility: components["schemas"]["CatalogProviderCompatibility"][];
+                scopeImpact: {
+                    featureKey: string;
+                    pinnedVersions: {
+                        plan: string;
+                        /** @enum {string} */
+                        scope: "account" | "entity";
+                        subscriptions: number;
+                        version: number;
+                    }[];
+                    scopes: {
+                        plan: string;
+                        /** @enum {string} */
+                        scope: "account" | "entity";
+                    }[];
+                }[];
             };
             /** @enum {boolean} */
             success: true;
@@ -7239,12 +7378,18 @@ export interface components {
                 /** @enum {boolean} */
                 allowed: true;
                 balance: {
-                    available: string;
+                    available: string | null;
                     consumed: string;
                     featureId: string;
-                    granted: string;
+                    granted: string | null;
                     held: string;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 };
                 checkedAt: string;
                 entityId: string | null;
@@ -7265,12 +7410,18 @@ export interface components {
                 /** @enum {boolean} */
                 allowed: false;
                 balance: {
-                    available: string;
+                    available: string | null;
                     consumed: string;
                     featureId: string;
-                    granted: string;
+                    granted: string | null;
                     held: string;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 };
                 checkedAt: string;
                 control?: {
@@ -7310,12 +7461,18 @@ export interface components {
                 /** @enum {boolean} */
                 allowed: true;
                 balance: {
-                    available: string;
+                    available: string | null;
                     consumed: string;
                     featureId: string;
-                    granted: string;
+                    granted: string | null;
                     held: string;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 };
                 entityId: string | null;
                 featureId: string;
@@ -7334,16 +7491,23 @@ export interface components {
                     unit: string;
                     value: string;
                 };
+                usageEventId: string;
             } | {
                 /** @enum {boolean} */
                 allowed: false;
                 balance: {
-                    available: string;
+                    available: string | null;
                     consumed: string;
                     featureId: string;
-                    granted: string;
+                    granted: string | null;
                     held: string;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 };
                 control?: {
                     currentValue: string;
@@ -7381,7 +7545,7 @@ export interface components {
         postV1BillingAccountsByBillingAccountIdUsageEventsByUsageEventIdCorrectionsResponse200: {
             data: {
                 balance: {
-                    available: string;
+                    available: null | string;
                     breakdown: {
                         allocationId: string;
                         available: string;
@@ -7402,10 +7566,16 @@ export interface components {
                     }[];
                     consumed: string;
                     featureKey: string;
-                    granted: string;
+                    granted: null | string;
                     held: string;
                     scale: number;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 };
                 deductions: {
                     allocationId: string;
@@ -7428,7 +7598,7 @@ export interface components {
             data: {
                 allowed: boolean;
                 balance: {
-                    available: string;
+                    available: null | string;
                     breakdown: {
                         allocationId: string;
                         available: string;
@@ -7449,10 +7619,16 @@ export interface components {
                     }[];
                     consumed: string;
                     featureKey: string;
-                    granted: string;
+                    granted: null | string;
                     held: string;
                     scale: number;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 };
                 control?: {
                     currentValue: string;
@@ -7488,7 +7664,7 @@ export interface components {
             data: {
                 allowed: boolean;
                 balance: {
-                    available: string;
+                    available: null | string;
                     breakdown: {
                         allocationId: string;
                         available: string;
@@ -7509,10 +7685,16 @@ export interface components {
                     }[];
                     consumed: string;
                     featureKey: string;
-                    granted: string;
+                    granted: null | string;
                     held: string;
                     scale: number;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 };
                 control?: {
                     currentValue: string;
@@ -7548,7 +7730,7 @@ export interface components {
             data: {
                 allowed: boolean;
                 balance: {
-                    available: string;
+                    available: null | string;
                     breakdown: {
                         allocationId: string;
                         available: string;
@@ -7569,10 +7751,16 @@ export interface components {
                     }[];
                     consumed: string;
                     featureKey: string;
-                    granted: string;
+                    granted: null | string;
                     held: string;
                     scale: number;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
                     unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
                 };
                 control: {
                     currentValue: string;
@@ -13062,7 +13250,7 @@ export interface operations {
                             unit: string;
                         }[];
                         plans: {
-                            baseAmountMinor: number | null;
+                            baseAmountMinor?: number | null;
                             basePrice?: {
                                 /** @enum {string} */
                                 billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
@@ -13091,7 +13279,7 @@ export interface operations {
                                 unitAmountMinor: number;
                             } | null;
                             /** @enum {string|null} */
-                            billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
+                            billingInterval?: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
                             billingIntervalCount?: number | null;
                             controls?: {
                                 /** @enum {string} */
@@ -13103,11 +13291,138 @@ export interface operations {
                                 intervalCount?: number | null;
                                 limitValue: string;
                             }[];
-                            currency: string | null;
+                            currency?: string | null;
                             customerBillingAccountId?: string | null;
                             /** @enum {string} */
                             downgradeProrationBehavior?: "always_invoice" | "create_prorations" | "none";
-                            items: {
+                            items: (({
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "access";
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "entity";
+                                expiry?: {
+                                    /** @enum {string} */
+                                    mode: "forever";
+                                } | {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                    /** @enum {string} */
+                                    mode: "after";
+                                } | {
+                                    /** @enum {string} */
+                                    mode: "after_seconds";
+                                    seconds: number;
+                                };
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "allocation";
+                                quantity: string;
+                                reset?: {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                } | null;
+                                rollover?: {
+                                    expiry: {
+                                        /** @enum {string} */
+                                        mode: "forever";
+                                    } | {
+                                        /** @enum {string} */
+                                        interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                        intervalCount: number;
+                                        /** @enum {string} */
+                                        mode: "after";
+                                    };
+                                    maxQuantity: string | null;
+                                } | null;
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "entity";
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "meter_limit";
+                                overage?: {
+                                    /** @enum {string} */
+                                    policy: "blocked";
+                                } | {
+                                    /** @enum {string} */
+                                    policy: "allowed";
+                                    price: {
+                                        /** @enum {string} */
+                                        billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                        billingIntervalCount?: number;
+                                        billingUnits: string;
+                                        currency: string;
+                                        key: string;
+                                        maximumQuantity: number | null;
+                                        minimumQuantity: number;
+                                        /** @enum {string} */
+                                        pricingModel?: "flat" | "graduated" | "volume";
+                                        providerBindings: {
+                                            /** @enum {string} */
+                                            channel: "ios" | "android" | "web";
+                                            productKey: string;
+                                            /** @enum {string} */
+                                            provider: "apple" | "google" | "stripe";
+                                        }[];
+                                        /** @enum {string} */
+                                        taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                        tiers?: {
+                                            flatAmountMinor?: number;
+                                            unitAmountMinor: number;
+                                            upToQuantity: string | null;
+                                        }[];
+                                        unitAmountMinor: number;
+                                    };
+                                };
+                                quantity: string;
+                                reset: {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                };
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "license_pool";
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "licensed_quantity";
+                                price: {
+                                    /** @enum {string} */
+                                    billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    billingIntervalCount?: number;
+                                    billingUnits: string;
+                                    currency: string;
+                                    key: string;
+                                    maximumQuantity: number | null;
+                                    minimumQuantity: number;
+                                    /** @enum {string} */
+                                    pricingModel?: "flat" | "graduated" | "volume";
+                                    providerBindings: {
+                                        /** @enum {string} */
+                                        channel: "ios" | "android" | "web";
+                                        productKey: string;
+                                        /** @enum {string} */
+                                        provider: "apple" | "google" | "stripe";
+                                    }[];
+                                    /** @enum {string} */
+                                    taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                    tiers?: {
+                                        flatAmountMinor?: number;
+                                        unitAmountMinor: number;
+                                        upToQuantity: string | null;
+                                    }[];
+                                    unitAmountMinor: number;
+                                };
+                                quantity: string;
+                            } | {
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "unlimited_usage";
+                            }) | {
                                 /** @enum {string} */
                                 allocationScope?: "account" | "entity" | "license_pool";
                                 expiresAfterSeconds: number | null;
@@ -13164,20 +13479,32 @@ export interface operations {
                                     };
                                     maxQuantity: string | null;
                                 } | null;
-                            }[];
+                            })[];
                             key: string;
                             /** @enum {string} */
                             kind?: "base" | "addon";
                             name: string;
-                            providerBindings: {
+                            providerBindings?: {
                                 /** @enum {string} */
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
                                 provider: "apple" | "google" | "stripe";
                             }[];
+                            providerPriced?: {
+                                /** @enum {string} */
+                                billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                billingIntervalCount?: number;
+                                providerBindings: {
+                                    /** @enum {string} */
+                                    channel: "ios" | "android" | "web";
+                                    productKey: string;
+                                    /** @enum {string} */
+                                    provider: "apple" | "google" | "stripe";
+                                }[];
+                            } | null;
                             tierRank?: number;
-                            trialDays: number | null;
+                            trialDays?: number | null;
                             /** @enum {string} */
                             trialEndBehavior?: "cancel" | "pause";
                             trialRequiresPaymentMethod?: boolean;
@@ -13202,7 +13529,21 @@ export interface operations {
                         retiredPlanKeys?: string[];
                         retiredTopupKeys?: string[];
                         topups: {
-                            expiresAfterSeconds: number | null;
+                            expiresAfterSeconds?: number | null;
+                            expiry?: {
+                                /** @enum {string} */
+                                mode: "forever";
+                            } | {
+                                /** @enum {string} */
+                                interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                intervalCount: number;
+                                /** @enum {string} */
+                                mode: "after";
+                            } | {
+                                /** @enum {string} */
+                                mode: "after_seconds";
+                                seconds: number;
+                            };
                             featureKey: string;
                             key: string;
                             providerBindings: {
@@ -13528,7 +13869,7 @@ export interface operations {
                             unit: string;
                         }[];
                         plans: {
-                            baseAmountMinor: number | null;
+                            baseAmountMinor?: number | null;
                             basePrice?: {
                                 /** @enum {string} */
                                 billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
@@ -13557,7 +13898,7 @@ export interface operations {
                                 unitAmountMinor: number;
                             } | null;
                             /** @enum {string|null} */
-                            billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
+                            billingInterval?: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
                             billingIntervalCount?: number | null;
                             controls?: {
                                 /** @enum {string} */
@@ -13569,11 +13910,138 @@ export interface operations {
                                 intervalCount?: number | null;
                                 limitValue: string;
                             }[];
-                            currency: string | null;
+                            currency?: string | null;
                             customerBillingAccountId?: string | null;
                             /** @enum {string} */
                             downgradeProrationBehavior?: "always_invoice" | "create_prorations" | "none";
-                            items: {
+                            items: (({
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "access";
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "entity";
+                                expiry?: {
+                                    /** @enum {string} */
+                                    mode: "forever";
+                                } | {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                    /** @enum {string} */
+                                    mode: "after";
+                                } | {
+                                    /** @enum {string} */
+                                    mode: "after_seconds";
+                                    seconds: number;
+                                };
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "allocation";
+                                quantity: string;
+                                reset?: {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                } | null;
+                                rollover?: {
+                                    expiry: {
+                                        /** @enum {string} */
+                                        mode: "forever";
+                                    } | {
+                                        /** @enum {string} */
+                                        interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                        intervalCount: number;
+                                        /** @enum {string} */
+                                        mode: "after";
+                                    };
+                                    maxQuantity: string | null;
+                                } | null;
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "entity";
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "meter_limit";
+                                overage?: {
+                                    /** @enum {string} */
+                                    policy: "blocked";
+                                } | {
+                                    /** @enum {string} */
+                                    policy: "allowed";
+                                    price: {
+                                        /** @enum {string} */
+                                        billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                        billingIntervalCount?: number;
+                                        billingUnits: string;
+                                        currency: string;
+                                        key: string;
+                                        maximumQuantity: number | null;
+                                        minimumQuantity: number;
+                                        /** @enum {string} */
+                                        pricingModel?: "flat" | "graduated" | "volume";
+                                        providerBindings: {
+                                            /** @enum {string} */
+                                            channel: "ios" | "android" | "web";
+                                            productKey: string;
+                                            /** @enum {string} */
+                                            provider: "apple" | "google" | "stripe";
+                                        }[];
+                                        /** @enum {string} */
+                                        taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                        tiers?: {
+                                            flatAmountMinor?: number;
+                                            unitAmountMinor: number;
+                                            upToQuantity: string | null;
+                                        }[];
+                                        unitAmountMinor: number;
+                                    };
+                                };
+                                quantity: string;
+                                reset: {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                };
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "license_pool";
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "licensed_quantity";
+                                price: {
+                                    /** @enum {string} */
+                                    billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    billingIntervalCount?: number;
+                                    billingUnits: string;
+                                    currency: string;
+                                    key: string;
+                                    maximumQuantity: number | null;
+                                    minimumQuantity: number;
+                                    /** @enum {string} */
+                                    pricingModel?: "flat" | "graduated" | "volume";
+                                    providerBindings: {
+                                        /** @enum {string} */
+                                        channel: "ios" | "android" | "web";
+                                        productKey: string;
+                                        /** @enum {string} */
+                                        provider: "apple" | "google" | "stripe";
+                                    }[];
+                                    /** @enum {string} */
+                                    taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                    tiers?: {
+                                        flatAmountMinor?: number;
+                                        unitAmountMinor: number;
+                                        upToQuantity: string | null;
+                                    }[];
+                                    unitAmountMinor: number;
+                                };
+                                quantity: string;
+                            } | {
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "unlimited_usage";
+                            }) | {
                                 /** @enum {string} */
                                 allocationScope?: "account" | "entity" | "license_pool";
                                 expiresAfterSeconds: number | null;
@@ -13630,20 +14098,32 @@ export interface operations {
                                     };
                                     maxQuantity: string | null;
                                 } | null;
-                            }[];
+                            })[];
                             key: string;
                             /** @enum {string} */
                             kind?: "base" | "addon";
                             name: string;
-                            providerBindings: {
+                            providerBindings?: {
                                 /** @enum {string} */
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
                                 provider: "apple" | "google" | "stripe";
                             }[];
+                            providerPriced?: {
+                                /** @enum {string} */
+                                billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                billingIntervalCount?: number;
+                                providerBindings: {
+                                    /** @enum {string} */
+                                    channel: "ios" | "android" | "web";
+                                    productKey: string;
+                                    /** @enum {string} */
+                                    provider: "apple" | "google" | "stripe";
+                                }[];
+                            } | null;
                             tierRank?: number;
-                            trialDays: number | null;
+                            trialDays?: number | null;
                             /** @enum {string} */
                             trialEndBehavior?: "cancel" | "pause";
                             trialRequiresPaymentMethod?: boolean;
@@ -13668,7 +14148,21 @@ export interface operations {
                         retiredPlanKeys?: string[];
                         retiredTopupKeys?: string[];
                         topups: {
-                            expiresAfterSeconds: number | null;
+                            expiresAfterSeconds?: number | null;
+                            expiry?: {
+                                /** @enum {string} */
+                                mode: "forever";
+                            } | {
+                                /** @enum {string} */
+                                interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                intervalCount: number;
+                                /** @enum {string} */
+                                mode: "after";
+                            } | {
+                                /** @enum {string} */
+                                mode: "after_seconds";
+                                seconds: number;
+                            };
                             featureKey: string;
                             key: string;
                             providerBindings: {
@@ -26415,7 +26909,7 @@ export interface operations {
                             unit: string;
                         }[];
                         plans: {
-                            baseAmountMinor: number | null;
+                            baseAmountMinor?: number | null;
                             basePrice?: {
                                 /** @enum {string} */
                                 billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
@@ -26444,7 +26938,7 @@ export interface operations {
                                 unitAmountMinor: number;
                             } | null;
                             /** @enum {string|null} */
-                            billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
+                            billingInterval?: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
                             billingIntervalCount?: number | null;
                             controls?: {
                                 /** @enum {string} */
@@ -26456,11 +26950,138 @@ export interface operations {
                                 intervalCount?: number | null;
                                 limitValue: string;
                             }[];
-                            currency: string | null;
+                            currency?: string | null;
                             customerBillingAccountId?: string | null;
                             /** @enum {string} */
                             downgradeProrationBehavior?: "always_invoice" | "create_prorations" | "none";
-                            items: {
+                            items: (({
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "access";
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "entity";
+                                expiry?: {
+                                    /** @enum {string} */
+                                    mode: "forever";
+                                } | {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                    /** @enum {string} */
+                                    mode: "after";
+                                } | {
+                                    /** @enum {string} */
+                                    mode: "after_seconds";
+                                    seconds: number;
+                                };
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "allocation";
+                                quantity: string;
+                                reset?: {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                } | null;
+                                rollover?: {
+                                    expiry: {
+                                        /** @enum {string} */
+                                        mode: "forever";
+                                    } | {
+                                        /** @enum {string} */
+                                        interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                        intervalCount: number;
+                                        /** @enum {string} */
+                                        mode: "after";
+                                    };
+                                    maxQuantity: string | null;
+                                } | null;
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "entity";
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "meter_limit";
+                                overage?: {
+                                    /** @enum {string} */
+                                    policy: "blocked";
+                                } | {
+                                    /** @enum {string} */
+                                    policy: "allowed";
+                                    price: {
+                                        /** @enum {string} */
+                                        billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                        billingIntervalCount?: number;
+                                        billingUnits: string;
+                                        currency: string;
+                                        key: string;
+                                        maximumQuantity: number | null;
+                                        minimumQuantity: number;
+                                        /** @enum {string} */
+                                        pricingModel?: "flat" | "graduated" | "volume";
+                                        providerBindings: {
+                                            /** @enum {string} */
+                                            channel: "ios" | "android" | "web";
+                                            productKey: string;
+                                            /** @enum {string} */
+                                            provider: "apple" | "google" | "stripe";
+                                        }[];
+                                        /** @enum {string} */
+                                        taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                        tiers?: {
+                                            flatAmountMinor?: number;
+                                            unitAmountMinor: number;
+                                            upToQuantity: string | null;
+                                        }[];
+                                        unitAmountMinor: number;
+                                    };
+                                };
+                                quantity: string;
+                                reset: {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                };
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "license_pool";
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "licensed_quantity";
+                                price: {
+                                    /** @enum {string} */
+                                    billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    billingIntervalCount?: number;
+                                    billingUnits: string;
+                                    currency: string;
+                                    key: string;
+                                    maximumQuantity: number | null;
+                                    minimumQuantity: number;
+                                    /** @enum {string} */
+                                    pricingModel?: "flat" | "graduated" | "volume";
+                                    providerBindings: {
+                                        /** @enum {string} */
+                                        channel: "ios" | "android" | "web";
+                                        productKey: string;
+                                        /** @enum {string} */
+                                        provider: "apple" | "google" | "stripe";
+                                    }[];
+                                    /** @enum {string} */
+                                    taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                    tiers?: {
+                                        flatAmountMinor?: number;
+                                        unitAmountMinor: number;
+                                        upToQuantity: string | null;
+                                    }[];
+                                    unitAmountMinor: number;
+                                };
+                                quantity: string;
+                            } | {
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "unlimited_usage";
+                            }) | {
                                 /** @enum {string} */
                                 allocationScope?: "account" | "entity" | "license_pool";
                                 expiresAfterSeconds: number | null;
@@ -26517,20 +27138,32 @@ export interface operations {
                                     };
                                     maxQuantity: string | null;
                                 } | null;
-                            }[];
+                            })[];
                             key: string;
                             /** @enum {string} */
                             kind?: "base" | "addon";
                             name: string;
-                            providerBindings: {
+                            providerBindings?: {
                                 /** @enum {string} */
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
                                 provider: "apple" | "google" | "stripe";
                             }[];
+                            providerPriced?: {
+                                /** @enum {string} */
+                                billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                billingIntervalCount?: number;
+                                providerBindings: {
+                                    /** @enum {string} */
+                                    channel: "ios" | "android" | "web";
+                                    productKey: string;
+                                    /** @enum {string} */
+                                    provider: "apple" | "google" | "stripe";
+                                }[];
+                            } | null;
                             tierRank?: number;
-                            trialDays: number | null;
+                            trialDays?: number | null;
                             /** @enum {string} */
                             trialEndBehavior?: "cancel" | "pause";
                             trialRequiresPaymentMethod?: boolean;
@@ -26555,7 +27188,21 @@ export interface operations {
                         retiredPlanKeys?: string[];
                         retiredTopupKeys?: string[];
                         topups: {
-                            expiresAfterSeconds: number | null;
+                            expiresAfterSeconds?: number | null;
+                            expiry?: {
+                                /** @enum {string} */
+                                mode: "forever";
+                            } | {
+                                /** @enum {string} */
+                                interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                intervalCount: number;
+                                /** @enum {string} */
+                                mode: "after";
+                            } | {
+                                /** @enum {string} */
+                                mode: "after_seconds";
+                                seconds: number;
+                            };
                             featureKey: string;
                             key: string;
                             providerBindings: {
@@ -26870,7 +27517,7 @@ export interface operations {
                             unit: string;
                         }[];
                         plans: {
-                            baseAmountMinor: number | null;
+                            baseAmountMinor?: number | null;
                             basePrice?: {
                                 /** @enum {string} */
                                 billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
@@ -26899,7 +27546,7 @@ export interface operations {
                                 unitAmountMinor: number;
                             } | null;
                             /** @enum {string|null} */
-                            billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
+                            billingInterval?: "day" | "week" | "month" | "quarter" | "semi_annual" | "year" | null;
                             billingIntervalCount?: number | null;
                             controls?: {
                                 /** @enum {string} */
@@ -26911,11 +27558,138 @@ export interface operations {
                                 intervalCount?: number | null;
                                 limitValue: string;
                             }[];
-                            currency: string | null;
+                            currency?: string | null;
                             customerBillingAccountId?: string | null;
                             /** @enum {string} */
                             downgradeProrationBehavior?: "always_invoice" | "create_prorations" | "none";
-                            items: {
+                            items: (({
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "access";
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "entity";
+                                expiry?: {
+                                    /** @enum {string} */
+                                    mode: "forever";
+                                } | {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                    /** @enum {string} */
+                                    mode: "after";
+                                } | {
+                                    /** @enum {string} */
+                                    mode: "after_seconds";
+                                    seconds: number;
+                                };
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "allocation";
+                                quantity: string;
+                                reset?: {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                } | null;
+                                rollover?: {
+                                    expiry: {
+                                        /** @enum {string} */
+                                        mode: "forever";
+                                    } | {
+                                        /** @enum {string} */
+                                        interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                        intervalCount: number;
+                                        /** @enum {string} */
+                                        mode: "after";
+                                    };
+                                    maxQuantity: string | null;
+                                } | null;
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "entity";
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "meter_limit";
+                                overage?: {
+                                    /** @enum {string} */
+                                    policy: "blocked";
+                                } | {
+                                    /** @enum {string} */
+                                    policy: "allowed";
+                                    price: {
+                                        /** @enum {string} */
+                                        billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                        billingIntervalCount?: number;
+                                        billingUnits: string;
+                                        currency: string;
+                                        key: string;
+                                        maximumQuantity: number | null;
+                                        minimumQuantity: number;
+                                        /** @enum {string} */
+                                        pricingModel?: "flat" | "graduated" | "volume";
+                                        providerBindings: {
+                                            /** @enum {string} */
+                                            channel: "ios" | "android" | "web";
+                                            productKey: string;
+                                            /** @enum {string} */
+                                            provider: "apple" | "google" | "stripe";
+                                        }[];
+                                        /** @enum {string} */
+                                        taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                        tiers?: {
+                                            flatAmountMinor?: number;
+                                            unitAmountMinor: number;
+                                            upToQuantity: string | null;
+                                        }[];
+                                        unitAmountMinor: number;
+                                    };
+                                };
+                                quantity: string;
+                                reset: {
+                                    /** @enum {string} */
+                                    interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    intervalCount: number;
+                                };
+                            } | {
+                                /** @enum {string} */
+                                allocationScope?: "account" | "license_pool";
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "licensed_quantity";
+                                price: {
+                                    /** @enum {string} */
+                                    billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                    billingIntervalCount?: number;
+                                    billingUnits: string;
+                                    currency: string;
+                                    key: string;
+                                    maximumQuantity: number | null;
+                                    minimumQuantity: number;
+                                    /** @enum {string} */
+                                    pricingModel?: "flat" | "graduated" | "volume";
+                                    providerBindings: {
+                                        /** @enum {string} */
+                                        channel: "ios" | "android" | "web";
+                                        productKey: string;
+                                        /** @enum {string} */
+                                        provider: "apple" | "google" | "stripe";
+                                    }[];
+                                    /** @enum {string} */
+                                    taxBehavior: "inclusive" | "exclusive" | "unspecified";
+                                    tiers?: {
+                                        flatAmountMinor?: number;
+                                        unitAmountMinor: number;
+                                        upToQuantity: string | null;
+                                    }[];
+                                    unitAmountMinor: number;
+                                };
+                                quantity: string;
+                            } | {
+                                featureKey: string;
+                                /** @enum {string} */
+                                itemKind: "unlimited_usage";
+                            }) | {
                                 /** @enum {string} */
                                 allocationScope?: "account" | "entity" | "license_pool";
                                 expiresAfterSeconds: number | null;
@@ -26972,20 +27746,32 @@ export interface operations {
                                     };
                                     maxQuantity: string | null;
                                 } | null;
-                            }[];
+                            })[];
                             key: string;
                             /** @enum {string} */
                             kind?: "base" | "addon";
                             name: string;
-                            providerBindings: {
+                            providerBindings?: {
                                 /** @enum {string} */
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
                                 provider: "apple" | "google" | "stripe";
                             }[];
+                            providerPriced?: {
+                                /** @enum {string} */
+                                billingInterval: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                billingIntervalCount?: number;
+                                providerBindings: {
+                                    /** @enum {string} */
+                                    channel: "ios" | "android" | "web";
+                                    productKey: string;
+                                    /** @enum {string} */
+                                    provider: "apple" | "google" | "stripe";
+                                }[];
+                            } | null;
                             tierRank?: number;
-                            trialDays: number | null;
+                            trialDays?: number | null;
                             /** @enum {string} */
                             trialEndBehavior?: "cancel" | "pause";
                             trialRequiresPaymentMethod?: boolean;
@@ -27010,7 +27796,21 @@ export interface operations {
                         retiredPlanKeys?: string[];
                         retiredTopupKeys?: string[];
                         topups: {
-                            expiresAfterSeconds: number | null;
+                            expiresAfterSeconds?: number | null;
+                            expiry?: {
+                                /** @enum {string} */
+                                mode: "forever";
+                            } | {
+                                /** @enum {string} */
+                                interval: "hour" | "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                                intervalCount: number;
+                                /** @enum {string} */
+                                mode: "after";
+                            } | {
+                                /** @enum {string} */
+                                mode: "after_seconds";
+                                seconds: number;
+                            };
                             featureKey: string;
                             key: string;
                             providerBindings: {
@@ -39711,12 +40511,18 @@ export interface operations {
                     "application/json": {
                         data: {
                             balance: {
-                                available: string;
+                                available: string | null;
                                 consumed: string;
                                 featureId: string;
-                                granted: string;
+                                granted: string | null;
                                 held: string;
+                                /** @enum {string} */
+                                scope?: "account" | "entity";
                                 unit: string;
+                                /** @enum {boolean} */
+                                unlimited?: true;
+                                windowEndAt?: string;
+                                windowStartAt?: string;
                             };
                             billingAccountId: string;
                             deductionCount: number;
@@ -39743,6 +40549,7 @@ export interface operations {
                                 unit: string;
                                 value: string;
                             };
+                            usageEventId: string;
                         };
                         /** @enum {boolean} */
                         success: true;

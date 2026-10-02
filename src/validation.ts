@@ -60,22 +60,35 @@ const numeric = (value: unknown) => string(value) && /^-?(?:0|[1-9]\d*)(?:\.\d+)
 function quantity(value: unknown): boolean {
 	return object(value) && string(value.featureId) && string(value.unit) && numeric(value.value);
 }
+const optionalTimestamp = (value: Record<string, unknown>, key: string) =>
+	!Object.hasOwn(value, key) || timestamp(value[key]);
+/**
+ * A compact balance. An unlimited quota reports `unlimited: true` with null `granted` and
+ * `available`; a meter limit adds its `scope` and current window bounds.
+ */
+function balance(value: unknown): boolean {
+	if (!object(value) || !string(value.featureId) || !string(value.unit)) return false;
+	if (!numeric(value.consumed) || !numeric(value.held)) return false;
+	const unlimited = Object.hasOwn(value, "unlimited");
+	if (unlimited && value.unlimited !== true) return false;
+	const finite = (key: string) => (unlimited ? value[key] === null : numeric(value[key]));
+	return (
+		finite("granted") &&
+		finite("available") &&
+		(!Object.hasOwn(value, "scope") || ["account", "entity"].includes(String(value.scope))) &&
+		optionalTimestamp(value, "windowStartAt") &&
+		optionalTimestamp(value, "windowEndAt") &&
+		!Object.hasOwn(value, "breakdown")
+	);
+}
 export function metered(value: Record<string, unknown>): boolean {
 	return (
 		string(value.featureId) &&
 		nullableString(value.entityId) &&
 		quantity(value.usage) &&
 		quantity(value.rated) &&
-		object(value.balance) &&
-		string(value.balance.featureId) &&
-		string(value.balance.unit) &&
-		["granted", "consumed", "held", "available"].every((key) =>
-			numeric((value.balance as Record<string, unknown>)[key]),
-		) &&
-		!Object.hasOwn(value.balance, "breakdown") &&
-		!["deductions", "rateCard", "eligiblePurchaseActions", "usageEventId"].some((key) =>
-			Object.hasOwn(value, key),
-		)
+		balance(value.balance) &&
+		!["deductions", "rateCard", "eligiblePurchaseActions"].some((key) => Object.hasOwn(value, key))
 	);
 }
 export function verdict(value: Record<string, unknown>): boolean {
@@ -117,8 +130,8 @@ export function consumeResult(
 		protocol();
 	if (
 		value.allowed
-			? !string(value.receiptId) || !timestamp(value.recordedAt)
-			: Object.hasOwn(value, "receiptId") || Object.hasOwn(value, "recordedAt")
+			? !string(value.receiptId) || !string(value.usageEventId) || !timestamp(value.recordedAt)
+			: ["receiptId", "usageEventId", "recordedAt"].some((key) => Object.hasOwn(value, key))
 	)
 		protocol();
 	return value as unknown as ConsumeResult;

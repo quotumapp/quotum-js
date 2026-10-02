@@ -20,7 +20,7 @@ guarded lane; production credentials and databases are never test inputs.
 CI validates packed consumers; its HTTP job uses the immutable public API pin. Working-tree
 snapshots cannot satisfy that remote gate. This repository has no npm publication workflow yet;
 maintainers, npm ownership and publication remain a separate release step. Keep a development
-snapshot at `0.1.0-dev.0` until the public source pin and candidate gates are satisfied.
+snapshot at `0.1.0-dev.1` until the public source pin and candidate gates are satisfied.
 
 Do not log API keys or include `.env` files, real credentials or private server imports in artifacts.
 An uncertain consume preserves its operation identity: do not retry with a replacement key or

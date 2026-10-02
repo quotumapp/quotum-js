@@ -21,6 +21,7 @@ export async function exercise(createQuotum, QuotumAmbiguousOperationError) {
 		},
 		allowed: true,
 		receiptId: "ur_test",
+		usageEventId: "1",
 		recordedAt: "2026-10-02T12:00:00.000Z",
 	};
 	const ok = (data) => Response.json({ success: true, data });

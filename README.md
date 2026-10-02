@@ -9,7 +9,7 @@ The API cutover is under review in [quotum#206](https://github.com/quotumapp/quo
 this package has not been published to npm. Install a tested local or CI tarball:
 
 ```sh
-npm install /path/to/quotum-sdk-0.1.0-dev.0.tgz
+npm install /path/to/quotum-sdk-0.1.0-dev.1.tgz
 ```
 
 ```js
@@ -50,9 +50,12 @@ try {
 }
 ```
 
-The same imports work in TypeScript with inferred discriminated results. `result.receiptId` exists
-only in the allowed branch; denied results expose `reason`. Account and entity handles are immutable,
-create no network traffic, and support destructured methods. `create()` performs network I/O.
+The same imports work in TypeScript with inferred discriminated results. `result.receiptId` and
+`result.usageEventId` exist only in the allowed branch; denied results expose `reason`. Corrections
+address the usage event by `usageEventId`. A balance's `granted` and `available` are `null` when
+`unlimited: true`, and a meter-limited balance adds its `scope` with `windowStartAt` and
+`windowEndAt`. Account and entity handles are immutable, create no network traffic, and support
+destructured methods. `create()` performs network I/O.
 
 ## Preview methods
 
@@ -110,8 +113,8 @@ bun run quality
 bun run build
 bun run api:check-preview                 # current local contract
 bun run pack:preview
-bun scripts/test-packed.ts ./quotum-sdk-0.1.0-dev.0.tgz --node-lts
-bun scripts/test-http.ts /path/to/quotum-api ./quotum-sdk-0.1.0-dev.0.tgz
+bun scripts/test-packed.ts ./quotum-sdk-0.1.0-dev.1.tgz --node-lts
+bun scripts/test-http.ts /path/to/quotum-api ./quotum-sdk-0.1.0-dev.1.tgz
 ```
 
 Builds use the committed types and work offline. Contract updates are deliberate:

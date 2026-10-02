@@ -108,7 +108,8 @@ export function createQuotum(options: QuotumOptions): Quotum {
 								!verdict(value) ||
 								value.featureId !== body.featureId ||
 								value.entityId !== entityId ||
-								!timestamp(value.checkedAt)
+								!timestamp(value.checkedAt) ||
+								Object.hasOwn(value, "usageEventId")
 							)
 								protocol();
 							if (value.kind === "boolean") {
@@ -184,6 +185,7 @@ export function createQuotum(options: QuotumOptions): Quotum {
 								!object(value) ||
 								!metered(value) ||
 								value.receiptId !== id ||
+								!string(value.usageEventId) ||
 								value.billingAccountId !== billingAccountId ||
 								value.entityId !== entityId ||
 								value.operation !== "consume" ||

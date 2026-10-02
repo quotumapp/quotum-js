@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { Miniflare } from "miniflare";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-const tarball = resolve(process.argv[2] ?? "quotum-sdk-0.1.0-dev.0.tgz");
+const tarball = resolve(process.argv[2] ?? "quotum-sdk-0.1.0-dev.1.tgz");
 const work = await mkdtemp(join(tmpdir(), "quotum-packed-"));
 const report: Record<string, unknown> = {
 	sha256: createHash("sha256")

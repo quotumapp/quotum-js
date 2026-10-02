@@ -74,7 +74,7 @@ wire contract until their coordinated increment.
 A release candidate requires the public API commit containing this contract, `api:check-release`,
 the exact packed JS/TS runtime matrix, real HTTP conformance, tarball checksum and test evidence.
 `0.1.0-rc.0` is the first candidate version; npm publication is a later action. A dirty contract uses
-`0.1.0-dev.0` and must not be presented as a completed release candidate.
+`0.1.0-dev.1` and must not be presented as a completed release candidate.
 
 Before 1.0, complete all trusted operation families, reserve/confirm/release and checkout/subscription
 journeys, deployed-server conformance, and adoption of all three workflow families. A package build

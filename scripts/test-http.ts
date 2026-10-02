@@ -95,7 +95,9 @@ lane("packed public SDK over real HTTP", () => {
   const result = await entity.consume({featureId: "model_tokens", value: 100, operationId: "packed/job"});
   expect(result).toMatchObject({allowed: true, rated: {value: "0.5"}, balance: {available: "9.5"}});
   expect((await entity.getOperation({operation: "consume", operationId: "packed/job"})).outcome).toEqual(result);
-  expect(await entity.getReceipt(result.receiptId)).toMatchObject({receiptId: result.receiptId, billingAccountId: "packed-payer", entityId: "workspace/packed", deductionCount: 1});
+  if (!result.allowed) throw new Error("consume was denied");
+  expect(typeof result.usageEventId === "string" && result.usageEventId.length > 0).toBe(true);
+  expect(await entity.getReceipt(result.receiptId)).toMatchObject({receiptId: result.receiptId, usageEventId: result.usageEventId, billingAccountId: "packed-payer", entityId: "workspace/packed", deductionCount: 1});
   expect((await entity.listReceiptDeductions({receiptId: result.receiptId, limit: 1})).items).toHaveLength(1);
   await expect(account.getReceipt(result.receiptId)).rejects.toMatchObject({code: "RECEIPT_NOT_FOUND", status: 404});
   expect(await entity.consume({featureId: "model_tokens", value: "100.000", operationId: "packed/job"})).toEqual(result);

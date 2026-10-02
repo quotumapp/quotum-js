@@ -23,6 +23,7 @@ const result: ConsumeResult = {
 	operationId: "job/1",
 	allowed: true,
 	receiptId: "ur_receipt",
+	usageEventId: "42",
 	recordedAt: "2026-10-02T12:00:00.000Z",
 };
 const ok = (data: unknown) =>
@@ -145,6 +146,99 @@ describe("public handles and validation", () => {
 		).toEqual(denied);
 		await expect(
 			client(async () => ok({ allowed: true }))
+				.account("payer")
+				.check({ featureId: "tokens", value: 1 }),
+		).rejects.toMatchObject({ code: "PROTOCOL_ERROR" });
+	});
+	it("accepts unlimited quotas and meter-limit windows in the compact balance", async () => {
+		const unlimited: ConsumeResult = {
+			...result,
+			balance: {
+				featureId: "tokens",
+				unit: "token",
+				granted: null,
+				consumed: "7",
+				held: "0",
+				available: null,
+				unlimited: true,
+			},
+		};
+		expect(
+			await client(async () => ok(unlimited))
+				.account("payer")
+				.consume(input),
+		).toEqual(unlimited);
+		const windowed: ConsumeResult = {
+			...result,
+			balance: {
+				...context.balance,
+				scope: "account",
+				windowStartAt: "2026-10-02T00:00:00.000Z",
+				windowEndAt: "2026-10-03T00:00:00.000Z",
+			},
+		};
+		expect(
+			await client(async () => ok(windowed))
+				.account("payer")
+				.consume(input),
+		).toEqual(windowed);
+		// A malformed consume answer cannot prove the outcome, so it stays ambiguous.
+		for (const balance of [
+			{ ...unlimited.balance, unlimited: false },
+			{ ...context.balance, granted: null },
+			{ ...unlimited.balance, available: "1" },
+			{ ...context.balance, scope: "filter" },
+			{ ...context.balance, windowEndAt: "tomorrow" },
+		])
+			await expect(
+				client(async () => ok({ ...result, balance }))
+					.account("payer")
+					.consume(input),
+			).rejects.toBeInstanceOf(QuotumAmbiguousOperationError);
+		await expect(
+			client(async () =>
+				ok({
+					...context,
+					balance: { ...context.balance, granted: null },
+					kind: "metered",
+					checkedAt: result.recordedAt,
+					allowed: true,
+				}),
+			)
+				.account("payer")
+				.check({ featureId: "tokens", value: 1 }),
+		).rejects.toMatchObject({ code: "PROTOCOL_ERROR" });
+	});
+	it("requires usageEventId exactly where corrections need it", async () => {
+		const { usageEventId: _, ...withoutEvent } = result;
+		await expect(
+			client(async () => ok(withoutEvent))
+				.account("payer")
+				.consume(input),
+		).rejects.toBeInstanceOf(QuotumAmbiguousOperationError);
+		const denied = {
+			...context,
+			operation: "consume",
+			operationId: input.operationId,
+			allowed: false,
+			reason: "insufficient_balance",
+			usageEventId: "42",
+		};
+		await expect(
+			client(async () => ok(denied))
+				.account("payer")
+				.consume(input),
+		).rejects.toBeInstanceOf(QuotumAmbiguousOperationError);
+		await expect(
+			client(async () =>
+				ok({
+					...context,
+					kind: "metered",
+					checkedAt: result.recordedAt,
+					allowed: true,
+					usageEventId: "42",
+				}),
+			)
 				.account("payer")
 				.check({ featureId: "tokens", value: 1 }),
 		).rejects.toMatchObject({ code: "PROTOCOL_ERROR" });
