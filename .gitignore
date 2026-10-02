@@ -1,6 +1,8 @@
 node_modules/
 dist/
 coverage/
+artifacts/
+.wrangler/
 *.tgz
 *.tsbuildinfo
 .env

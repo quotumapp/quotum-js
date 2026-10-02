@@ -1,0 +1,842 @@
+[
+  {
+    "method": "GET",
+    "path": "/v1/admin/administrative-debits/{billingAccountId}",
+    "operationId": "getV1AdminAdministrativeDebitsByBillingAccountId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.debits.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/administrative-debits/{billingAccountId}",
+    "operationId": "postV1AdminAdministrativeDebitsByBillingAccountId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.debits.create"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/auto-topups/{billingAccountId}/{policyId}/reset",
+    "operationId": "postV1AdminAutoTopupsByBillingAccountIdByPolicyIdReset",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.autoTopup.reset"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/catalog",
+    "operationId": "getV1AdminCatalog",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.catalog.getPublished"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/catalog-migrations/preview",
+    "operationId": "postV1AdminCatalogMigrationsPreview",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.catalogMigrations.preview"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/catalog-migrations/publish",
+    "operationId": "postV1AdminCatalogMigrationsPublish",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.catalogMigrations.publish"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/catalog/preview",
+    "operationId": "postV1AdminCatalogPreview",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.catalog.preview"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/catalog/products",
+    "operationId": "getV1AdminCatalogProducts",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.catalog.listProducts"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/catalog/publish",
+    "operationId": "postV1AdminCatalogPublish",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.catalog.publish"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/catalog/store-products",
+    "operationId": "getV1AdminCatalogStoreProducts",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.catalog.listStoreProducts"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/contracts/{billingAccountId}",
+    "operationId": "getV1AdminContractsByBillingAccountId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.contracts.list"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/admin/contracts/{billingAccountId}/{contractId}",
+    "operationId": "deleteV1AdminContractsByBillingAccountIdByContractId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.contracts.remove"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/contracts/preview",
+    "operationId": "postV1AdminContractsPreview",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.contracts.preview"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/contracts/publish",
+    "operationId": "postV1AdminContractsPublish",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.contracts.publish"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/customers/{customerId}",
+    "operationId": "getV1AdminCustomersByCustomerId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.customers.get"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/customers/{customerId}/projection-jobs",
+    "operationId": "getV1AdminCustomersByCustomerIdProjectionJobs",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.customers.listProjectionJobs"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/customers/{customerId}/purchases",
+    "operationId": "getV1AdminCustomersByCustomerIdPurchases",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.customers.listPurchases"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/customers/{customerId}/store-events",
+    "operationId": "getV1AdminCustomersByCustomerIdStoreEvents",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.customers.listStoreEvents"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/customers/{customerId}/subscriptions",
+    "operationId": "getV1AdminCustomersByCustomerIdSubscriptions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.customers.listSubscriptions"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/customers/by-billing-account/{billingAccountId}",
+    "operationId": "getV1AdminCustomersByBillingAccountByBillingAccountId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.support.getCustomer"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/customers/search",
+    "operationId": "getV1AdminCustomersSearch",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.customers.search"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/metrics",
+    "operationId": "getV1AdminMetrics",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.metrics"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/operator-grants/{billingAccountId}",
+    "operationId": "getV1AdminOperatorGrantsByBillingAccountId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.grants.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/operator-grants/{billingAccountId}",
+    "operationId": "postV1AdminOperatorGrantsByBillingAccountId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.grants.create"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/operator-grants/{billingAccountId}/{grantId}",
+    "operationId": "getV1AdminOperatorGrantsByBillingAccountIdByGrantId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.grants.get"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/operator-grants/{billingAccountId}/{grantId}/revoke",
+    "operationId": "postV1AdminOperatorGrantsByBillingAccountIdByGrantIdRevoke",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.grants.revoke"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/projection-jobs",
+    "operationId": "getV1AdminProjectionJobs",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.projectionJobs.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/projection-jobs/{jobId}/retry",
+    "operationId": "postV1AdminProjectionJobsByJobIdRetry",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.projectionJobs.retry"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/promotion-redemptions/{redemptionId}/revoke",
+    "operationId": "postV1AdminPromotionRedemptionsByRedemptionIdRevoke",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.revokeRedemption"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/promotions",
+    "operationId": "getV1AdminPromotions",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/promotions",
+    "operationId": "postV1AdminPromotions",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.create"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/promotions/{promotionKey}",
+    "operationId": "getV1AdminPromotionsByPromotionKey",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.get"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/promotions/{promotionKey}/archive",
+    "operationId": "postV1AdminPromotionsByPromotionKeyArchive",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.archive"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/promotions/{promotionKey}/codes",
+    "operationId": "getV1AdminPromotionsByPromotionKeyCodes",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.listCodes"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/promotions/{promotionKey}/codes",
+    "operationId": "postV1AdminPromotionsByPromotionKeyCodes",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.createCodes"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/promotions/{promotionKey}/codes/{codeId}/deactivate",
+    "operationId": "postV1AdminPromotionsByPromotionKeyCodesByCodeIdDeactivate",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.deactivateCode"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/promotions/{promotionKey}/provider-sync",
+    "operationId": "postV1AdminPromotionsByPromotionKeyProviderSync",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.syncProvider"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/promotions/{promotionKey}/redemptions",
+    "operationId": "getV1AdminPromotionsByPromotionKeyRedemptions",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.listRedemptions"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/providers/capabilities",
+    "operationId": "getV1AdminProvidersCapabilities",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.providers.capabilities"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/purchases",
+    "operationId": "getV1AdminPurchases",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.purchases.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/reconciliation/subscriptions/run",
+    "operationId": "postV1AdminReconciliationSubscriptionsRun",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.reconciliation.runSubscriptions"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/stats/summary",
+    "operationId": "getV1AdminStatsSummary",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.stats"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/store-events",
+    "operationId": "getV1AdminStoreEvents",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.storeEvents.list"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/store-events/{eventId}",
+    "operationId": "getV1AdminStoreEventsByEventId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.storeEvents.get"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/store-events/{eventId}/replay",
+    "operationId": "postV1AdminStoreEventsByEventIdReplay",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.storeEvents.replay"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/subscriptions",
+    "operationId": "getV1AdminSubscriptions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.subscriptions.list"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/usage-events",
+    "operationId": "getV1AdminUsageEvents",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.support.usageEvents.list"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}",
+    "operationId": "getV1BillingAccountsByBillingAccountId",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.get"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/billing-accounts/{billingAccountId}",
+    "operationId": "putV1BillingAccountsByBillingAccountId",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.create"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/auto-topup",
+    "operationId": "getV1BillingAccountsByBillingAccountIdAutoTopup",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.autoTopup.get"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/billing-accounts/{billingAccountId}/auto-topup",
+    "operationId": "putV1BillingAccountsByBillingAccountIdAutoTopup",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.autoTopup.set"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/available-actions",
+    "operationId": "getV1BillingAccountsByBillingAccountIdAvailableActions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.availableActions"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/balances/{featureKey}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdBalancesByFeatureKey",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.balances.get"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/billing-account",
+    "operationId": "getV1BillingAccountsByBillingAccountIdBillingAccount",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.stripe.getBillingAccount"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/billing-summary",
+    "operationId": "getV1BillingAccountsByBillingAccountIdBillingSummary",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.billingSummary"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/commercial-actions",
+    "operationId": "postV1BillingAccountsByBillingAccountIdCommercialActions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.commercial.execute"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/commercial-actions/preview",
+    "operationId": "postV1BillingAccountsByBillingAccountIdCommercialActionsPreview",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.commercial.preview"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/controls",
+    "operationId": "getV1BillingAccountsByBillingAccountIdControls",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.controls.get"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/billing-accounts/{billingAccountId}/controls",
+    "operationId": "putV1BillingAccountsByBillingAccountIdControls",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.controls.set"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/entities",
+    "operationId": "getV1BillingAccountsByBillingAccountIdEntities",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.listEntities"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/entities",
+    "operationId": "postV1BillingAccountsByBillingAccountIdEntities",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.entity.create"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/entities/{entityId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdEntitiesByEntityId",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.entity.get"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/entities/{entityId}/licenses/{featureKey}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdEntitiesByEntityIdLicensesByFeatureKey",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.entity.licenses.check"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/entitlements",
+    "operationId": "getV1BillingAccountsByBillingAccountIdEntitlements",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.entitlements"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/license-assignments",
+    "operationId": "postV1BillingAccountsByBillingAccountIdLicenseAssignments",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.licenses.assign"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/billing-accounts/{billingAccountId}/license-assignments/{assignmentId}",
+    "operationId": "deleteV1BillingAccountsByBillingAccountIdLicenseAssignmentsByAssignmentId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.licenses.revoke"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/license-pools",
+    "operationId": "getV1BillingAccountsByBillingAccountIdLicensePools",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.licenses.listPools"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/payment-setup-sessions/{sessionId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdPaymentSetupSessionsBySessionId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.paymentSetup.getSession"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/promotion-codes/validate",
+    "operationId": "postV1BillingAccountsByBillingAccountIdPromotionCodesValidate",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.promotions.validate"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/promotion-redemptions",
+    "operationId": "getV1BillingAccountsByBillingAccountIdPromotionRedemptions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.promotions.listRedemptions"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/promotion-redemptions",
+    "operationId": "postV1BillingAccountsByBillingAccountIdPromotionRedemptions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.promotions.redeem"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/promotion-redemptions/{redemptionId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdPromotionRedemptionsByRedemptionId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.promotions.getRedemption"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/providers/apple/account-token",
+    "operationId": "getV1BillingAccountsByBillingAccountIdProvidersAppleAccountToken",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.apple.getAccountToken"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/providers/google/account-link",
+    "operationId": "getV1BillingAccountsByBillingAccountIdProvidersGoogleAccountLink",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.google.getAccountLink"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/providers/stripe/checkout-sessions",
+    "operationId": "postV1BillingAccountsByBillingAccountIdProvidersStripeCheckoutSessions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.stripe.createCheckout"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/providers/stripe/checkout-sessions/{sessionId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdProvidersStripeCheckoutSessionsBySessionId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.stripe.getCheckout"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/providers/stripe/checkout-sessions/{sessionId}/expire",
+    "operationId": "expireStripeCheckoutSession",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.stripe.expireCheckout"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/providers/stripe/portal-sessions",
+    "operationId": "postV1BillingAccountsByBillingAccountIdProvidersStripePortalSessions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.stripe.createPortal"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/subscriptions/{subscriptionId}/changes",
+    "operationId": "postV1BillingAccountsByBillingAccountIdSubscriptionsBySubscriptionIdChanges",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.subscriptions.change"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/trial-eligibility",
+    "operationId": "getV1BillingAccountsByBillingAccountIdTrialEligibility",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.trials.eligibility"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/trials",
+    "operationId": "getV1BillingAccountsByBillingAccountIdTrials",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.trials.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/trials",
+    "operationId": "postV1BillingAccountsByBillingAccountIdTrials",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.trials.start"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/trials/{trialId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdTrialsByTrialId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.trials.get"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/trials/{trialId}/end",
+    "operationId": "postV1BillingAccountsByBillingAccountIdTrialsByTrialIdEnd",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.trials.end"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage-alert-events",
+    "operationId": "getV1BillingAccountsByBillingAccountIdUsageAlertEvents",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.alerts.listEvents"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage-alerts",
+    "operationId": "getV1BillingAccountsByBillingAccountIdUsageAlerts",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.alerts.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage-alerts",
+    "operationId": "postV1BillingAccountsByBillingAccountIdUsageAlerts",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.alerts.create"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/check",
+    "operationId": "postV1BillingAccountsByBillingAccountIdUsageCheck",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.check / entity.check"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/consume",
+    "operationId": "postV1BillingAccountsByBillingAccountIdUsageConsume",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.consume / entity.consume"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/events",
+    "operationId": "getV1BillingAccountsByBillingAccountIdUsageEvents",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.usage.listEvents"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/events/{usageEventId}/corrections",
+    "operationId": "postV1BillingAccountsByBillingAccountIdUsageEventsByUsageEventIdCorrections",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.usage.correct"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/operations/{operation}/{operationId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdUsageOperationsByOperationByOperationId",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.getOperation / entity.getOperation (consume)"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/receipts/{receiptId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdUsageReceiptsByReceiptId",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.getReceipt / entity.getReceipt"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/receipts/{receiptId}/deductions",
+    "operationId": "getV1BillingAccountsByBillingAccountIdUsageReceiptsByReceiptIdDeductions",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.listReceiptDeductions / entity.listReceiptDeductions"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/reservations",
+    "operationId": "postV1BillingAccountsByBillingAccountIdUsageReservations",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.reserve"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/confirm",
+    "operationId": "postV1BillingAccountsByBillingAccountIdUsageReservationsByReservationIdConfirm",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.confirm"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/release",
+    "operationId": "postV1BillingAccountsByBillingAccountIdUsageReservationsByReservationIdRelease",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.release"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/series",
+    "operationId": "getV1BillingAccountsByBillingAccountIdUsageSeries",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.usage.series"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/catalog",
+    "operationId": "getV1Catalog",
+    "client": "application",
+    "status": "planned",
+    "methodName": "quotum.catalog.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/projects/{projectKey}/connections/{versionId}/webhooks/{provider}",
+    "operationId": "verifyConnectionEvent",
+    "client": "excluded_ingress",
+    "status": "excluded",
+    "methodName": null
+  },
+  {
+    "method": "POST",
+    "path": "/v1/projects/{projectKey}/webhooks/apple",
+    "operationId": "postV1ProjectsByProjectKeyWebhooksApple",
+    "client": "excluded_ingress",
+    "status": "excluded",
+    "methodName": null
+  },
+  {
+    "method": "POST",
+    "path": "/v1/projects/{projectKey}/webhooks/google",
+    "operationId": "postV1ProjectsByProjectKeyWebhooksGoogle",
+    "client": "excluded_ingress",
+    "status": "excluded",
+    "methodName": null
+  },
+  {
+    "method": "POST",
+    "path": "/v1/projects/{projectKey}/webhooks/stripe",
+    "operationId": "postV1ProjectsByProjectKeyWebhooksStripe",
+    "client": "excluded_ingress",
+    "status": "excluded",
+    "methodName": null
+  },
+  {
+    "method": "POST",
+    "path": "/v1/purchases/verify",
+    "operationId": "postV1PurchasesVerify",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.purchases.verify"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/stripe-app/webhooks/{mode}",
+    "operationId": "stripeAppWebhook",
+    "client": "excluded_ingress",
+    "status": "excluded",
+    "methodName": null
+  }
+]
