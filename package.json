@@ -1,0 +1,54 @@
+{
+	"name": "@quotum/sdk",
+	"version": "0.1.0-dev.0",
+	"description": "Quotum billing SDK for JavaScript and TypeScript backends",
+	"type": "module",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/quotumapp/quotum-js.git"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist",
+		"README.md",
+		"DESIGN.md",
+		"SURFACE.md",
+		"LICENSE",
+		"contracts/v1/source.json",
+		"contracts/v1/coverage.json"
+	],
+	"sideEffects": false,
+	"engines": {
+		"node": ">=22"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome check src scripts tests examples package.json tsconfig*.json",
+		"test": "bun test tests",
+		"quality": "bun run typecheck && bun run lint && bun run test",
+		"api:preview": "bun scripts/openapi.ts preview",
+		"api:update": "bun scripts/openapi.ts update",
+		"api:check": "bun scripts/openapi.ts check",
+		"api:check-preview": "bun scripts/openapi.ts check-preview",
+		"api:check-release": "bun scripts/openapi.ts check-release",
+		"test:packed": "bun scripts/test-packed.ts",
+		"test:http": "bun scripts/test-http.ts",
+		"pack:preview": "bun run build && npm pack --ignore-scripts",
+		"pack:rc": "bun scripts/openapi.ts check-release && bun run build && npm pack --ignore-scripts"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.14",
+		"@types/bun": "1.3.11",
+		"miniflare": "4.20260730.0",
+		"openapi-typescript": "7.13.0",
+		"typescript": "5.9.3"
+	}
+}

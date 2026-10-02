@@ -1,0 +1,77 @@
+name: Validate SDK
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  packed:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - run: bun install --frozen-lockfile
+      - run: bun run quality
+      - name: Check contract provenance and generated coverage
+        run: |
+          if bun -e 'process.exit(JSON.parse(await Bun.file("contracts/v1/source.json").text()).workingTree === true ? 0 : 1)'; then
+            bun run api:check-preview
+          else
+            bun run api:check
+          fi
+      - run: bun run pack:preview
+      - run: bun run test:packed ./quotum-sdk-*.tgz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packed-sdk-node-${{ matrix.node }}
+          path: |
+            quotum-sdk-*.tgz
+            artifacts/packed-report.json
+  http:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: source
+        name: Read exact public server revision
+        run: |
+          bun -e 'const s=JSON.parse(await Bun.file("contracts/v1/source.json").text()); if (!/^[a-f0-9]{40}$/.test(s.revision)) throw new Error("Invalid API revision"); console.log(`revision=${s.revision}\nimmutable=${s.workingTree !== true}`)' >> "$GITHUB_OUTPUT"
+      - name: Explain development-only conformance
+        if: steps.source.outputs.immutable != 'true'
+        run: echo 'Working-tree snapshot; real HTTP is a local gate until the matching API commit is public. RC packaging refuses this snapshot.'
+      - uses: actions/checkout@v4
+        if: steps.source.outputs.immutable == 'true'
+        with:
+          repository: quotumapp/quotum
+          ref: ${{ steps.source.outputs.revision }}
+          path: server
+      - name: Test the packed SDK against its exact server
+        if: steps.source.outputs.immutable == 'true'
+        run: |
+          bun install --frozen-lockfile
+          bun run api:check
+          bun run pack:preview
+          cd server
+          bun install --frozen-lockfile
+          bun run openapi:check
+          cd ..
+          bun run test:http ./server ./quotum-sdk-*.tgz
