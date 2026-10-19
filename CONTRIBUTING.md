@@ -18,8 +18,26 @@ reports for that exact API/SDK pair. The HTTP test creates a disposable database
 guarded lane; production credentials and databases are never test inputs.
 
 CI validates packed consumers; its HTTP job uses the immutable public API pin. Working-tree
-snapshots cannot satisfy that remote gate. This repository has no npm publication workflow yet;
-maintainers, npm ownership and publication remain a separate release step. Keep a development
+snapshots cannot satisfy that remote gate. The tag-triggered `release.yml` workflow publishes the exact tested tarball under `next` through
+npm trusted publishing. It requires both SDK and pinned API commits on their main branches,
+Node 22/24 plus Bun/Deno/Workers packed conformance, real HTTP including the reference application,
+and the protected `npm` environment. Set the environment protection rules and publisher trust
+before tagging. The npm scope owner authenticates interactively once and configures:
+
+```sh
+npm trust github @quotum/sdk --repo quotumapp/quotum-js --file release.yml --environment npm --allow-publish
+npm trust list @quotum/sdk
+```
+
+Do not add an npm write token to CI. `v0.1.0-rc.0` is the first tag; later RCs increment `rc.N`.
+The separate verification job checks registry integrity, the `next` tag and a clean installation.
+It runs `npm audit signatures --json --include-attestations` to verify Sigstore trust evidence,
+then checks the verified npm GitHub Actions SLSA v1 bundle against the exact tarball digest,
+release workflow identity and `GITHUB_SHA`. Unknown provenance formats fail closed. If registry
+visibility or verification fails after publication, rerun failed jobs to retry verification without
+publishing that immutable version again. Metadata visibility is retried 36 times at ten-second
+intervals, with bounded request timeouts.
+An ownership/setup failure leaves a tested candidate; it is not a published release. Keep a development
 snapshot at `0.1.0-dev.1` until the public source pin and candidate gates are satisfied.
 
 Do not log API keys or include `.env` files, real credentials or private server imports in artifacts.

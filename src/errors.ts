@@ -27,14 +27,14 @@ export class QuotumError extends Error {
 export interface OperationIdentity {
 	billingAccountId: string;
 	entityId: string | null;
-	operation: "consume";
+	operation: "consume" | "reserve" | "confirm" | "release";
 	operationId: string;
 }
 
 export class QuotumAmbiguousOperationError extends QuotumError {
 	readonly billingAccountId: string;
 	readonly entityId: string | null;
-	readonly operation: "consume";
+	readonly operation: OperationIdentity["operation"];
 	readonly operationId: string;
 	readonly latestState: "unknown" | "processing" | "not_found" | "result_expired";
 	constructor(

@@ -141,6 +141,97 @@ export async function exercise(createQuotum, QuotumAmbiguousOperationError) {
 		(await retried.account("payer").get()).id === "payer" && retryCalls === 2,
 		"bounded transient retry",
 	);
+	const context = {
+		featureId: outcome.featureId,
+		entityId: outcome.entityId,
+		usage: outcome.usage,
+		rated: outcome.rated,
+		balance: outcome.balance,
+	};
+	const reservation = {
+		...context,
+		billingAccountId: "payer",
+		reservationId: "hold",
+		status: "active",
+		createdAt: outcome.recordedAt,
+		expiresAt: outcome.recordedAt,
+		finalizedAt: null,
+		confirmedValue: null,
+		receiptId: null,
+	};
+	const reserved = {
+		...context,
+		operation: "reserve",
+		operationId: "ai-job",
+		allowed: true,
+		reservationId: "hold",
+		status: "active",
+		expiresAt: outcome.recordedAt,
+	};
+	const confirmed = {
+		...outcome,
+		operation: "confirm",
+		operationId: "ai-job",
+		reservationId: "hold",
+		status: "confirmed",
+	};
+	const released = {
+		featureId: outcome.featureId,
+		entityId: outcome.entityId,
+		operation: "release",
+		operationId: "ai-job",
+		reservationId: "hold",
+		status: "released",
+		finalizedAt: outcome.recordedAt,
+	};
+	for (const [operation, expected] of [
+		["reserve", reserved],
+		["confirm", confirmed],
+		["release", released],
+	]) {
+		const scoped = createQuotum({
+			baseUrl: "https://example.test",
+			apiKey: "fake-test-key",
+			maxRetries: 0,
+			fetch: async (url, init) => {
+				if (init.method === "POST") {
+					assert(
+						new Headers(init.headers).get("idempotency-key") === "ai-job",
+						"stable reservation operation identity",
+					);
+					throw new Error("Committed reservation response lost");
+				}
+				if (url.includes("/operations/")) {
+					assert(url.includes(`/operations/${operation}/`), "operation-specific recovery route");
+					return ok({
+						operation,
+						operationId: "ai-job",
+						status: "completed",
+						completedAt: outcome.recordedAt,
+						outcome: expected,
+					});
+				}
+				return ok(reservation);
+			},
+		})
+			.account("payer")
+			.entity("child");
+		const result =
+			operation === "reserve"
+				? await scoped.reserve({ featureId: "credits", value: 1n, operationId: "ai-job" })
+				: operation === "confirm"
+					? await scoped.confirm({ reservationId: "hold", value: "1", operationId: "ai-job" })
+					: await scoped.release({ reservationId: "hold", operationId: "ai-job" });
+		assert(
+			JSON.stringify(result) === JSON.stringify(expected),
+			"reservation mutation recovers its exact outcome",
+		);
+		assert(
+			(await scoped.getReservation("hold")).entityId === "child",
+			"reservation reads retain entity scope",
+		);
+	}
+
 	const originalFetch = globalThis.fetch;
 	try {
 		globalThis.fetch = async function () {

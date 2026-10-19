@@ -1,4 +1,9 @@
 import { invalid } from "./errors.js";
+import {
+	operationIdentifier as operationId,
+	reservationMethods,
+	usageOutcome,
+} from "./reservations.js";
 import { Transport } from "./transport.js";
 import type {
 	AccountHandle,
@@ -16,6 +21,7 @@ import type {
 	ReceiptDeductionsInput,
 	RequestOptions,
 	UsageHandle,
+	UsageOperation,
 	UsageReceipt,
 } from "./types.js";
 import {
@@ -78,13 +84,6 @@ function usageBody(input: CheckInput, entityId: string | null, consume = false) 
 		...(occurredAt === undefined ? {} : { occurredAt }),
 	};
 }
-function operationId(value: unknown): string {
-	const id = identifier(value, "operationId");
-	if (!/^[\x20-\x7e]+$/u.test(id))
-		invalid("operationId must contain printable ASCII for the Idempotency-Key header");
-	return id;
-}
-
 /** Constructs a backend client. Creating clients or handles never performs I/O. */
 export function createQuotum(options: QuotumOptions): Quotum {
 	const transport = new Transport(options);
@@ -95,6 +94,7 @@ export function createQuotum(options: QuotumOptions): Quotum {
 			return `${path}${query.size ? `?${query}` : ""}`;
 		};
 		return {
+			...reservationMethods(transport, billingAccountId, entityId),
 			check: async (input: CheckInput, request?: RequestOptions) => {
 				const body = usageBody(input, entityId);
 				return transport.send(
@@ -149,19 +149,22 @@ export function createQuotum(options: QuotumOptions): Quotum {
 					request,
 				);
 			},
-			getOperation: async (input: GetOperationInput, request?: RequestOptions) => {
+			getOperation: async <K extends UsageOperation>(
+				input: GetOperationInput<K>,
+				request?: RequestOptions,
+			) => {
 				knownKeys(input, ["operation", "operationId"]);
-				if (input.operation !== "consume")
-					invalid("This preview supports recovery of consume operations");
+				if (!["consume", "reserve", "confirm", "release"].includes(input.operation))
+					invalid("Unsupported usage operation");
 				const id = operationId(input.operationId);
 				return transport.send(
 					{
-						path: scoped(`${base}/operations/consume/${segment(id)}`),
-						validate: (value): OperationResult => {
-							if (!object(value) || value.operation !== "consume" || value.operationId !== id)
+						path: scoped(`${base}/operations/${input.operation}/${segment(id)}`),
+						validate: (value): OperationResult<K> => {
+							if (!object(value) || value.operation !== input.operation || value.operationId !== id)
 								protocol();
 							if (value.status === "completed") {
-								consumeResult(value.outcome, id, entityId);
+								usageOutcome(input.operation, value.outcome, id, entityId);
 								if (!timestamp(value.completedAt)) protocol();
 							} else if (
 								value.status !== "processing" ||
@@ -169,7 +172,7 @@ export function createQuotum(options: QuotumOptions): Quotum {
 								value.completedAt !== null
 							)
 								protocol();
-							return value as unknown as OperationResult;
+							return value as unknown as OperationResult<K>;
 						},
 					},
 					request,
@@ -188,7 +191,8 @@ export function createQuotum(options: QuotumOptions): Quotum {
 								!string(value.usageEventId) ||
 								value.billingAccountId !== billingAccountId ||
 								value.entityId !== entityId ||
-								value.operation !== "consume" ||
+								!["consume", "confirm"].includes(String(value.operation)) ||
+								(value.operation === "confirm" && !string(value.reservationId)) ||
 								!string(value.operationId) ||
 								!timestamp(value.recordedAt) ||
 								!(value.occurredAt === null || timestamp(value.occurredAt)) ||

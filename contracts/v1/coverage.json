@@ -24,6 +24,14 @@
     "methodName": "operator.account.autoTopup.reset"
   },
   {
+    "method": "POST",
+    "path": "/v1/admin/billing-accounts/{billingAccountId}/provider-operations/{operationId}/reconcile",
+    "operationId": "postV1AdminBillingAccountsByBillingAccountIdProviderOperationsByOperationIdReconcile",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.providerOperations.reconcile"
+  },
+  {
     "method": "GET",
     "path": "/v1/admin/catalog",
     "operationId": "getV1AdminCatalog",
@@ -46,6 +54,22 @@
     "client": "operator",
     "status": "planned",
     "methodName": "operator.catalogMigrations.publish"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/catalog/bindings",
+    "operationId": "getV1AdminCatalogBindings",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.catalog.listBindings"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/catalog/bindings/adopt",
+    "operationId": "postV1AdminCatalogBindingsAdopt",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.catalog.adoptBindings"
   },
   {
     "method": "POST",
@@ -110,6 +134,30 @@
     "client": "operator",
     "status": "planned",
     "methodName": "operator.contracts.publish"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/customer-erasures",
+    "operationId": "postV1AdminCustomerErasures",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.customerErasures.create"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/customer-erasures/{erasureId}",
+    "operationId": "getV1AdminCustomerErasuresByErasureId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.customerErasures.get"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/customer-erasures/preview",
+    "operationId": "postV1AdminCustomerErasuresPreview",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.customerErasures.preview"
   },
   {
     "method": "GET",
@@ -257,6 +305,22 @@
   },
   {
     "method": "POST",
+    "path": "/v1/admin/promotions/{promotionKey}/apple-offers",
+    "operationId": "postV1AdminPromotionsAppleOffers",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.linkAppleOffer"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/promotions/{promotionKey}/apple-offers/{offerId}/retire",
+    "operationId": "postV1AdminPromotionsAppleOffersRetire",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.retireAppleOffer"
+  },
+  {
+    "method": "POST",
     "path": "/v1/admin/promotions/{promotionKey}/archive",
     "operationId": "postV1AdminPromotionsByPromotionKeyArchive",
     "client": "operator",
@@ -302,6 +366,30 @@
     "client": "operator",
     "status": "planned",
     "methodName": "operator.promotions.listRedemptions"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/promotions/{promotionKey}/terms",
+    "operationId": "postV1AdminPromotionsByPromotionKeyTerms",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.promotions.updateTerms"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/provider-customer-unlinks/{billingAccountId}",
+    "operationId": "getV1AdminProviderCustomerUnlinksByBillingAccountId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.providerCustomerUnlinks.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/provider-customer-unlinks/{billingAccountId}",
+    "operationId": "postV1AdminProviderCustomerUnlinksByBillingAccountId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.account.providerCustomerUnlinks.create"
   },
   {
     "method": "GET",
@@ -360,6 +448,14 @@
     "methodName": "operator.storeEvents.replay"
   },
   {
+    "method": "POST",
+    "path": "/v1/admin/subscription-changes/{changeId}/retry",
+    "operationId": "postV1AdminSubscriptionChangesByChangeIdRetry",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.subscriptionChanges.retry"
+  },
+  {
     "method": "GET",
     "path": "/v1/admin/subscriptions",
     "operationId": "getV1AdminSubscriptions",
@@ -374,6 +470,110 @@
     "client": "application",
     "status": "planned",
     "methodName": "quotum.support.usageEvents.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/usage-invoice-adjustments/{adjustmentId}/retry",
+    "operationId": "postV1AdminUsageInvoiceAdjustmentsByAdjustmentIdRetry",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.usageInvoiceAdjustments.retry"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/usage-invoice-periods/{periodId}/retry",
+    "operationId": "postV1AdminUsageInvoicePeriodsByPeriodIdRetry",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.usageInvoicePeriods.retry"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/webhook-deliveries",
+    "operationId": "getV1AdminWebhookDeliveries",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookDeliveries.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/webhook-deliveries/{deliveryId}/retry",
+    "operationId": "postV1AdminWebhookDeliveriesByDeliveryIdRetry",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookDeliveries.retry"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/webhook-endpoints",
+    "operationId": "getV1AdminWebhookEndpoints",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.list"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/webhook-endpoints",
+    "operationId": "postV1AdminWebhookEndpoints",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.create"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/admin/webhook-endpoints/{endpointId}",
+    "operationId": "deleteV1AdminWebhookEndpointsByEndpointId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.remove"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/webhook-endpoints/{endpointId}",
+    "operationId": "getV1AdminWebhookEndpointsByEndpointId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.get"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/admin/webhook-endpoints/{endpointId}",
+    "operationId": "patchV1AdminWebhookEndpointsByEndpointId",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.update"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/webhook-endpoints/{endpointId}/replay",
+    "operationId": "postV1AdminWebhookEndpointsByEndpointIdReplay",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.replay"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/webhook-endpoints/{endpointId}/rotate-secret",
+    "operationId": "postV1AdminWebhookEndpointsByEndpointIdRotateSecret",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.rotateSecret"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/admin/webhook-endpoints/{endpointId}/test",
+    "operationId": "postV1AdminWebhookEndpointsByEndpointIdTest",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.test"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/admin/webhook-event-types",
+    "operationId": "getV1AdminWebhookEventTypes",
+    "client": "operator",
+    "status": "planned",
+    "methodName": "operator.webhookEndpoints.eventTypes"
   },
   {
     "method": "GET",
@@ -512,6 +712,30 @@
     "methodName": "account.entitlements"
   },
   {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/gifts",
+    "operationId": "getV1BillingAccountsByBillingAccountIdGifts",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.promotions.gifts"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/invoices",
+    "operationId": "getV1BillingAccountsByBillingAccountIdInvoices",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.invoices.list"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/invoices/{invoiceId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdInvoicesByInvoiceId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.invoices.get"
+  },
+  {
     "method": "POST",
     "path": "/v1/billing-accounts/{billingAccountId}/license-assignments",
     "operationId": "postV1BillingAccountsByBillingAccountIdLicenseAssignments",
@@ -576,6 +800,22 @@
     "methodName": "account.promotions.getRedemption"
   },
   {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/promotion-redemptions/{redemptionId}/apple-signatures",
+    "operationId": "postV1BillingAccountsApplePromotionSignatures",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.promotions.appleSignatures"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/provider-operations/{operationId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdProviderOperationsByOperationId",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.providerOperations.get"
+  },
+  {
     "method": "GET",
     "path": "/v1/billing-accounts/{billingAccountId}/providers/apple/account-token",
     "operationId": "getV1BillingAccountsByBillingAccountIdProvidersAppleAccountToken",
@@ -590,6 +830,14 @@
     "client": "application",
     "status": "planned",
     "methodName": "account.google.getAccountLink"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing-accounts/{billingAccountId}/providers/paddle/checkout-sessions",
+    "operationId": "postV1BillingAccountsByBillingAccountIdProvidersPaddleCheckoutSessions",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.paddle.createCheckout"
   },
   {
     "method": "POST",
@@ -622,6 +870,14 @@
     "client": "application",
     "status": "planned",
     "methodName": "account.stripe.createPortal"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/refunds",
+    "operationId": "getV1BillingAccountsByBillingAccountIdRefunds",
+    "client": "application",
+    "status": "planned",
+    "methodName": "account.refunds.list"
   },
   {
     "method": "POST",
@@ -733,7 +989,7 @@
     "operationId": "getV1BillingAccountsByBillingAccountIdUsageOperationsByOperationByOperationId",
     "client": "application",
     "status": "preview",
-    "methodName": "account.getOperation / entity.getOperation (consume)"
+    "methodName": "account.getOperation / entity.getOperation"
   },
   {
     "method": "GET",
@@ -756,24 +1012,32 @@
     "path": "/v1/billing-accounts/{billingAccountId}/usage/reservations",
     "operationId": "postV1BillingAccountsByBillingAccountIdUsageReservations",
     "client": "application",
-    "status": "planned",
-    "methodName": "account.reserve"
+    "status": "preview",
+    "methodName": "account.reserve / entity.reserve"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}",
+    "operationId": "getV1BillingAccountsByBillingAccountIdUsageReservationsByReservationId",
+    "client": "application",
+    "status": "preview",
+    "methodName": "account.getReservation / entity.getReservation"
   },
   {
     "method": "POST",
     "path": "/v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/confirm",
     "operationId": "postV1BillingAccountsByBillingAccountIdUsageReservationsByReservationIdConfirm",
     "client": "application",
-    "status": "planned",
-    "methodName": "account.confirm"
+    "status": "preview",
+    "methodName": "account.confirm / entity.confirm"
   },
   {
     "method": "POST",
     "path": "/v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/release",
     "operationId": "postV1BillingAccountsByBillingAccountIdUsageReservationsByReservationIdRelease",
     "client": "application",
-    "status": "planned",
-    "methodName": "account.release"
+    "status": "preview",
+    "methodName": "account.release / entity.release"
   },
   {
     "method": "GET",
@@ -811,6 +1075,14 @@
     "method": "POST",
     "path": "/v1/projects/{projectKey}/webhooks/google",
     "operationId": "postV1ProjectsByProjectKeyWebhooksGoogle",
+    "client": "excluded_ingress",
+    "status": "excluded",
+    "methodName": null
+  },
+  {
+    "method": "POST",
+    "path": "/v1/projects/{projectKey}/webhooks/paddle",
+    "operationId": "postV1ProjectsByProjectKeyWebhooksPaddle",
     "client": "excluded_ingress",
     "status": "excluded",
     "methodName": null

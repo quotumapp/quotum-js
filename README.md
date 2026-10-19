@@ -4,12 +4,13 @@
 One TypeScript implementation emits ESM JavaScript and declarations, targeting ES2022 with no
 runtime dependencies. Licensed under Apache-2.0.
 
-This is a development preview, pinned to the public API commit in `contracts/v1/source.json`.
-The API cutover is under review in [quotum#206](https://github.com/quotumapp/quotum/pull/206);
-this package has not been published to npm. Install a tested local or CI tarball:
+This is a pre-1.0 preview. `contracts/v1/source.json` records the matching API revision; a
+`workingTree` snapshot is development-only and cannot be published. The reservation increment
+adds unknown-cost AI workflows to the existing consumption preview. Run it against the API revision
+recorded in that file or a compatible later revision. Install a tested local or CI tarball:
 
 ```sh
-npm install /path/to/quotum-sdk-0.1.0-dev.1.tgz
+npm install /path/to/quotum-sdk-0.1.0-rc.0.tgz
 ```
 
 ```js
@@ -67,7 +68,13 @@ destructured methods. `create()` performs network I/O.
   Boolean features omit `value`; metered features require it.
 - `account.consume({ featureId, value, operationId, occurredAt? })` and `entity.consume(...)`
   authorize and record known-cost usage before work. These return compact outcomes.
-- `getOperation({ operation: 'consume', operationId })` returns processing or the exact completed outcome.
+- `reserve({ featureId, value, operationId, expiresInSeconds? })` holds an upper bound before work.
+- `confirm({ reservationId, value, operationId })` records positive actual usage up to that bound and
+  returns a receipt. Zero usage uses `release({ reservationId, operationId })`.
+- `getReservation(reservationId)` reads current logical state. Confirm/release first read and verify
+  the handle's exact entity scope. All preflight, retries and recovery share one call deadline.
+- `getOperation({ operation: 'consume' | 'reserve' | 'confirm' | 'release', operationId })` returns
+  processing or the exact completed outcome, with the result type narrowed by operation.
 - `getReceipt(receiptId)` returns immutable receipt detail; `listReceiptDeductions({ receiptId,
   cursor?, limit? })` returns one page, default 50 and maximum 100. Receipts and cursors are opaque.
 
@@ -92,14 +99,45 @@ values are `null`). Authentication, configuration, invalid input and conflicts a
 
 A call has one total deadline, default 10 seconds, including response bodies, backoff and lookup.
 At most two retries are allowed. Transient network/408/429/500/502/503/504 failures use jitter and
-respect `Retry-After`. Consumption retries retain the exact canonical body and operation key. An
+respect `Retry-After`. Usage mutation retries retain the exact canonical body and operation key. An
 uncertain outcome triggers one final lookup within the same deadline, including when retries are zero.
 An in-progress response moves directly to lookup. Lookup absence does not establish rollback.
 
-Pre-dispatch cancellation throws `REQUEST_ABORTED`. If a dispatched consume may have committed,
+Pre-dispatch cancellation throws `REQUEST_ABORTED`. If a dispatched usage mutation may have committed,
 abort, deadline expiry or unresolved recovery throws `QuotumAmbiguousOperationError` with account,
 entity, operation ID, last request ID and latest known state. No background retries continue after
 cancellation. Account creation is safely retryable; arbitrary entity upserts are not automatically retried.
+
+## AI reservation reference application
+
+The runnable [reference app](examples/ai-reservations.mjs) uses real Quotum HTTP and a deterministic
+AI job, so it needs no AI provider account. Configure a backend with the API quickstart's
+`model_tokens` feature and a funded `ai_credits` wallet, then supply `QUOTUM_BASE_URL`,
+`QUOTUM_API_KEY`, and `QUOTUM_ACCOUNT_ID` through your shell or secret store. An optional
+`QUOTUM_ENTITY_ID` binds the workflow to a workspace. Build the package before running from source:
+
+```sh
+bun run build
+node examples/ai-reservations.mjs --job generation-1 --drop-response confirm
+node examples/ai-reservations.mjs --job generation-2 --crash-after-work
+node examples/ai-reservations.mjs --job generation-2
+node examples/ai-reservations.mjs --job unused-1 --scenario zero
+node examples/ai-reservations.mjs --job refused-1 --scenario denied
+node examples/ai-reservations.mjs --job expired-1 --scenario expired
+```
+
+The partial job reserves 100 tokens and confirms 60. Jobs persist identity and measured usage under
+`.quotum-example/`; rerunning a measured job confirms it without running work again. `--drop-response`
+accepts `reserve`, `confirm`, or `release` and simulates a lost response after server commit.
+The same job ID can identify all three phases because operation kind separates their identities.
+An expired reserve replay is an acceptance snapshot: read current state before starting work.
+
+Replace the deterministic job with a provider only after accounting for every billable token in the
+upper bound and choosing a sufficient TTL. TTL defaults to 300 seconds, accepts 1–86,400, and cannot
+be extended. Failed confirmations retain measurements for recovery and never trigger release.
+The example admits one worker per job; after an actual process kill, establish that the worker has
+stopped before removing its stale `.lock` directory. A saved `running` phase requires reconciliation:
+it never assumes that unmeasured work was unused. This is a reference workflow, not a job queue.
 
 ## Runtimes and development
 
@@ -111,10 +149,10 @@ reads no environment variables and accepts an explicit `fetch` implementation.
 bun install --frozen-lockfile
 bun run quality
 bun run build
-bun run api:check-preview                 # current local contract
+bun run api:check                         # committed contract and generated files
 bun run pack:preview
-bun scripts/test-packed.ts ./quotum-sdk-0.1.0-dev.1.tgz --node-lts
-bun scripts/test-http.ts /path/to/quotum-api ./quotum-sdk-0.1.0-dev.1.tgz
+bun scripts/test-packed.ts ./quotum-sdk-0.1.0-rc.0.tgz --node-lts
+bun scripts/test-http.ts /path/to/quotum-api ./quotum-sdk-0.1.0-rc.0.tgz
 ```
 
 Builds use the committed types and work offline. Contract updates are deliberate:

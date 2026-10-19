@@ -76,7 +76,7 @@ const implemented = new Map([
 	["postV1BillingAccountsByBillingAccountIdUsageConsume", "account.consume / entity.consume"],
 	[
 		"getV1BillingAccountsByBillingAccountIdUsageOperationsByOperationByOperationId",
-		"account.getOperation / entity.getOperation (consume)",
+		"account.getOperation / entity.getOperation",
 	],
 	[
 		"getV1BillingAccountsByBillingAccountIdUsageReceiptsByReceiptId",
@@ -87,6 +87,16 @@ const implemented = new Map([
 		"account.listReceiptDeductions / entity.listReceiptDeductions",
 	],
 ]);
+for (const operation of [
+	"getV1BillingAccountsByBillingAccountIdUsageReservationsByReservationId",
+	"postV1BillingAccountsByBillingAccountIdUsageReservations",
+	"postV1BillingAccountsByBillingAccountIdUsageReservationsByReservationIdConfirm",
+	"postV1BillingAccountsByBillingAccountIdUsageReservationsByReservationIdRelease",
+]) {
+	const method = methods[operation];
+	if (!method) throw new Error(`Public method missing: ${operation}`);
+	implemented.set(operation, method);
+}
 const rows: object[] = [];
 const publicOperations = new Set<string>();
 const surfaceRows: string[] = [];
@@ -142,8 +152,8 @@ if (command.startsWith("check")) {
 		if (!response.ok || digest(await response.text()) !== source.sha256)
 			throw new Error("The public API revision does not contain the tested contract");
 		const pkg = JSON.parse(await readFile(new URL("package.json", root), "utf8"));
-		if (pkg.version !== "0.1.0-rc.0")
-			throw new Error("The first release candidate must use version 0.1.0-rc.0");
+		if (!/^0\.1\.0-rc\.(?:0|[1-9]\d*)$/.test(pkg.version))
+			throw new Error("Release candidates must use 0.1.0-rc.N, starting with rc.0");
 	}
 } else {
 	await writeFile(typesFile, types);

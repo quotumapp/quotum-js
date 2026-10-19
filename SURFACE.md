@@ -16,9 +16,12 @@ object. Existing preview signatures are authoritative in [src/types.ts](src/type
 | operator.account.debits.list | operator | planned | `GET /v1/admin/administrative-debits/{billingAccountId}` |
 | operator.account.debits.create | operator | planned | `POST /v1/admin/administrative-debits/{billingAccountId}` |
 | operator.account.autoTopup.reset | operator | planned | `POST /v1/admin/auto-topups/{billingAccountId}/{policyId}/reset` |
+| operator.account.providerOperations.reconcile | operator | planned | `POST /v1/admin/billing-accounts/{billingAccountId}/provider-operations/{operationId}/reconcile` |
 | quotum.catalog.getPublished | application | planned | `GET /v1/admin/catalog` |
 | operator.catalogMigrations.preview | operator | planned | `POST /v1/admin/catalog-migrations/preview` |
 | operator.catalogMigrations.publish | operator | planned | `POST /v1/admin/catalog-migrations/publish` |
+| operator.catalog.listBindings | operator | planned | `GET /v1/admin/catalog/bindings` |
+| operator.catalog.adoptBindings | operator | planned | `POST /v1/admin/catalog/bindings/adopt` |
 | operator.catalog.preview | operator | planned | `POST /v1/admin/catalog/preview` |
 | operator.catalog.listProducts | operator | planned | `GET /v1/admin/catalog/products` |
 | operator.catalog.publish | operator | planned | `POST /v1/admin/catalog/publish` |
@@ -27,6 +30,9 @@ object. Existing preview signatures are authoritative in [src/types.ts](src/type
 | operator.account.contracts.remove | operator | planned | `DELETE /v1/admin/contracts/{billingAccountId}/{contractId}` |
 | operator.contracts.preview | operator | planned | `POST /v1/admin/contracts/preview` |
 | operator.contracts.publish | operator | planned | `POST /v1/admin/contracts/publish` |
+| operator.customerErasures.create | operator | planned | `POST /v1/admin/customer-erasures` |
+| operator.customerErasures.get | operator | planned | `GET /v1/admin/customer-erasures/{erasureId}` |
+| operator.customerErasures.preview | operator | planned | `POST /v1/admin/customer-erasures/preview` |
 | quotum.support.customers.get | application | planned | `GET /v1/admin/customers/{customerId}` |
 | quotum.support.customers.listProjectionJobs | application | planned | `GET /v1/admin/customers/{customerId}/projection-jobs` |
 | quotum.support.customers.listPurchases | application | planned | `GET /v1/admin/customers/{customerId}/purchases` |
@@ -45,12 +51,17 @@ object. Existing preview signatures are authoritative in [src/types.ts](src/type
 | operator.promotions.list | operator | planned | `GET /v1/admin/promotions` |
 | operator.promotions.create | operator | planned | `POST /v1/admin/promotions` |
 | operator.promotions.get | operator | planned | `GET /v1/admin/promotions/{promotionKey}` |
+| operator.promotions.linkAppleOffer | operator | planned | `POST /v1/admin/promotions/{promotionKey}/apple-offers` |
+| operator.promotions.retireAppleOffer | operator | planned | `POST /v1/admin/promotions/{promotionKey}/apple-offers/{offerId}/retire` |
 | operator.promotions.archive | operator | planned | `POST /v1/admin/promotions/{promotionKey}/archive` |
 | operator.promotions.listCodes | operator | planned | `GET /v1/admin/promotions/{promotionKey}/codes` |
 | operator.promotions.createCodes | operator | planned | `POST /v1/admin/promotions/{promotionKey}/codes` |
 | operator.promotions.deactivateCode | operator | planned | `POST /v1/admin/promotions/{promotionKey}/codes/{codeId}/deactivate` |
 | operator.promotions.syncProvider | operator | planned | `POST /v1/admin/promotions/{promotionKey}/provider-sync` |
 | operator.promotions.listRedemptions | operator | planned | `GET /v1/admin/promotions/{promotionKey}/redemptions` |
+| operator.promotions.updateTerms | operator | planned | `POST /v1/admin/promotions/{promotionKey}/terms` |
+| operator.account.providerCustomerUnlinks.list | operator | planned | `GET /v1/admin/provider-customer-unlinks/{billingAccountId}` |
+| operator.account.providerCustomerUnlinks.create | operator | planned | `POST /v1/admin/provider-customer-unlinks/{billingAccountId}` |
 | quotum.providers.capabilities | application | planned | `GET /v1/admin/providers/capabilities` |
 | quotum.support.purchases.list | application | planned | `GET /v1/admin/purchases` |
 | operator.reconciliation.runSubscriptions | operator | planned | `POST /v1/admin/reconciliation/subscriptions/run` |
@@ -58,8 +69,22 @@ object. Existing preview signatures are authoritative in [src/types.ts](src/type
 | quotum.support.storeEvents.list | application | planned | `GET /v1/admin/store-events` |
 | quotum.support.storeEvents.get | application | planned | `GET /v1/admin/store-events/{eventId}` |
 | operator.storeEvents.replay | operator | planned | `POST /v1/admin/store-events/{eventId}/replay` |
+| operator.subscriptionChanges.retry | operator | planned | `POST /v1/admin/subscription-changes/{changeId}/retry` |
 | quotum.support.subscriptions.list | application | planned | `GET /v1/admin/subscriptions` |
 | quotum.support.usageEvents.list | application | planned | `GET /v1/admin/usage-events` |
+| operator.usageInvoiceAdjustments.retry | operator | planned | `POST /v1/admin/usage-invoice-adjustments/{adjustmentId}/retry` |
+| operator.usageInvoicePeriods.retry | operator | planned | `POST /v1/admin/usage-invoice-periods/{periodId}/retry` |
+| operator.webhookDeliveries.list | operator | planned | `GET /v1/admin/webhook-deliveries` |
+| operator.webhookDeliveries.retry | operator | planned | `POST /v1/admin/webhook-deliveries/{deliveryId}/retry` |
+| operator.webhookEndpoints.list | operator | planned | `GET /v1/admin/webhook-endpoints` |
+| operator.webhookEndpoints.create | operator | planned | `POST /v1/admin/webhook-endpoints` |
+| operator.webhookEndpoints.remove | operator | planned | `DELETE /v1/admin/webhook-endpoints/{endpointId}` |
+| operator.webhookEndpoints.get | operator | planned | `GET /v1/admin/webhook-endpoints/{endpointId}` |
+| operator.webhookEndpoints.update | operator | planned | `PATCH /v1/admin/webhook-endpoints/{endpointId}` |
+| operator.webhookEndpoints.replay | operator | planned | `POST /v1/admin/webhook-endpoints/{endpointId}/replay` |
+| operator.webhookEndpoints.rotateSecret | operator | planned | `POST /v1/admin/webhook-endpoints/{endpointId}/rotate-secret` |
+| operator.webhookEndpoints.test | operator | planned | `POST /v1/admin/webhook-endpoints/{endpointId}/test` |
+| operator.webhookEndpoints.eventTypes | operator | planned | `GET /v1/admin/webhook-event-types` |
 | account.get | application | preview | `GET /v1/billing-accounts/{billingAccountId}` |
 | account.create | application | preview | `PUT /v1/billing-accounts/{billingAccountId}` |
 | account.autoTopup.get | application | planned | `GET /v1/billing-accounts/{billingAccountId}/auto-topup` |
@@ -77,6 +102,9 @@ object. Existing preview signatures are authoritative in [src/types.ts](src/type
 | account.entity.get | application | preview | `GET /v1/billing-accounts/{billingAccountId}/entities/{entityId}` |
 | account.entity.licenses.check | application | planned | `GET /v1/billing-accounts/{billingAccountId}/entities/{entityId}/licenses/{featureKey}` |
 | account.entitlements | application | planned | `GET /v1/billing-accounts/{billingAccountId}/entitlements` |
+| account.promotions.gifts | application | planned | `GET /v1/billing-accounts/{billingAccountId}/gifts` |
+| account.invoices.list | application | planned | `GET /v1/billing-accounts/{billingAccountId}/invoices` |
+| account.invoices.get | application | planned | `GET /v1/billing-accounts/{billingAccountId}/invoices/{invoiceId}` |
 | account.licenses.assign | application | planned | `POST /v1/billing-accounts/{billingAccountId}/license-assignments` |
 | account.licenses.revoke | application | planned | `DELETE /v1/billing-accounts/{billingAccountId}/license-assignments/{assignmentId}` |
 | account.licenses.listPools | application | planned | `GET /v1/billing-accounts/{billingAccountId}/license-pools` |
@@ -85,12 +113,16 @@ object. Existing preview signatures are authoritative in [src/types.ts](src/type
 | account.promotions.listRedemptions | application | planned | `GET /v1/billing-accounts/{billingAccountId}/promotion-redemptions` |
 | account.promotions.redeem | application | planned | `POST /v1/billing-accounts/{billingAccountId}/promotion-redemptions` |
 | account.promotions.getRedemption | application | planned | `GET /v1/billing-accounts/{billingAccountId}/promotion-redemptions/{redemptionId}` |
+| account.promotions.appleSignatures | application | planned | `POST /v1/billing-accounts/{billingAccountId}/promotion-redemptions/{redemptionId}/apple-signatures` |
+| account.providerOperations.get | application | planned | `GET /v1/billing-accounts/{billingAccountId}/provider-operations/{operationId}` |
 | account.apple.getAccountToken | application | planned | `GET /v1/billing-accounts/{billingAccountId}/providers/apple/account-token` |
 | account.google.getAccountLink | application | planned | `GET /v1/billing-accounts/{billingAccountId}/providers/google/account-link` |
+| account.paddle.createCheckout | application | planned | `POST /v1/billing-accounts/{billingAccountId}/providers/paddle/checkout-sessions` |
 | account.stripe.createCheckout | application | planned | `POST /v1/billing-accounts/{billingAccountId}/providers/stripe/checkout-sessions` |
 | account.stripe.getCheckout | application | planned | `GET /v1/billing-accounts/{billingAccountId}/providers/stripe/checkout-sessions/{sessionId}` |
 | account.stripe.expireCheckout | application | planned | `POST /v1/billing-accounts/{billingAccountId}/providers/stripe/checkout-sessions/{sessionId}/expire` |
 | account.stripe.createPortal | application | planned | `POST /v1/billing-accounts/{billingAccountId}/providers/stripe/portal-sessions` |
+| account.refunds.list | application | planned | `GET /v1/billing-accounts/{billingAccountId}/refunds` |
 | account.subscriptions.change | application | planned | `POST /v1/billing-accounts/{billingAccountId}/subscriptions/{subscriptionId}/changes` |
 | account.trials.eligibility | application | planned | `GET /v1/billing-accounts/{billingAccountId}/trial-eligibility` |
 | account.trials.list | application | planned | `GET /v1/billing-accounts/{billingAccountId}/trials` |
@@ -104,17 +136,19 @@ object. Existing preview signatures are authoritative in [src/types.ts](src/type
 | account.consume / entity.consume | application | preview | `POST /v1/billing-accounts/{billingAccountId}/usage/consume` |
 | account.usage.listEvents | application | planned | `GET /v1/billing-accounts/{billingAccountId}/usage/events` |
 | account.usage.correct | application | planned | `POST /v1/billing-accounts/{billingAccountId}/usage/events/{usageEventId}/corrections` |
-| account.getOperation / entity.getOperation (consume) | application | preview | `GET /v1/billing-accounts/{billingAccountId}/usage/operations/{operation}/{operationId}` |
+| account.getOperation / entity.getOperation | application | preview | `GET /v1/billing-accounts/{billingAccountId}/usage/operations/{operation}/{operationId}` |
 | account.getReceipt / entity.getReceipt | application | preview | `GET /v1/billing-accounts/{billingAccountId}/usage/receipts/{receiptId}` |
 | account.listReceiptDeductions / entity.listReceiptDeductions | application | preview | `GET /v1/billing-accounts/{billingAccountId}/usage/receipts/{receiptId}/deductions` |
-| account.reserve | application | planned | `POST /v1/billing-accounts/{billingAccountId}/usage/reservations` |
-| account.confirm | application | planned | `POST /v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/confirm` |
-| account.release | application | planned | `POST /v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/release` |
+| account.reserve / entity.reserve | application | preview | `POST /v1/billing-accounts/{billingAccountId}/usage/reservations` |
+| account.getReservation / entity.getReservation | application | preview | `GET /v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}` |
+| account.confirm / entity.confirm | application | preview | `POST /v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/confirm` |
+| account.release / entity.release | application | preview | `POST /v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/release` |
 | account.usage.series | application | planned | `GET /v1/billing-accounts/{billingAccountId}/usage/series` |
 | quotum.catalog.list | application | planned | `GET /v1/catalog` |
 | Webhook ingress | excluded_ingress | excluded | `POST /v1/projects/{projectKey}/connections/{versionId}/webhooks/{provider}` |
 | Webhook ingress | excluded_ingress | excluded | `POST /v1/projects/{projectKey}/webhooks/apple` |
 | Webhook ingress | excluded_ingress | excluded | `POST /v1/projects/{projectKey}/webhooks/google` |
+| Webhook ingress | excluded_ingress | excluded | `POST /v1/projects/{projectKey}/webhooks/paddle` |
 | Webhook ingress | excluded_ingress | excluded | `POST /v1/projects/{projectKey}/webhooks/stripe` |
 | account.purchases.verify | application | planned | `POST /v1/purchases/verify` |
 | Webhook ingress | excluded_ingress | excluded | `POST /v1/stripe-app/webhooks/{mode}` |

@@ -276,6 +276,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/auth/two-factor/verify-backup-code": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/auth/two-factor/verify-backup-code
+         * @description Verify a backup code for two-factor authentication
+         */
+        post: operations["authTwoFactorVerifyBackupCode"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/auth/two-factor/verify-otp": {
         parameters: {
             query?: never;
@@ -290,6 +310,26 @@ export interface paths {
          * @description Verify two factor OTP
          */
         post: operations["authTwoFactorVerifyOtp"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/auth/two-factor/verify-totp": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/auth/two-factor/verify-totp
+         * @description Verify two factor TOTP
+         */
+        post: operations["authTwoFactorVerifyTotp"];
         delete?: never;
         options?: never;
         head?: never;
@@ -440,6 +480,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/billing/admin/billing-accounts/{billingAccountId}/invoices": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /api/billing/admin/billing-accounts/{billingAccountId}/invoices
+         * @description Requires billing.read in sandbox and billing.read in production.
+         */
+        get: operations["merchantGetV1BillingAccountsByBillingAccountIdInvoices"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/billing-accounts/{billingAccountId}/invoices/{invoiceId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /api/billing/admin/billing-accounts/{billingAccountId}/invoices/{invoiceId}
+         * @description Requires billing.read in sandbox and billing.read in production.
+         */
+        get: operations["merchantGetV1BillingAccountsByBillingAccountIdInvoicesByInvoiceId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/billing/admin/billing-accounts/{billingAccountId}/payment-setup-sessions/{sessionId}": {
         parameters: {
             query?: never;
@@ -472,6 +552,46 @@ export interface paths {
          * @description Requires billing.read in sandbox and billing.read in production.
          */
         get: operations["merchantGetV1BillingAccountsByBillingAccountIdPromotionRedemptions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/billing-accounts/{billingAccountId}/provider-operations/{operationId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /api/billing/admin/billing-accounts/{billingAccountId}/provider-operations/{operationId}
+         * @description Requires billing.read in sandbox and billing.read in production.
+         */
+        get: operations["merchantGetV1BillingAccountsByBillingAccountIdProviderOperationsByOperationId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/billing-accounts/{billingAccountId}/refunds": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /api/billing/admin/billing-accounts/{billingAccountId}/refunds
+         * @description Requires billing.read in sandbox and billing.read in production.
+         */
+        get: operations["merchantGetV1BillingAccountsByBillingAccountIdRefunds"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1004,6 +1124,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/billing/admin/promotions/{promotionKey}/apple-offers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/billing/admin/promotions/{promotionKey}/apple-offers
+         * @description Requires operations.write in sandbox and operations.write in production. Production requires an action-bound step-up grant.
+         */
+        post: operations["merchantPostV1AdminPromotionsAppleOffers"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/promotions/{promotionKey}/apple-offers/{offerId}/retire": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/billing/admin/promotions/{promotionKey}/apple-offers/{offerId}/retire
+         * @description Requires operations.write in sandbox and operations.write in production. Production requires an action-bound step-up grant.
+         */
+        post: operations["merchantPostV1AdminPromotionsAppleOffersRetire"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/billing/admin/promotions/{promotionKey}/archive": {
         parameters: {
             query?: never;
@@ -1102,6 +1262,26 @@ export interface paths {
         get: operations["merchantGetV1AdminPromotionsByPromotionKeyRedemptions"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/promotions/{promotionKey}/terms": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/billing/admin/promotions/{promotionKey}/terms
+         * @description Requires operations.write in sandbox and operations.write in production. Production requires an action-bound step-up grant.
+         */
+        post: operations["merchantPostV1AdminPromotionsByPromotionKeyTerms"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1260,6 +1440,178 @@ export interface paths {
          * @description Requires billing.read in sandbox and billing.read in production.
          */
         get: operations["merchantGetV1AdminUsageEvents"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/webhook-deliveries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /api/billing/admin/webhook-deliveries
+         * @description Requires billing.read in sandbox and billing.read in production.
+         */
+        get: operations["merchantGetV1AdminWebhookDeliveries"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/webhook-deliveries/{deliveryId}/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/billing/admin/webhook-deliveries/{deliveryId}/retry
+         * @description Requires sandbox.configure in sandbox and production.connections.manage in production. Production requires an action-bound step-up grant.
+         */
+        post: operations["merchantPostV1AdminWebhookDeliveriesByDeliveryIdRetry"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/webhook-endpoints": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /api/billing/admin/webhook-endpoints
+         * @description Requires billing.read in sandbox and billing.read in production.
+         */
+        get: operations["merchantGetV1AdminWebhookEndpoints"];
+        put?: never;
+        /**
+         * POST /api/billing/admin/webhook-endpoints
+         * @description Requires sandbox.configure in sandbox and production.connections.manage in production. Production requires an action-bound step-up grant.
+         */
+        post: operations["merchantPostV1AdminWebhookEndpoints"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/webhook-endpoints/{endpointId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /api/billing/admin/webhook-endpoints/{endpointId}
+         * @description Requires billing.read in sandbox and billing.read in production.
+         */
+        get: operations["merchantGetV1AdminWebhookEndpointsByEndpointId"];
+        put?: never;
+        post?: never;
+        /**
+         * DELETE /api/billing/admin/webhook-endpoints/{endpointId}
+         * @description Requires sandbox.configure in sandbox and production.connections.manage in production. Production requires an action-bound step-up grant.
+         */
+        delete: operations["merchantDeleteV1AdminWebhookEndpointsByEndpointId"];
+        options?: never;
+        head?: never;
+        /**
+         * PATCH /api/billing/admin/webhook-endpoints/{endpointId}
+         * @description Requires sandbox.configure in sandbox and production.connections.manage in production. Production requires an action-bound step-up grant.
+         */
+        patch: operations["merchantPatchV1AdminWebhookEndpointsByEndpointId"];
+        trace?: never;
+    };
+    "/api/billing/admin/webhook-endpoints/{endpointId}/replay": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/billing/admin/webhook-endpoints/{endpointId}/replay
+         * @description Requires sandbox.configure in sandbox and production.connections.manage in production. Production requires an action-bound step-up grant.
+         */
+        post: operations["merchantPostV1AdminWebhookEndpointsByEndpointIdReplay"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/webhook-endpoints/{endpointId}/rotate-secret": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/billing/admin/webhook-endpoints/{endpointId}/rotate-secret
+         * @description Requires sandbox.configure in sandbox and production.connections.manage in production. Production requires an action-bound step-up grant.
+         */
+        post: operations["merchantPostV1AdminWebhookEndpointsByEndpointIdRotateSecret"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/webhook-endpoints/{endpointId}/test": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /api/billing/admin/webhook-endpoints/{endpointId}/test
+         * @description Requires sandbox.configure in sandbox and production.connections.manage in production. Production requires an action-bound step-up grant.
+         */
+        post: operations["merchantPostV1AdminWebhookEndpointsByEndpointIdTest"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/billing/admin/webhook-event-types": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /api/billing/admin/webhook-event-types
+         * @description Requires billing.read in sandbox and billing.read in production.
+         */
+        get: operations["merchantGetV1AdminWebhookEventTypes"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1594,6 +1946,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/platform/mcp/changes/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /api/platform/mcp/changes/{id} */
+        get: operations["getMcpBillingChange"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/platform/mcp/changes/{id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /api/platform/mcp/changes/{id}/approve */
+        post: operations["approveMcpBillingChange"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/platform/mcp/changes/{id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /api/platform/mcp/changes/{id}/reject */
+        post: operations["rejectMcpBillingChange"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/platform/mcp/connections/list": {
         parameters: {
             query?: never;
@@ -1730,6 +2133,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/platform/projects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /api/platform/projects */
+        post: operations["createProject"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/platform/provisioning/{id}": {
         parameters: {
             query?: never;
@@ -1792,6 +2212,57 @@ export interface paths {
         put?: never;
         /** POST /api/platform/provisioning/{id}/rotate */
         post: operations["postApiPlatformProvisioningByIdRotate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/platform/second-factor/enrolment": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /api/platform/second-factor/enrolment */
+        post: operations["postApiPlatformSecondFactorEnrolment"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/platform/second-factor/enrolment/confirm": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /api/platform/second-factor/enrolment/confirm */
+        post: operations["postApiPlatformSecondFactorEnrolmentConfirm"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/platform/second-factor/recovery-codes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /api/platform/second-factor/recovery-codes */
+        post: operations["postApiPlatformSecondFactorRecoveryCodes"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2185,6 +2656,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/billing-accounts/{billingAccountId}/provider-operations/{operationId}/reconcile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /v1/admin/billing-accounts/{billingAccountId}/provider-operations/{operationId}/reconcile
+         * @description Audits X-Billing-Actor and re-observes the effect with the recorded connection version. Never redispatches or forces a successful outcome.
+         */
+        post: operations["postV1AdminBillingAccountsByBillingAccountIdProviderOperationsByOperationIdReconcile"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/admin/catalog": {
         parameters: {
             query?: never;
@@ -2230,6 +2721,40 @@ export interface paths {
         put?: never;
         /** POST /v1/admin/catalog-migrations/publish */
         post: operations["postV1AdminCatalogMigrationsPublish"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/catalog/bindings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/admin/catalog/bindings */
+        get: operations["getV1AdminCatalogBindings"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/catalog/bindings/adopt": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/catalog/bindings/adopt */
+        post: operations["postV1AdminCatalogBindingsAdopt"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2366,6 +2891,57 @@ export interface paths {
         put?: never;
         /** POST /v1/admin/contracts/publish */
         post: operations["postV1AdminContractsPublish"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/customer-erasures": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/customer-erasures */
+        post: operations["postV1AdminCustomerErasures"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/customer-erasures/{erasureId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/admin/customer-erasures/{erasureId} */
+        get: operations["getV1AdminCustomerErasuresByErasureId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/customer-erasures/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/customer-erasures/preview */
+        post: operations["postV1AdminCustomerErasuresPreview"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2646,6 +3222,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/promotions/{promotionKey}/apple-offers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/promotions/{promotionKey}/apple-offers */
+        post: operations["postV1AdminPromotionsAppleOffers"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/promotions/{promotionKey}/apple-offers/{offerId}/retire": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/promotions/{promotionKey}/apple-offers/{offerId}/retire */
+        post: operations["postV1AdminPromotionsAppleOffersRetire"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/admin/promotions/{promotionKey}/archive": {
         parameters: {
             query?: never;
@@ -2726,6 +3336,41 @@ export interface paths {
         get: operations["getV1AdminPromotionsByPromotionKeyRedemptions"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/promotions/{promotionKey}/terms": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/promotions/{promotionKey}/terms */
+        post: operations["postV1AdminPromotionsByPromotionKeyTerms"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/provider-customer-unlinks/{billingAccountId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/admin/provider-customer-unlinks/{billingAccountId} */
+        get: operations["getV1AdminProviderCustomerUnlinksByBillingAccountId"];
+        put?: never;
+        /** POST /v1/admin/provider-customer-unlinks/{billingAccountId} */
+        post: operations["postV1AdminProviderCustomerUnlinksByBillingAccountId"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2851,6 +3496,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/subscription-changes/{changeId}/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/subscription-changes/{changeId}/retry */
+        post: operations["postV1AdminSubscriptionChangesByChangeIdRetry"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/admin/subscriptions": {
         parameters: {
             query?: never;
@@ -2877,6 +3539,179 @@ export interface paths {
         };
         /** GET /v1/admin/usage-events */
         get: operations["getV1AdminUsageEvents"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/usage-invoice-adjustments/{adjustmentId}/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/usage-invoice-adjustments/{adjustmentId}/retry */
+        post: operations["postV1AdminUsageInvoiceAdjustmentsByAdjustmentIdRetry"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/usage-invoice-periods/{periodId}/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/usage-invoice-periods/{periodId}/retry */
+        post: operations["postV1AdminUsageInvoicePeriodsByPeriodIdRetry"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/webhook-deliveries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/admin/webhook-deliveries */
+        get: operations["getV1AdminWebhookDeliveries"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/webhook-deliveries/{deliveryId}/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/webhook-deliveries/{deliveryId}/retry */
+        post: operations["postV1AdminWebhookDeliveriesByDeliveryIdRetry"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/webhook-endpoints": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/admin/webhook-endpoints */
+        get: operations["getV1AdminWebhookEndpoints"];
+        put?: never;
+        /** POST /v1/admin/webhook-endpoints */
+        post: operations["postV1AdminWebhookEndpoints"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/webhook-endpoints/{endpointId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/admin/webhook-endpoints/{endpointId} */
+        get: operations["getV1AdminWebhookEndpointsByEndpointId"];
+        put?: never;
+        post?: never;
+        /** DELETE /v1/admin/webhook-endpoints/{endpointId} */
+        delete: operations["deleteV1AdminWebhookEndpointsByEndpointId"];
+        options?: never;
+        head?: never;
+        /** PATCH /v1/admin/webhook-endpoints/{endpointId} */
+        patch: operations["patchV1AdminWebhookEndpointsByEndpointId"];
+        trace?: never;
+    };
+    "/v1/admin/webhook-endpoints/{endpointId}/replay": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/webhook-endpoints/{endpointId}/replay */
+        post: operations["postV1AdminWebhookEndpointsByEndpointIdReplay"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/webhook-endpoints/{endpointId}/rotate-secret": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/webhook-endpoints/{endpointId}/rotate-secret */
+        post: operations["postV1AdminWebhookEndpointsByEndpointIdRotateSecret"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/webhook-endpoints/{endpointId}/test": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/admin/webhook-endpoints/{endpointId}/test */
+        post: operations["postV1AdminWebhookEndpointsByEndpointIdTest"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/webhook-event-types": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/admin/webhook-event-types */
+        get: operations["getV1AdminWebhookEventTypes"];
         put?: never;
         post?: never;
         delete?: never;
@@ -3110,6 +3945,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/billing-accounts/{billingAccountId}/gifts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/billing-accounts/{billingAccountId}/gifts */
+        get: operations["getV1BillingAccountsByBillingAccountIdGifts"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/billing-accounts/{billingAccountId}/invoices": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/billing-accounts/{billingAccountId}/invoices */
+        get: operations["getV1BillingAccountsByBillingAccountIdInvoices"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/billing-accounts/{billingAccountId}/invoices/{invoiceId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/billing-accounts/{billingAccountId}/invoices/{invoiceId} */
+        get: operations["getV1BillingAccountsByBillingAccountIdInvoicesByInvoiceId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/billing-accounts/{billingAccountId}/license-assignments": {
         parameters: {
             query?: never;
@@ -3233,6 +4119,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/billing-accounts/{billingAccountId}/promotion-redemptions/{redemptionId}/apple-signatures": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** POST /v1/billing-accounts/{billingAccountId}/promotion-redemptions/{redemptionId}/apple-signatures */
+        post: operations["postV1BillingAccountsApplePromotionSignatures"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/billing-accounts/{billingAccountId}/provider-operations/{operationId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/billing-accounts/{billingAccountId}/provider-operations/{operationId} */
+        get: operations["getV1BillingAccountsByBillingAccountIdProviderOperationsByOperationId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/billing-accounts/{billingAccountId}/providers/apple/account-token": {
         parameters: {
             query?: never;
@@ -3261,6 +4181,26 @@ export interface paths {
         get: operations["getV1BillingAccountsByBillingAccountIdProvidersGoogleAccountLink"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/billing-accounts/{billingAccountId}/providers/paddle/checkout-sessions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /v1/billing-accounts/{billingAccountId}/providers/paddle/checkout-sessions
+         * @description Sandbox fixed subscription checkout. Requires Idempotency-Key. Uncertain writes return PROVIDER_OPERATION_PENDING with an operationId to inspect. `duplicate` is true when the same key replays a checkout that already succeeded.
+         */
+        post: operations["postV1BillingAccountsByBillingAccountIdProvidersPaddleCheckoutSessions"];
         delete?: never;
         options?: never;
         head?: never;
@@ -3329,6 +4269,26 @@ export interface paths {
         put?: never;
         /** POST /v1/billing-accounts/{billingAccountId}/providers/stripe/portal-sessions */
         post: operations["postV1BillingAccountsByBillingAccountIdProvidersStripePortalSessions"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/billing-accounts/{billingAccountId}/refunds": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * GET /v1/billing-accounts/{billingAccountId}/refunds
+         * @description Lists the refunds requested for the billing account, newest first.
+         */
+        get: operations["getV1BillingAccountsByBillingAccountIdRefunds"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -3592,6 +4552,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** GET /v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId} */
+        get: operations["getV1BillingAccountsByBillingAccountIdUsageReservationsByReservationId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/billing-accounts/{billingAccountId}/usage/reservations/{reservationId}/confirm": {
         parameters: {
             query?: never;
@@ -3705,6 +4682,26 @@ export interface paths {
         put?: never;
         /** POST /v1/projects/{projectKey}/webhooks/google */
         post: operations["postV1ProjectsByProjectKeyWebhooksGoogle"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/projects/{projectKey}/webhooks/paddle": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * POST /v1/projects/{projectKey}/webhooks/paddle
+         * @description Verifies Paddle-Signature over capped raw bytes and stores the event for asynchronous processing.
+         */
+        post: operations["postV1ProjectsByProjectKeyWebhooksPaddle"];
         delete?: never;
         options?: never;
         head?: never;
@@ -3937,15 +4934,20 @@ export interface components {
             compatible: boolean;
             productKey: null | string;
             /** @enum {string} */
-            provider: "apple" | "google" | "stripe";
+            provider: "apple" | "google" | "stripe" | "paddle";
             requiredOperations: components["schemas"]["ProviderOperation"][];
             target: {
                 key: string;
                 /** @enum {string} */
-                kind: "plan" | "price" | "topup";
+                kind: "plan" | "price" | "topup" | "gift";
                 priceKey?: null | string;
             };
             verdicts: components["schemas"]["RuntimeCapabilityVerdict"][];
+        };
+        createProjectResponse200: {
+            data: components["schemas"]["ProvisioningOperationView"];
+            /** @enum {boolean} */
+            success: true;
         };
         deleteV1AdminContractsByBillingAccountIdByContractIdResponse200: {
             data: {
@@ -4056,6 +5058,20 @@ export interface components {
                         name: string;
                         unit: string;
                     }[];
+                    gifts?: {
+                        codeCount: number;
+                        codeValidDays: number;
+                        key: string;
+                        name: string;
+                        promotionKey: string;
+                        providerBindings: {
+                            /** @enum {string} */
+                            channel: "ios" | "android" | "web";
+                            productKey: string;
+                            /** @enum {string} */
+                            provider: "google" | "apple" | "stripe" | "paddle";
+                        }[];
+                    }[];
                     plans: {
                         basePrice: {
                             /** @enum {string} */
@@ -4073,7 +5089,7 @@ export interface components {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "google" | "apple" | "stripe";
+                                provider: "google" | "apple" | "stripe" | "paddle";
                             }[];
                             /** @enum {string} */
                             taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -4168,7 +5184,7 @@ export interface components {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "google" | "apple" | "stripe";
+                                        provider: "google" | "apple" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -4208,7 +5224,7 @@ export interface components {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "google" | "apple" | "stripe";
+                                    provider: "google" | "apple" | "stripe" | "paddle";
                                 }[];
                                 /** @enum {string} */
                                 taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -4238,7 +5254,7 @@ export interface components {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "google" | "apple" | "stripe";
+                                provider: "google" | "apple" | "stripe" | "paddle";
                             }[];
                         } | null;
                         tierRank: number;
@@ -4264,6 +5280,7 @@ export interface components {
                         walletFeatureKey: string;
                     }[];
                     retiredFeatureKeys: string[];
+                    retiredGiftKeys?: string[];
                     retiredPlanKeys: string[];
                     retiredTopupKeys: string[];
                     topups: {
@@ -4288,7 +5305,7 @@ export interface components {
                             channel: "ios" | "android" | "web";
                             productKey: string;
                             /** @enum {string} */
-                            provider: "google" | "apple" | "stripe";
+                            provider: "google" | "apple" | "stripe" | "paddle";
                         }[];
                         quantity: string;
                     }[];
@@ -4320,7 +5337,7 @@ export interface components {
                 productId: string;
                 productKey: string;
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 updatedAt: string;
             }[];
             pagination: {
@@ -4363,7 +5380,7 @@ export interface components {
                     needsAttention: boolean;
                     productKey: string;
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                     providerReconciledAt: null | string;
                     providerReconciliationAttempts: number;
                     providerReconciliationError: null | string;
@@ -4400,7 +5417,7 @@ export interface components {
                     createdAt: string;
                     externalCustomerId: string;
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                 }[];
                 recentProjectionJobs: {
                     attempts: number;
@@ -4441,7 +5458,7 @@ export interface components {
                             creditAmount: number;
                             productKey: string;
                             /** @enum {string} */
-                            provider: "google" | "apple" | "stripe";
+                            provider: "google" | "apple" | "stripe" | "paddle";
                             purchasedAt: string;
                             /** @enum {string} */
                             purchaseKind: "subscription" | "consumable" | "non_consumable";
@@ -4459,7 +5476,7 @@ export interface components {
                             originalTransactionId: string;
                             productKey: string;
                             /** @enum {string} */
-                            provider: "google" | "apple" | "stripe";
+                            provider: "google" | "apple" | "stripe" | "paddle";
                             quantity?: number;
                             /** @enum {string} */
                             reason: "refund" | "dispute";
@@ -4479,7 +5496,7 @@ export interface components {
                             planKey?: string;
                             productKey?: string;
                             /** @enum {string} */
-                            provider?: "apple" | "google" | "stripe";
+                            provider?: "apple" | "google" | "stripe" | "paddle";
                             /** @enum {string} */
                             source: "subscription" | "plan_grant";
                             trialEndsAt: string;
@@ -4507,7 +5524,7 @@ export interface components {
                     originalTransactionId: null | string;
                     productKey: string;
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                     purchasedAt: string;
                     /** @enum {string} */
                     purchaseKind: "subscription" | "consumable" | "non_consumable";
@@ -4531,7 +5548,7 @@ export interface components {
                     /** @enum {string} */
                     processingStatus: "pending" | "failed" | "processing" | "processed" | "skipped";
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                     purchaseKind: null | "subscription" | "consumable" | "non_consumable";
                     rawPayload?: {
                         [key: string]: unknown;
@@ -4584,7 +5601,7 @@ export interface components {
                         creditAmount: number;
                         productKey: string;
                         /** @enum {string} */
-                        provider: "google" | "apple" | "stripe";
+                        provider: "google" | "apple" | "stripe" | "paddle";
                         purchasedAt: string;
                         /** @enum {string} */
                         purchaseKind: "subscription" | "consumable" | "non_consumable";
@@ -4602,7 +5619,7 @@ export interface components {
                         originalTransactionId: string;
                         productKey: string;
                         /** @enum {string} */
-                        provider: "google" | "apple" | "stripe";
+                        provider: "google" | "apple" | "stripe" | "paddle";
                         quantity?: number;
                         /** @enum {string} */
                         reason: "refund" | "dispute";
@@ -4622,7 +5639,7 @@ export interface components {
                         planKey?: string;
                         productKey?: string;
                         /** @enum {string} */
-                        provider?: "apple" | "google" | "stripe";
+                        provider?: "apple" | "google" | "stripe" | "paddle";
                         /** @enum {string} */
                         source: "subscription" | "plan_grant";
                         trialEndsAt: string;
@@ -4657,7 +5674,7 @@ export interface components {
                 originalTransactionId: null | string;
                 productKey: string;
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 purchasedAt: string;
                 /** @enum {string} */
                 purchaseKind: "subscription" | "consumable" | "non_consumable";
@@ -4690,7 +5707,7 @@ export interface components {
                     needsAttention: boolean;
                     productKey: string;
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                     providerReconciledAt: null | string;
                     providerReconciliationAttempts: number;
                     providerReconciliationError: null | string;
@@ -4727,7 +5744,7 @@ export interface components {
                     createdAt: string;
                     externalCustomerId: string;
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                 }[];
                 recentProjectionJobs: {
                     attempts: number;
@@ -4768,7 +5785,7 @@ export interface components {
                             creditAmount: number;
                             productKey: string;
                             /** @enum {string} */
-                            provider: "google" | "apple" | "stripe";
+                            provider: "google" | "apple" | "stripe" | "paddle";
                             purchasedAt: string;
                             /** @enum {string} */
                             purchaseKind: "subscription" | "consumable" | "non_consumable";
@@ -4786,7 +5803,7 @@ export interface components {
                             originalTransactionId: string;
                             productKey: string;
                             /** @enum {string} */
-                            provider: "google" | "apple" | "stripe";
+                            provider: "google" | "apple" | "stripe" | "paddle";
                             quantity?: number;
                             /** @enum {string} */
                             reason: "refund" | "dispute";
@@ -4806,7 +5823,7 @@ export interface components {
                             planKey?: string;
                             productKey?: string;
                             /** @enum {string} */
-                            provider?: "apple" | "google" | "stripe";
+                            provider?: "apple" | "google" | "stripe" | "paddle";
                             /** @enum {string} */
                             source: "subscription" | "plan_grant";
                             trialEndsAt: string;
@@ -4834,7 +5851,7 @@ export interface components {
                     originalTransactionId: null | string;
                     productKey: string;
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                     purchasedAt: string;
                     /** @enum {string} */
                     purchaseKind: "subscription" | "consumable" | "non_consumable";
@@ -4858,7 +5875,7 @@ export interface components {
                     /** @enum {string} */
                     processingStatus: "pending" | "failed" | "processing" | "processed" | "skipped";
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                     purchaseKind: null | "subscription" | "consumable" | "non_consumable";
                     rawPayload?: {
                         [key: string]: unknown;
@@ -4888,7 +5905,7 @@ export interface components {
                 /** @enum {string} */
                 processingStatus: "pending" | "failed" | "processing" | "processed" | "skipped";
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 purchaseKind: null | "subscription" | "consumable" | "non_consumable";
                 rawPayload?: {
                     [key: string]: unknown;
@@ -4921,7 +5938,7 @@ export interface components {
                 needsAttention: boolean;
                 productKey: string;
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 providerReconciledAt: null | string;
                 providerReconciliationAttempts: number;
                 providerReconciliationError: null | string;
@@ -5000,7 +6017,7 @@ export interface components {
                         creditAmount: number;
                         productKey: string;
                         /** @enum {string} */
-                        provider: "google" | "apple" | "stripe";
+                        provider: "google" | "apple" | "stripe" | "paddle";
                         purchasedAt: string;
                         /** @enum {string} */
                         purchaseKind: "subscription" | "consumable" | "non_consumable";
@@ -5018,7 +6035,7 @@ export interface components {
                         originalTransactionId: string;
                         productKey: string;
                         /** @enum {string} */
-                        provider: "google" | "apple" | "stripe";
+                        provider: "google" | "apple" | "stripe" | "paddle";
                         quantity?: number;
                         /** @enum {string} */
                         reason: "refund" | "dispute";
@@ -5038,7 +6055,7 @@ export interface components {
                         planKey?: string;
                         productKey?: string;
                         /** @enum {string} */
-                        provider?: "apple" | "google" | "stripe";
+                        provider?: "apple" | "google" | "stripe" | "paddle";
                         /** @enum {string} */
                         source: "subscription" | "plan_grant";
                         trialEndsAt: string;
@@ -5068,6 +6085,10 @@ export interface components {
                 deactivatedBy: null | string;
                 expiresAt: null | string;
                 firstPurchaseOnly: boolean;
+                gift: {
+                    ordinal: number;
+                    purchaseId: string;
+                } | null;
                 hostedCheckoutEnabled: boolean;
                 id: string;
                 maxRedemptions: null | number;
@@ -5098,12 +6119,26 @@ export interface components {
                 currency: null | string;
                 externalSubscriptionId: null | string;
                 id: string;
+                lastObservedTransactionId?: string | null;
                 /** @enum {string|null} */
                 limitViolation: "global" | "first_purchase" | "not_applicable" | "inactive" | "expired" | null;
+                planGrant?: {
+                    endedAt: null | string;
+                    endsAt: string;
+                    id: string;
+                    planKey: string;
+                    planVersion: number;
+                    startsAt: string;
+                    /** @enum {string} */
+                    status: "active" | "expired" | "ended" | "superseded";
+                } | null;
                 promotionCodeId: null | string;
                 promotionKey: string;
                 /** @enum {string} */
-                provider: "quotum" | "stripe" | "apple" | "google";
+                provider: "quotum" | "stripe" | "apple" | "google" | "paddle";
+                providerObjectId?: string | null;
+                providerOfferType?: string | null;
+                providerTransactionId?: string | null;
                 reason: null | string;
                 releasedAt: null | string;
                 reservedUntil: null | string;
@@ -5182,9 +6217,11 @@ export interface components {
                     id: string;
                     /** @enum {string} */
                     objectKind: "coupon" | "promotion_code" | "apple_promotional_offer" | "apple_offer_code" | "google_developer_offer" | "google_promo_code";
+                    productExternalId?: string | null;
                     promotionCodeId: null | string;
                     /** @enum {string} */
-                    provider: "stripe" | "apple" | "google";
+                    provider: "stripe" | "apple" | "google" | "paddle";
+                    providerAccountId?: string | null;
                     providerActive: null | boolean;
                     /** @enum {string} */
                     status: "pending" | "ready" | "failed" | "retired";
@@ -5270,9 +6307,11 @@ export interface components {
                     id: string;
                     /** @enum {string} */
                     objectKind: "coupon" | "promotion_code" | "apple_promotional_offer" | "apple_offer_code" | "google_developer_offer" | "google_promo_code";
+                    productExternalId?: string | null;
                     promotionCodeId: null | string;
                     /** @enum {string} */
-                    provider: "stripe" | "apple" | "google";
+                    provider: "stripe" | "apple" | "google" | "paddle";
+                    providerAccountId?: string | null;
                     providerActive: null | boolean;
                     /** @enum {string} */
                     status: "pending" | "ready" | "failed" | "retired";
@@ -5320,7 +6359,7 @@ export interface components {
                 originalTransactionId: null | string;
                 productKey: string;
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 purchasedAt: string;
                 /** @enum {string} */
                 purchaseKind: "subscription" | "consumable" | "non_consumable";
@@ -5369,7 +6408,7 @@ export interface components {
                     /** @enum {string} */
                     processingStatus: "pending" | "failed" | "processing" | "processed" | "skipped";
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                     purchaseKind: null | "subscription" | "consumable" | "non_consumable";
                     rawPayload?: {
                         [key: string]: unknown;
@@ -5411,7 +6450,7 @@ export interface components {
                 /** @enum {string} */
                 processingStatus: "pending" | "failed" | "processing" | "processed" | "skipped";
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 purchaseKind: null | "subscription" | "consumable" | "non_consumable";
                 rawPayload?: {
                     [key: string]: unknown;
@@ -5440,7 +6479,7 @@ export interface components {
                 /** @enum {string} */
                 processingStatus: "pending" | "failed" | "processing" | "processed" | "skipped";
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 purchaseKind: null | "subscription" | "consumable" | "non_consumable";
                 rawPayload?: {
                     [key: string]: unknown;
@@ -5473,7 +6512,7 @@ export interface components {
                 needsAttention: boolean;
                 productKey: string;
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 providerReconciledAt: null | string;
                 providerReconciliationAttempts: number;
                 providerReconciliationError: null | string;
@@ -5525,7 +6564,7 @@ export interface components {
                 featureKey: string;
                 id: string;
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 /** @enum {string} */
                 status: "ready" | "suspended" | "cooldown";
                 thresholdQuantity: string;
@@ -5617,7 +6656,7 @@ export interface components {
                     id: string;
                     planKey: null | string;
                     /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
+                    provider: "google" | "apple" | "stripe" | "paddle";
                     status: string;
                 }[];
                 usage: {
@@ -5695,6 +6734,89 @@ export interface components {
             /** @enum {boolean} */
             success: true;
         };
+        getV1BillingAccountsByBillingAccountIdGiftsResponse200: {
+            data: {
+                codes: {
+                    code: string;
+                    expiresAt: string;
+                    redeemedAt: null | string;
+                    /** @enum {string} */
+                    status: "available" | "redeemed" | "expired" | "deactivated";
+                }[];
+                productKey: string;
+                purchasedAt: string;
+                purchaseId: string;
+                /** @enum {string|null} */
+                reversalReason: "refund" | "dispute" | null;
+                reversedAt: null | string;
+            }[];
+            pagination: {
+                nextCursor: null | string;
+            };
+            /** @enum {boolean} */
+            success: true;
+        };
+        getV1BillingAccountsByBillingAccountIdInvoicesByInvoiceIdResponse200: {
+            data: {
+                amountDueMinor: null | number;
+                amountPaidMinor: number;
+                createdAt: string;
+                currency: string;
+                externalInvoiceId: string;
+                externalSubscriptionId: null | string;
+                hostedInvoiceUrl: null | string;
+                id: string;
+                invoicePdfUrl: null | string;
+                /** @enum {string} */
+                kind: "subscription" | "auto_topup";
+                lines: {
+                    amountMinor: null | number;
+                    description: null | string;
+                    externalPriceId: null | string;
+                    externalProductId: null | string;
+                    id: null | string;
+                    periodEnd: null | string;
+                    periodStart: null | string;
+                    proration: null | boolean;
+                    quantity: null | number;
+                }[];
+                linesTruncated: boolean;
+                number: null | string;
+                paidAt: null | string;
+                periodEnd: null | string;
+                periodStart: null | string;
+                status: string;
+                subscriptionId: null | string;
+                totalMinor: null | number;
+            };
+            /** @enum {boolean} */
+            success: true;
+        };
+        getV1BillingAccountsByBillingAccountIdInvoicesResponse200: {
+            data: {
+                amountDueMinor: null | number;
+                amountPaidMinor: number;
+                createdAt: string;
+                currency: string;
+                externalInvoiceId: string;
+                externalSubscriptionId: null | string;
+                id: string;
+                /** @enum {string} */
+                kind: "subscription" | "auto_topup";
+                number: null | string;
+                paidAt: null | string;
+                periodEnd: null | string;
+                periodStart: null | string;
+                status: string;
+                subscriptionId: null | string;
+                totalMinor: null | number;
+            }[];
+            pagination: {
+                nextCursor: null | string;
+            };
+            /** @enum {boolean} */
+            success: true;
+        };
         getV1BillingAccountsByBillingAccountIdLicensePoolsResponse200: {
             data: {
                 active: boolean;
@@ -5764,12 +6886,26 @@ export interface components {
                 currency: null | string;
                 externalSubscriptionId: null | string;
                 id: string;
+                lastObservedTransactionId?: string | null;
                 /** @enum {string|null} */
                 limitViolation: "global" | "first_purchase" | "not_applicable" | "inactive" | "expired" | null;
+                planGrant?: {
+                    endedAt: null | string;
+                    endsAt: string;
+                    id: string;
+                    planKey: string;
+                    planVersion: number;
+                    startsAt: string;
+                    /** @enum {string} */
+                    status: "active" | "expired" | "ended" | "superseded";
+                } | null;
                 promotionCodeId: null | string;
                 promotionKey: string;
                 /** @enum {string} */
-                provider: "quotum" | "stripe" | "apple" | "google";
+                provider: "quotum" | "stripe" | "apple" | "google" | "paddle";
+                providerObjectId?: string | null;
+                providerOfferType?: string | null;
+                providerTransactionId?: string | null;
                 reason: null | string;
                 releasedAt: null | string;
                 reservedUntil: null | string;
@@ -5798,12 +6934,26 @@ export interface components {
                 currency: null | string;
                 externalSubscriptionId: null | string;
                 id: string;
+                lastObservedTransactionId?: string | null;
                 /** @enum {string|null} */
                 limitViolation: "global" | "first_purchase" | "not_applicable" | "inactive" | "expired" | null;
+                planGrant?: {
+                    endedAt: null | string;
+                    endsAt: string;
+                    id: string;
+                    planKey: string;
+                    planVersion: number;
+                    startsAt: string;
+                    /** @enum {string} */
+                    status: "active" | "expired" | "ended" | "superseded";
+                } | null;
                 promotionCodeId: null | string;
                 promotionKey: string;
                 /** @enum {string} */
-                provider: "quotum" | "stripe" | "apple" | "google";
+                provider: "quotum" | "stripe" | "apple" | "google" | "paddle";
+                providerObjectId?: string | null;
+                providerOfferType?: string | null;
+                providerTransactionId?: string | null;
                 reason: null | string;
                 releasedAt: null | string;
                 reservedUntil: null | string;
@@ -5836,6 +6986,7 @@ export interface components {
         };
         getV1BillingAccountsByBillingAccountIdProvidersStripeCheckoutSessionsBySessionIdResponse200: {
             data: {
+                clientSecret: null | string;
                 customerEmail: null | string;
                 paymentStatus: null | string;
                 productKey: null | string;
@@ -5999,7 +7150,223 @@ export interface components {
                         unit: string;
                         value: string;
                     };
+                }) | ({
+                    /** @enum {boolean} */
+                    allowed: true;
+                    balance: {
+                        available: string | null;
+                        consumed: string;
+                        featureId: string;
+                        granted: string | null;
+                        held: string;
+                        /** @enum {string} */
+                        scope?: "account" | "entity";
+                        unit: string;
+                        /** @enum {boolean} */
+                        unlimited?: true;
+                        windowEndAt?: string;
+                        windowStartAt?: string;
+                    };
+                    entityId: string | null;
+                    featureId: string;
+                    /** @enum {string} */
+                    operation: "confirm";
+                    operationId: string;
+                    rated: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                    receiptId: string;
+                    recordedAt: string;
+                    reservationId: string;
+                    /** @enum {string} */
+                    status: "confirmed";
+                    usage: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                    usageEventId: string;
+                } | {
+                    /** @enum {boolean} */
+                    allowed: false;
+                    balance: {
+                        available: string | null;
+                        consumed: string;
+                        featureId: string;
+                        granted: string | null;
+                        held: string;
+                        /** @enum {string} */
+                        scope?: "account" | "entity";
+                        unit: string;
+                        /** @enum {boolean} */
+                        unlimited?: true;
+                        windowEndAt?: string;
+                        windowStartAt?: string;
+                    };
+                    control?: {
+                        currentValue: string;
+                        /** @enum {string} */
+                        kind: "spend_limit" | "usage_limit";
+                        limitValue: string;
+                        policyId: string;
+                        remainingValue: string;
+                        requestedValue: string;
+                        revision: number;
+                        /** @enum {string} */
+                        source: "account" | "entity" | "plan_default" | "contract";
+                    };
+                    entityId: string | null;
+                    featureId: string;
+                    /** @enum {string} */
+                    operation: "confirm";
+                    operationId: string;
+                    rated: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                    /** @enum {string} */
+                    reason: "not_entitled" | "insufficient_balance" | "control_limit_exceeded";
+                    reservationId: string;
+                    /** @enum {string} */
+                    status: "active";
+                    usage: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                } | {
+                    /** @enum {boolean} */
+                    allowed: false;
+                    balance: {
+                        available: string | null;
+                        consumed: string;
+                        featureId: string;
+                        granted: string | null;
+                        held: string;
+                        /** @enum {string} */
+                        scope?: "account" | "entity";
+                        unit: string;
+                        /** @enum {boolean} */
+                        unlimited?: true;
+                        windowEndAt?: string;
+                        windowStartAt?: string;
+                    };
+                    entityId: string | null;
+                    featureId: string;
+                    /** @enum {string} */
+                    operation: "confirm";
+                    operationId: string;
+                    rated: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                    /** @enum {string} */
+                    reason: "reservation_expired";
+                    reservationId: string;
+                    /** @enum {string} */
+                    status: "expired";
+                    usage: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                }) | ({
+                    /** @enum {boolean} */
+                    allowed: true;
+                    balance: {
+                        available: string | null;
+                        consumed: string;
+                        featureId: string;
+                        granted: string | null;
+                        held: string;
+                        /** @enum {string} */
+                        scope?: "account" | "entity";
+                        unit: string;
+                        /** @enum {boolean} */
+                        unlimited?: true;
+                        windowEndAt?: string;
+                        windowStartAt?: string;
+                    };
+                    entityId: string | null;
+                    expiresAt: string;
+                    featureId: string;
+                    /** @enum {string} */
+                    operation: "reserve";
+                    operationId: string;
+                    rated: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                    reservationId: string;
+                    /** @enum {string} */
+                    status: "active";
+                    usage: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                } | {
+                    /** @enum {boolean} */
+                    allowed: false;
+                    balance: {
+                        available: string | null;
+                        consumed: string;
+                        featureId: string;
+                        granted: string | null;
+                        held: string;
+                        /** @enum {string} */
+                        scope?: "account" | "entity";
+                        unit: string;
+                        /** @enum {boolean} */
+                        unlimited?: true;
+                        windowEndAt?: string;
+                        windowStartAt?: string;
+                    };
+                    control?: {
+                        currentValue: string;
+                        /** @enum {string} */
+                        kind: "spend_limit" | "usage_limit";
+                        limitValue: string;
+                        policyId: string;
+                        remainingValue: string;
+                        requestedValue: string;
+                        revision: number;
+                        /** @enum {string} */
+                        source: "account" | "entity" | "plan_default" | "contract";
+                    };
+                    entityId: string | null;
+                    featureId: string;
+                    /** @enum {string} */
+                    operation: "reserve";
+                    operationId: string;
+                    rated: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
+                    /** @enum {string} */
+                    reason: "not_entitled" | "insufficient_balance" | "control_limit_exceeded";
+                    usage: {
+                        featureId: string;
+                        unit: string;
+                        value: string;
+                    };
                 }) | {
+                    entityId: string | null;
+                    featureId: string;
+                    finalizedAt: string;
+                    /** @enum {string} */
+                    operation: "release";
+                    operationId: string;
+                    reservationId: string;
+                    /** @enum {string} */
+                    status: "confirmed" | "released" | "expired";
+                } | {
                     allowed: boolean;
                     balance: {
                         available: null | string;
@@ -6052,7 +7419,7 @@ export interface components {
                     currency: string;
                     key: string;
                     /** @enum {string} */
-                    kind: "topup" | "one_time";
+                    kind: "topup" | "gift" | "one_time";
                     name: string;
                 }[];
                 plans: {
@@ -6199,6 +7566,10 @@ export interface components {
                 name: string;
             };
             projects: components["schemas"]["MerchantProjectView"][];
+            secondFactor: {
+                enrolled: boolean;
+                recoveryCodesRemaining: number;
+            };
         };
         OnboardingDraftView: {
             id: string;
@@ -6350,7 +7721,7 @@ export interface components {
                 featureKey: string;
                 id: string;
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 /** @enum {string} */
                 status: "ready" | "suspended" | "cooldown";
                 thresholdQuantity: string;
@@ -6403,6 +7774,8 @@ export interface components {
                     featuresCreated: number;
                     featuresRetired: number;
                     featuresReused: number;
+                    giftOptionsCreated: number;
+                    giftsRetired: number;
                     plansCreated: number;
                     plansRetired: number;
                     planVersionsCreated: number;
@@ -6442,6 +7815,8 @@ export interface components {
                     featuresCreated: number;
                     featuresRetired: number;
                     featuresReused: number;
+                    giftOptionsCreated: number;
+                    giftsRetired: number;
                     plansCreated: number;
                     plansRetired: number;
                     planVersionsCreated: number;
@@ -6511,12 +7886,26 @@ export interface components {
                     currency: null | string;
                     externalSubscriptionId: null | string;
                     id: string;
+                    lastObservedTransactionId?: string | null;
                     /** @enum {string|null} */
                     limitViolation: "global" | "first_purchase" | "not_applicable" | "inactive" | "expired" | null;
+                    planGrant?: {
+                        endedAt: null | string;
+                        endsAt: string;
+                        id: string;
+                        planKey: string;
+                        planVersion: number;
+                        startsAt: string;
+                        /** @enum {string} */
+                        status: "active" | "expired" | "ended" | "superseded";
+                    } | null;
                     promotionCodeId: null | string;
                     promotionKey: string;
                     /** @enum {string} */
-                    provider: "quotum" | "stripe" | "apple" | "google";
+                    provider: "quotum" | "stripe" | "apple" | "google" | "paddle";
+                    providerObjectId?: string | null;
+                    providerOfferType?: string | null;
+                    providerTransactionId?: string | null;
                     reason: null | string;
                     releasedAt: null | string;
                     reservedUntil: null | string;
@@ -6601,9 +7990,11 @@ export interface components {
                     id: string;
                     /** @enum {string} */
                     objectKind: "coupon" | "promotion_code" | "apple_promotional_offer" | "apple_offer_code" | "google_developer_offer" | "google_promo_code";
+                    productExternalId?: string | null;
                     promotionCodeId: null | string;
                     /** @enum {string} */
-                    provider: "stripe" | "apple" | "google";
+                    provider: "stripe" | "apple" | "google" | "paddle";
+                    providerAccountId?: string | null;
                     providerActive: null | boolean;
                     /** @enum {string} */
                     status: "pending" | "ready" | "failed" | "retired";
@@ -6638,6 +8029,10 @@ export interface components {
                 deactivatedBy: null | string;
                 expiresAt: null | string;
                 firstPurchaseOnly: boolean;
+                gift: {
+                    ordinal: number;
+                    purchaseId: string;
+                } | null;
                 hostedCheckoutEnabled: boolean;
                 id: string;
                 maxRedemptions: null | number;
@@ -6662,6 +8057,10 @@ export interface components {
                     deactivatedBy: null | string;
                     expiresAt: null | string;
                     firstPurchaseOnly: boolean;
+                    gift: {
+                        ordinal: number;
+                        purchaseId: string;
+                    } | null;
                     hostedCheckoutEnabled: boolean;
                     id: string;
                     maxRedemptions: null | number;
@@ -6738,9 +8137,101 @@ export interface components {
                     id: string;
                     /** @enum {string} */
                     objectKind: "coupon" | "promotion_code" | "apple_promotional_offer" | "apple_offer_code" | "google_developer_offer" | "google_promo_code";
+                    productExternalId?: string | null;
                     promotionCodeId: null | string;
                     /** @enum {string} */
-                    provider: "stripe" | "apple" | "google";
+                    provider: "stripe" | "apple" | "google" | "paddle";
+                    providerAccountId?: string | null;
+                    providerActive: null | boolean;
+                    /** @enum {string} */
+                    status: "pending" | "ready" | "failed" | "retired";
+                    updatedAt: string;
+                }[];
+                redemptionCounts: {
+                    applied: number;
+                    released: number;
+                    reserved: number;
+                    reversed: number;
+                };
+                /** @enum {string} */
+                status: "active" | "archived";
+                targets: {
+                    key: string;
+                    /** @enum {string} */
+                    kind: "plan" | "product";
+                }[];
+                termsHash: string;
+            };
+            /** @enum {boolean} */
+            success: true;
+        };
+        postV1AdminPromotionsByPromotionKeyTermsResponse200: {
+            data: {
+                allowedChannels: ("web" | "ios" | "android")[];
+                archivedAt: null | string;
+                archivedBy: null | string;
+                codeCounts: {
+                    active: number;
+                    total: number;
+                };
+                createdAt: string;
+                createdBy: string;
+                effect: {
+                    discount: {
+                        /** @enum {string} */
+                        duration: "once" | "repeating" | "forever";
+                        durationMonths: null | number;
+                        percentOffBps: number;
+                        /** @enum {string} */
+                        type: "percent";
+                    } | {
+                        amounts: {
+                            amountOffMinor: number;
+                            currency: string;
+                        }[];
+                        /** @enum {string} */
+                        duration: "once" | "repeating" | "forever";
+                        durationMonths: null | number;
+                        /** @enum {string} */
+                        type: "amount";
+                    };
+                    /** @enum {string} */
+                    kind: "discount";
+                } | {
+                    items: {
+                        expiresAfterSeconds: null | number;
+                        featureKey: string;
+                        quantity: string;
+                    }[];
+                    /** @enum {string} */
+                    kind: "feature_grant";
+                } | {
+                    durationCount: number;
+                    /** @enum {string} */
+                    durationUnit: "day" | "month";
+                    /** @enum {string} */
+                    kind: "plan_grant";
+                    planKey: string;
+                };
+                id: string;
+                key: string;
+                metadata: {
+                    [key: string]: unknown;
+                };
+                name: string;
+                providerObjects: {
+                    attempts: number;
+                    desiredActive: boolean;
+                    error: null | string;
+                    externalId: null | string;
+                    id: string;
+                    /** @enum {string} */
+                    objectKind: "coupon" | "promotion_code" | "apple_promotional_offer" | "apple_offer_code" | "google_developer_offer" | "google_promo_code";
+                    productExternalId?: string | null;
+                    promotionCodeId: null | string;
+                    /** @enum {string} */
+                    provider: "stripe" | "apple" | "google" | "paddle";
+                    providerAccountId?: string | null;
                     providerActive: null | boolean;
                     /** @enum {string} */
                     status: "pending" | "ready" | "failed" | "retired";
@@ -6826,9 +8317,11 @@ export interface components {
                     id: string;
                     /** @enum {string} */
                     objectKind: "coupon" | "promotion_code" | "apple_promotional_offer" | "apple_offer_code" | "google_developer_offer" | "google_promo_code";
+                    productExternalId?: string | null;
                     promotionCodeId: null | string;
                     /** @enum {string} */
-                    provider: "stripe" | "apple" | "google";
+                    provider: "stripe" | "apple" | "google" | "paddle";
+                    providerAccountId?: string | null;
                     providerActive: null | boolean;
                     /** @enum {string} */
                     status: "pending" | "ready" | "failed" | "retired";
@@ -6914,9 +8407,11 @@ export interface components {
                     id: string;
                     /** @enum {string} */
                     objectKind: "coupon" | "promotion_code" | "apple_promotional_offer" | "apple_offer_code" | "google_developer_offer" | "google_promo_code";
+                    productExternalId?: string | null;
                     promotionCodeId: null | string;
                     /** @enum {string} */
-                    provider: "stripe" | "apple" | "google";
+                    provider: "stripe" | "apple" | "google" | "paddle";
+                    providerAccountId?: string | null;
                     providerActive: null | boolean;
                     /** @enum {string} */
                     status: "pending" | "ready" | "failed" | "retired";
@@ -6968,10 +8463,21 @@ export interface components {
             /** @enum {boolean} */
             success: true;
         };
+        postV1AdminSubscriptionChangesByChangeIdRetryResponse200: {
+            data: {
+                jobId: string;
+                /** @enum {string} */
+                jobKind: "subscription-change" | "usage-invoice-period" | "usage-invoice-adjustment";
+                /** @enum {string} */
+                status: "pending";
+            };
+            /** @enum {boolean} */
+            success: true;
+        };
         postV1BillingAccountsByBillingAccountIdCommercialActionsPreviewResponse200: {
             data: {
                 /** @enum {string} */
-                action: "checkout_plan" | "checkout_product" | "subscription_change" | "cancel" | "uncancel" | "setup_payment" | "none";
+                action: "checkout_plan" | "checkout_product" | "subscription_change" | "cancel" | "uncancel" | "setup_payment" | "refund" | "none";
                 /** @enum {string} */
                 amountStatus: "exact" | "provider_calculated";
                 billingAccountId: string;
@@ -7071,7 +8577,22 @@ export interface components {
                 promotionCodeEntry: "none" | "code" | "hosted";
                 prorationBehavior: null | "always_invoice" | "create_prorations" | "none";
                 /** @enum {string} */
-                provider: "stripe";
+                provider: "stripe" | "paddle";
+                refund: {
+                    amountPaidMinor: number;
+                    /** @enum {string} */
+                    basis: "full" | "remaining_time" | "unconsumed_credit";
+                    cancelsSubscriptionId: null | string;
+                    currency: string;
+                    externalInvoiceId: null | string;
+                    providerPaymentId: string;
+                    purchaseId: null | string;
+                    refundableMinor: number;
+                    refundAmountMinor: number;
+                    refundedMinor: number;
+                    /** @enum {string} */
+                    targetKind: "subscription_payment" | "purchase";
+                } | null;
                 /** @enum {number} */
                 schemaVersion: 1;
                 stateFingerprint: string;
@@ -7096,6 +8617,17 @@ export interface components {
                 sessionId: string;
                 url: string;
             } | {
+                clientSecret: string;
+                duplicate: boolean;
+                /** @enum {string} */
+                kind: "checkout";
+                promotionRedemption?: {
+                    id: string;
+                    /** @enum {string} */
+                    status: "reserved" | "applied";
+                } | null;
+                sessionId: string;
+            } | {
                 changeId: string;
                 effectiveAt: string;
                 /** @enum {string} */
@@ -7135,6 +8667,26 @@ export interface components {
                 /** @enum {string} */
                 kind: "subscription_cancellation";
                 supersededChangeId: null | string;
+            } | {
+                amountMinor: number;
+                cancellation: {
+                    /** @enum {string} */
+                    action: "cancel" | "uncancel" | "none";
+                    cancelAtPeriodEnd: boolean;
+                    effectiveAt: null | string;
+                    effectiveMode: null | "immediate" | "period_end";
+                    externalSubscriptionId: string;
+                    /** @enum {string} */
+                    kind: "subscription_cancellation";
+                    supersededChangeId: null | string;
+                } | null;
+                currency: string;
+                /** @enum {string} */
+                kind: "refund_request";
+                providerRefundId: null | string;
+                refundRequestId: string;
+                /** @enum {string} */
+                status: "requested" | "pending" | "succeeded" | "failed" | "requires_review";
             };
             /** @enum {boolean} */
             success: true;
@@ -7152,6 +8704,17 @@ export interface components {
                 sessionId: string;
                 url: string;
             } | {
+                clientSecret: string;
+                duplicate: boolean;
+                /** @enum {string} */
+                kind: "checkout";
+                promotionRedemption?: {
+                    id: string;
+                    /** @enum {string} */
+                    status: "reserved" | "applied";
+                } | null;
+                sessionId: string;
+            } | {
                 changeId: string;
                 effectiveAt: string;
                 /** @enum {string} */
@@ -7191,6 +8754,26 @@ export interface components {
                 /** @enum {string} */
                 kind: "subscription_cancellation";
                 supersededChangeId: null | string;
+            } | {
+                amountMinor: number;
+                cancellation: {
+                    /** @enum {string} */
+                    action: "cancel" | "uncancel" | "none";
+                    cancelAtPeriodEnd: boolean;
+                    effectiveAt: null | string;
+                    effectiveMode: null | "immediate" | "period_end";
+                    externalSubscriptionId: string;
+                    /** @enum {string} */
+                    kind: "subscription_cancellation";
+                    supersededChangeId: null | string;
+                } | null;
+                currency: string;
+                /** @enum {string} */
+                kind: "refund_request";
+                providerRefundId: null | string;
+                refundRequestId: string;
+                /** @enum {string} */
+                status: "requested" | "pending" | "succeeded" | "failed" | "requires_review";
             };
             /** @enum {boolean} */
             success: true;
@@ -7223,6 +8806,24 @@ export interface components {
         };
         postV1BillingAccountsByBillingAccountIdPromotionCodesValidateResponse200: {
             data: {
+                appleOffers?: {
+                    attempts: number;
+                    desiredActive: boolean;
+                    error: null | string;
+                    externalId: null | string;
+                    id: string;
+                    /** @enum {string} */
+                    objectKind: "coupon" | "promotion_code" | "apple_promotional_offer" | "apple_offer_code" | "google_developer_offer" | "google_promo_code";
+                    productExternalId?: string | null;
+                    promotionCodeId: null | string;
+                    /** @enum {string} */
+                    provider: "stripe" | "apple" | "google" | "paddle";
+                    providerAccountId?: string | null;
+                    providerActive: null | boolean;
+                    /** @enum {string} */
+                    status: "pending" | "ready" | "failed" | "retired";
+                    updatedAt: string;
+                }[];
                 code: {
                     code: string;
                     expiresAt: null | string;
@@ -7244,6 +8845,66 @@ export interface components {
         };
         postV1BillingAccountsByBillingAccountIdPromotionRedemptionsResponse200: {
             data: {
+                appleOffer: {
+                    appAccountToken: string;
+                    expiresAt: string;
+                    keyId: string;
+                    nonce: string;
+                    offerIdentifier: string;
+                    productId: string;
+                    signature: string;
+                    timestamp: number;
+                };
+                duplicate: boolean;
+                /** @enum {string} */
+                kind: "provider_action_required";
+                /** @enum {string} */
+                provider: "apple";
+                redemption: {
+                    actor: string;
+                    amountDiscountMinor: null | number;
+                    amountSubtotalMinor: null | number;
+                    amountTotalMinor: null | number;
+                    appliedAt: null | string;
+                    billingAccountId: string;
+                    /** @enum {string} */
+                    channel: "web" | "ios" | "android";
+                    code: null | string;
+                    createdAt: string;
+                    currency: null | string;
+                    externalSubscriptionId: null | string;
+                    id: string;
+                    lastObservedTransactionId?: string | null;
+                    /** @enum {string|null} */
+                    limitViolation: "global" | "first_purchase" | "not_applicable" | "inactive" | "expired" | null;
+                    planGrant?: {
+                        endedAt: null | string;
+                        endsAt: string;
+                        id: string;
+                        planKey: string;
+                        planVersion: number;
+                        startsAt: string;
+                        /** @enum {string} */
+                        status: "active" | "expired" | "ended" | "superseded";
+                    } | null;
+                    promotionCodeId: null | string;
+                    promotionKey: string;
+                    /** @enum {string} */
+                    provider: "quotum" | "stripe" | "apple" | "google" | "paddle";
+                    providerObjectId?: string | null;
+                    providerOfferType?: string | null;
+                    providerTransactionId?: string | null;
+                    reason: null | string;
+                    releasedAt: null | string;
+                    reservedUntil: null | string;
+                    reversedAt: null | string;
+                    /** @enum {string} */
+                    source: "api_redeem" | "commercial_action" | "stripe_hosted_checkout" | "apple_offer" | "google_offer";
+                    /** @enum {string} */
+                    status: "reserved" | "applied" | "released" | "reversed";
+                    stripeCheckoutSessionId: null | string;
+                };
+            } | {
                 duplicate: boolean;
                 grant: {
                     features: {
@@ -7269,12 +8930,74 @@ export interface components {
                     currency: null | string;
                     externalSubscriptionId: null | string;
                     id: string;
+                    lastObservedTransactionId?: string | null;
                     /** @enum {string|null} */
                     limitViolation: "global" | "first_purchase" | "not_applicable" | "inactive" | "expired" | null;
+                    planGrant?: {
+                        endedAt: null | string;
+                        endsAt: string;
+                        id: string;
+                        planKey: string;
+                        planVersion: number;
+                        startsAt: string;
+                        /** @enum {string} */
+                        status: "active" | "expired" | "ended" | "superseded";
+                    } | null;
                     promotionCodeId: null | string;
                     promotionKey: string;
                     /** @enum {string} */
-                    provider: "quotum" | "stripe" | "apple" | "google";
+                    provider: "quotum" | "stripe" | "apple" | "google" | "paddle";
+                    providerObjectId?: string | null;
+                    providerOfferType?: string | null;
+                    providerTransactionId?: string | null;
+                    reason: null | string;
+                    releasedAt: null | string;
+                    reservedUntil: null | string;
+                    reversedAt: null | string;
+                    /** @enum {string} */
+                    source: "api_redeem" | "commercial_action" | "stripe_hosted_checkout" | "apple_offer" | "google_offer";
+                    /** @enum {string} */
+                    status: "reserved" | "applied" | "released" | "reversed";
+                    stripeCheckoutSessionId: null | string;
+                };
+            } | {
+                duplicate: boolean;
+                /** @enum {string} */
+                kind: "plan_granted";
+                redemption: {
+                    actor: string;
+                    amountDiscountMinor: null | number;
+                    amountSubtotalMinor: null | number;
+                    amountTotalMinor: null | number;
+                    appliedAt: null | string;
+                    billingAccountId: string;
+                    /** @enum {string} */
+                    channel: "web" | "ios" | "android";
+                    code: null | string;
+                    createdAt: string;
+                    currency: null | string;
+                    externalSubscriptionId: null | string;
+                    id: string;
+                    lastObservedTransactionId?: string | null;
+                    /** @enum {string|null} */
+                    limitViolation: "global" | "first_purchase" | "not_applicable" | "inactive" | "expired" | null;
+                    planGrant?: {
+                        endedAt: null | string;
+                        endsAt: string;
+                        id: string;
+                        planKey: string;
+                        planVersion: number;
+                        startsAt: string;
+                        /** @enum {string} */
+                        status: "active" | "expired" | "ended" | "superseded";
+                    } | null;
+                    promotionCodeId: null | string;
+                    promotionKey: string;
+                    /** @enum {string} */
+                    provider: "quotum" | "stripe" | "apple" | "google" | "paddle";
+                    providerObjectId?: string | null;
+                    providerOfferType?: string | null;
+                    providerTransactionId?: string | null;
                     reason: null | string;
                     releasedAt: null | string;
                     reservedUntil: null | string;
@@ -7308,6 +9031,10 @@ export interface components {
                 duplicate?: boolean;
                 sessionId: string;
                 url: string;
+            } | {
+                clientSecret: string;
+                duplicate?: boolean;
+                sessionId: string;
             };
             /** @enum {boolean} */
             success: true;
@@ -7596,32 +9323,52 @@ export interface components {
         };
         postV1BillingAccountsByBillingAccountIdUsageReservationsByReservationIdConfirmResponse200: {
             data: {
-                allowed: boolean;
+                /** @enum {boolean} */
+                allowed: true;
                 balance: {
-                    available: null | string;
-                    breakdown: {
-                        allocationId: string;
-                        available: string;
-                        carryOverOriginAllocationId: null | string;
-                        consumed: string;
-                        createdAt: string;
-                        entityId: null | string;
-                        expiresAt: null | string;
-                        held: string;
-                        periodEndAt: null | string;
-                        periodStartAt: null | string;
-                        quantity: string;
-                        reversed: string;
-                        rolloverOriginAllocationId: null | string;
-                        rolloverPolicyRevision: null | number;
-                        sourceKey: string;
-                        sourceKind: string;
-                    }[];
+                    available: string | null;
                     consumed: string;
-                    featureKey: string;
-                    granted: null | string;
+                    featureId: string;
+                    granted: string | null;
                     held: string;
-                    scale: number;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
+                    unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
+                };
+                entityId: string | null;
+                featureId: string;
+                /** @enum {string} */
+                operation: "confirm";
+                operationId: string;
+                rated: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
+                receiptId: string;
+                recordedAt: string;
+                reservationId: string;
+                /** @enum {string} */
+                status: "confirmed";
+                usage: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
+                usageEventId: string;
+            } | {
+                /** @enum {boolean} */
+                allowed: false;
+                balance: {
+                    available: string | null;
+                    consumed: string;
+                    featureId: string;
+                    granted: string | null;
+                    held: string;
                     /** @enum {string} */
                     scope?: "account" | "entity";
                     unit: string;
@@ -7641,53 +9388,129 @@ export interface components {
                     revision: number;
                     /** @enum {string} */
                     source: "account" | "entity" | "plan_default" | "contract";
-                } | null;
-                deductions: {
-                    allocationId: string;
-                    expiresAt: null | string;
-                    quantity: string;
-                    sourceKey: string;
-                    sourceKind: string;
-                }[];
+                };
+                entityId: string | null;
+                featureId: string;
                 /** @enum {string} */
-                reason: "allowed" | "insufficient_balance" | "control_limit_exceeded" | "reservation_expired";
-                recordedAt: null | string;
+                operation: "confirm";
+                operationId: string;
+                rated: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
+                /** @enum {string} */
+                reason: "not_entitled" | "insufficient_balance" | "control_limit_exceeded";
                 reservationId: string;
                 /** @enum {string} */
-                status: "active" | "expired" | "confirmed" | "released";
-                usageEventId: null | string;
+                status: "active";
+                usage: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
+            } | {
+                /** @enum {boolean} */
+                allowed: false;
+                balance: {
+                    available: string | null;
+                    consumed: string;
+                    featureId: string;
+                    granted: string | null;
+                    held: string;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
+                    unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
+                };
+                entityId: string | null;
+                featureId: string;
+                /** @enum {string} */
+                operation: "confirm";
+                operationId: string;
+                rated: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
+                /** @enum {string} */
+                reason: "reservation_expired";
+                reservationId: string;
+                /** @enum {string} */
+                status: "expired";
+                usage: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
             };
             /** @enum {boolean} */
             success: true;
         };
         postV1BillingAccountsByBillingAccountIdUsageReservationsByReservationIdReleaseResponse200: {
             data: {
-                allowed: boolean;
+                entityId: string | null;
+                featureId: string;
+                finalizedAt: string;
+                /** @enum {string} */
+                operation: "release";
+                operationId: string;
+                reservationId: string;
+                /** @enum {string} */
+                status: "confirmed" | "released" | "expired";
+            };
+            /** @enum {boolean} */
+            success: true;
+        };
+        postV1BillingAccountsByBillingAccountIdUsageReservationsResponse200: {
+            data: {
+                /** @enum {boolean} */
+                allowed: true;
                 balance: {
-                    available: null | string;
-                    breakdown: {
-                        allocationId: string;
-                        available: string;
-                        carryOverOriginAllocationId: null | string;
-                        consumed: string;
-                        createdAt: string;
-                        entityId: null | string;
-                        expiresAt: null | string;
-                        held: string;
-                        periodEndAt: null | string;
-                        periodStartAt: null | string;
-                        quantity: string;
-                        reversed: string;
-                        rolloverOriginAllocationId: null | string;
-                        rolloverPolicyRevision: null | number;
-                        sourceKey: string;
-                        sourceKind: string;
-                    }[];
+                    available: string | null;
                     consumed: string;
-                    featureKey: string;
-                    granted: null | string;
+                    featureId: string;
+                    granted: string | null;
                     held: string;
-                    scale: number;
+                    /** @enum {string} */
+                    scope?: "account" | "entity";
+                    unit: string;
+                    /** @enum {boolean} */
+                    unlimited?: true;
+                    windowEndAt?: string;
+                    windowStartAt?: string;
+                };
+                entityId: string | null;
+                expiresAt: string;
+                featureId: string;
+                /** @enum {string} */
+                operation: "reserve";
+                operationId: string;
+                rated: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
+                reservationId: string;
+                /** @enum {string} */
+                status: "active";
+                usage: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
+            } | {
+                /** @enum {boolean} */
+                allowed: false;
+                balance: {
+                    available: string | null;
+                    consumed: string;
+                    featureId: string;
+                    granted: string | null;
+                    held: string;
                     /** @enum {string} */
                     scope?: "account" | "entity";
                     unit: string;
@@ -7707,109 +9530,24 @@ export interface components {
                     revision: number;
                     /** @enum {string} */
                     source: "account" | "entity" | "plan_default" | "contract";
-                } | null;
-                deductions: {
-                    allocationId: string;
-                    expiresAt: null | string;
-                    quantity: string;
-                    sourceKey: string;
-                    sourceKind: string;
-                }[];
+                };
+                entityId: string | null;
+                featureId: string;
                 /** @enum {string} */
-                reason: "allowed" | "insufficient_balance" | "control_limit_exceeded" | "reservation_expired";
-                recordedAt: null | string;
-                reservationId: string;
-                /** @enum {string} */
-                status: "active" | "expired" | "confirmed" | "released";
-                usageEventId: null | string;
-            };
-            /** @enum {boolean} */
-            success: true;
-        };
-        postV1BillingAccountsByBillingAccountIdUsageReservationsResponse200: {
-            data: {
-                allowed: boolean;
-                balance: {
-                    available: null | string;
-                    breakdown: {
-                        allocationId: string;
-                        available: string;
-                        carryOverOriginAllocationId: null | string;
-                        consumed: string;
-                        createdAt: string;
-                        entityId: null | string;
-                        expiresAt: null | string;
-                        held: string;
-                        periodEndAt: null | string;
-                        periodStartAt: null | string;
-                        quantity: string;
-                        reversed: string;
-                        rolloverOriginAllocationId: null | string;
-                        rolloverPolicyRevision: null | number;
-                        sourceKey: string;
-                        sourceKind: string;
-                    }[];
-                    consumed: string;
-                    featureKey: string;
-                    granted: null | string;
-                    held: string;
-                    scale: number;
-                    /** @enum {string} */
-                    scope?: "account" | "entity";
+                operation: "reserve";
+                operationId: string;
+                rated: {
+                    featureId: string;
                     unit: string;
-                    /** @enum {boolean} */
-                    unlimited?: true;
-                    windowEndAt?: string;
-                    windowStartAt?: string;
-                };
-                control: {
-                    currentValue: string;
-                    /** @enum {string} */
-                    kind: "spend_limit" | "usage_limit";
-                    limitValue: string;
-                    policyId: string;
-                    remainingValue: string;
-                    requestedValue: string;
-                    revision: number;
-                    /** @enum {string} */
-                    source: "account" | "entity" | "plan_default" | "contract";
-                } | null;
-                deductions: {
-                    allocationId: string;
-                    expiresAt: null | string;
-                    quantity: string;
-                    sourceKey: string;
-                    sourceKind: string;
-                }[];
-                eligiblePurchaseActions: {
-                    /** @enum {string} */
-                    action: "purchase_required" | "provider_action_required";
-                    /** @enum {string} */
-                    provider: "google" | "apple" | "stripe";
-                }[];
-                expiresAt: null | string;
-                rateCard: {
-                    entryId: null | string;
-                    meterFeatureKey: string;
-                    /** @enum {string} */
-                    path: "direct" | "pinned" | "additive";
-                    /** @enum {string} */
-                    pricingModel: "flat" | "graduated";
-                    ratePerUnit: string;
-                    revision: null | number;
-                    revisionId: null | string;
-                    tiers: {
-                        ratePerUnit: string;
-                        upToQuantity: null | string;
-                    }[];
-                    walletFeatureKey: string;
+                    value: string;
                 };
                 /** @enum {string} */
-                reason: "allowed" | "insufficient_balance" | "control_limit_exceeded" | "configuration_error";
-                requestedQuantity: string;
-                reservationId: null | string;
-                status: null | "active" | "expired" | "confirmed" | "released";
-                walletQuantity: string;
+                reason: "not_entitled" | "insufficient_balance" | "control_limit_exceeded";
+                usage: {
+                    featureId: string;
+                    unit: string;
+                    value: string;
+                };
             };
             /** @enum {boolean} */
             success: true;
@@ -7866,7 +9604,10 @@ export interface components {
                 "portal.session": components["schemas"]["ProviderOperationSupport"];
                 "promotion.code_entry": components["schemas"]["ProviderOperationSupport"];
                 "promotion.hosted_code": components["schemas"]["ProviderOperationSupport"];
+                "promotion.signed_offer": components["schemas"]["ProviderOperationSupport"];
+                "promotion.store_offer_code": components["schemas"]["ProviderOperationSupport"];
                 "purchase.verify": components["schemas"]["ProviderOperationSupport"];
+                "refund.issue": components["schemas"]["ProviderOperationSupport"];
                 "refund.sync": components["schemas"]["ProviderOperationSupport"];
                 "settlement.collect_finalized_charge": components["schemas"]["ProviderOperationSupport"];
                 "subscription.cancel": components["schemas"]["ProviderOperationSupport"];
@@ -7933,13 +9674,13 @@ export interface components {
                 connectionKind: string;
                 operations: components["schemas"]["RuntimeCapabilityVerdict"][];
                 /** @enum {string} */
-                provider: "apple" | "google" | "stripe";
+                provider: "apple" | "google" | "stripe" | "paddle";
             }[];
             /** @enum {number} */
             schemaVersion: 1;
         };
         /** @enum {string} */
-        ProviderOperation: "catalog.product.subscription" | "catalog.product.consumable" | "catalog.product.non_consumable" | "catalog.trial" | "catalog.addon" | "catalog.topup" | "catalog.price.flat" | "catalog.price.licensed" | "catalog.price.tiered" | "catalog.price.hybrid" | "catalog.price.postpaid_usage" | "checkout.hosted" | "checkout.plan" | "purchase.verify" | "portal.session" | "payment_method.setup" | "webhook.ingest" | "event.replay" | "subscription.reconcile" | "trial.ending_notice" | "subscription.change.preview" | "subscription.change.apply" | "subscription.change.period_end" | "subscription.cancel" | "subscription.uncancel" | "subscription.create" | "settlement.collect_finalized_charge" | "adjustment.issue" | "refund.sync" | "topup.customer_initiated" | "topup.automatic" | "promotion.code_entry" | "promotion.hosted_code";
+        ProviderOperation: "catalog.product.subscription" | "catalog.product.consumable" | "catalog.product.non_consumable" | "catalog.trial" | "catalog.addon" | "catalog.topup" | "catalog.price.flat" | "catalog.price.licensed" | "catalog.price.tiered" | "catalog.price.hybrid" | "catalog.price.postpaid_usage" | "checkout.hosted" | "checkout.plan" | "purchase.verify" | "portal.session" | "payment_method.setup" | "webhook.ingest" | "event.replay" | "subscription.reconcile" | "trial.ending_notice" | "subscription.change.preview" | "subscription.change.apply" | "subscription.change.period_end" | "subscription.cancel" | "subscription.uncancel" | "subscription.create" | "settlement.collect_finalized_charge" | "adjustment.issue" | "refund.sync" | "refund.issue" | "topup.customer_initiated" | "topup.automatic" | "promotion.code_entry" | "promotion.hosted_code" | "promotion.signed_offer" | "promotion.store_offer_code";
         ProviderOperationSupport: {
             composedVia?: string;
             conditions: components["schemas"]["CapabilityCondition"][];
@@ -7973,7 +9714,7 @@ export interface components {
                 featureKey: string;
                 id: string;
                 /** @enum {string} */
-                provider: "google" | "apple" | "stripe";
+                provider: "google" | "apple" | "stripe" | "paddle";
                 /** @enum {string} */
                 status: "ready" | "suspended" | "cooldown";
                 thresholdQuantity: string;
@@ -8021,19 +9762,19 @@ export interface components {
         ReadinessBlockerDetail: {
             code: string;
             /** @enum {string} */
-            connectionKind?: "stripe" | "apple" | "google" | "projection";
+            connectionKind?: "stripe" | "apple" | "google" | "paddle" | "projection";
             gating: boolean;
             observed?: {
                 [key: string]: null | string | number | boolean;
             };
             operation?: components["schemas"]["ProviderOperation"];
             /** @enum {string} */
-            provider?: "apple" | "google" | "stripe";
+            provider?: "apple" | "google" | "stripe" | "paddle";
             reason?: components["schemas"]["CapabilityReason"];
             targets?: {
                 key: string;
                 /** @enum {string} */
-                kind: "plan" | "price" | "topup";
+                kind: "plan" | "price" | "topup" | "gift";
                 priceKey?: null | string;
             }[];
         };
@@ -8047,19 +9788,27 @@ export interface components {
             /** @enum {string} */
             outcome: "available" | "blocked" | "undetermined";
             /** @enum {string} */
-            provider: "apple" | "google" | "stripe";
+            provider: "apple" | "google" | "stripe" | "paddle";
             reasons: components["schemas"]["CapabilityReason"][];
+        };
+        SecondFactorEnrolmentView: {
+            otpauthUri: string;
+            secret: string;
+        };
+        SecondFactorRecoveryCodesView: {
+            recoveryCodes: string[];
         };
         StepUpChallengeView: {
             action: string;
             expiresAt: string;
+            /** @enum {string} */
+            factor: "totp";
             id: string;
-            method: components["schemas"]["MerchantAuthMethod"];
             request?: {
                 body?: unknown;
                 idempotencyKey: string;
                 /** @enum {string} */
-                method: "POST" | "PUT" | "DELETE";
+                method: "POST" | "PUT" | "PATCH" | "DELETE";
                 path: string;
             };
             returnTo: string;
@@ -8106,7 +9855,7 @@ export interface components {
             } | null;
             planKey: null | string;
             /** @enum {string} */
-            provider: "apple" | "google" | "stripe";
+            provider: "apple" | "google" | "stripe" | "paddle";
             /** @enum {string} */
             status: "active" | "grace_period" | "billing_retry" | "cancelled" | "expired" | "refunded" | "revoked";
         };
@@ -9409,14 +11158,14 @@ export interface operations {
             };
         };
         responses: {
-            /** @description Continue with email OTP */
+            /** @description Continue with an authenticator code or a recovery code, or with the emailed code that starts setting up an authenticator */
             200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": {
-                        twoFactorMethods?: string[];
+                        twoFactorMethods?: ("totp" | "backup_code" | "email_enrolment")[];
                         /** @constant */
                         twoFactorRedirect: true;
                     };
@@ -10202,6 +11951,233 @@ export interface operations {
             };
         };
     };
+    authTwoFactorVerifyBackupCode: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description A backup code to verify. Eg: "123456" */
+                    code: string;
+                    /** @description If true, the session cookie will not be set. */
+                    disableSession?: boolean;
+                    /** @description Signed OAuth authorization continuation */
+                    oauth_query?: string;
+                    /** @description If true, the device will be trusted for 30 days. It'll be refreshed on every sign in request within this time. Eg: true */
+                    trustDevice?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Two-factor OTP verified successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The authenticated user object */
+                        user: {
+                            /**
+                             * Format: date-time
+                             * @description Timestamp when the user was created
+                             */
+                            createdAt: string;
+                            /**
+                             * Format: email
+                             * @description User's email address
+                             */
+                            email?: string | null;
+                            /** @description Whether the email is verified */
+                            emailVerified?: boolean | null;
+                            /** @description Unique identifier of the user */
+                            id: string;
+                            /**
+                             * Format: uri
+                             * @description User's profile image URL
+                             */
+                            image?: string | null;
+                            /** @description User's name */
+                            name?: string | null;
+                            /**
+                             * Format: date-time
+                             * @description Timestamp when the user was last updated
+                             */
+                            updatedAt: string;
+                        };
+                    } | {
+                        /** @constant */
+                        redirect: true;
+                        url: string;
+                    };
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message?: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message?: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message?: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message?: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     authTwoFactorVerifyOtp: {
         parameters: {
             query?: never;
@@ -10220,6 +12196,231 @@ export interface operations {
                     code: string;
                     /** @description Signed OAuth authorization continuation */
                     oauth_query?: string;
+                    trustDevice?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Two-factor OTP verified successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The authenticated user object */
+                        user: {
+                            /**
+                             * Format: date-time
+                             * @description Timestamp when the user was created
+                             */
+                            createdAt: string;
+                            /**
+                             * Format: email
+                             * @description User's email address
+                             */
+                            email?: string | null;
+                            /** @description Whether the email is verified */
+                            emailVerified?: boolean | null;
+                            /** @description Unique identifier of the user */
+                            id: string;
+                            /**
+                             * Format: uri
+                             * @description User's profile image URL
+                             */
+                            image?: string | null;
+                            /** @description User's name */
+                            name?: string | null;
+                            /**
+                             * Format: date-time
+                             * @description Timestamp when the user was last updated
+                             */
+                            updatedAt: string;
+                        };
+                    } | {
+                        /** @constant */
+                        redirect: true;
+                        url: string;
+                    };
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message?: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message?: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message?: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        message?: string;
+                    } | {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Authentication or Quotum boundary error */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: string;
+                        error_description?: string;
+                    } | components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    authTwoFactorVerifyTotp: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The otp code to verify. Eg: "012345" */
+                    code: string;
+                    /** @description Signed OAuth authorization continuation */
+                    oauth_query?: string;
+                    /** @description If true, the device will be trusted for 30 days. It'll be refreshed on every sign in request within this time. Eg: true */
                     trustDevice?: boolean;
                 };
             };
@@ -11204,6 +13405,8 @@ export interface operations {
                         };
                         /** Format: uri */
                         successUrl?: string | null;
+                        /** @enum {string} */
+                        uiMode?: "hosted" | "embedded";
                     } | {
                         allowPromotionCodes?: boolean;
                         /** Format: uri */
@@ -11216,6 +13419,8 @@ export interface operations {
                         promotionCode?: string | null;
                         /** Format: uri */
                         successUrl?: string | null;
+                        /** @enum {string} */
+                        uiMode?: "hosted" | "embedded";
                     } | {
                         carryOver?: {
                             balances?: string[];
@@ -11245,6 +13450,23 @@ export interface operations {
                         /** @enum {string} */
                         kind: "uncancel";
                     } | {
+                        cancelImmediately?: boolean;
+                        /** @enum {string} */
+                        kind: "refund";
+                        /** @enum {string} */
+                        mode: "full" | "prorated";
+                        reason: string;
+                        target: {
+                            externalSubscriptionId: string;
+                            /** @enum {string} */
+                            type: "subscription_payment";
+                        } | {
+                            /** Format: uuid */
+                            purchaseId: string;
+                            /** @enum {string} */
+                            type: "purchase";
+                        };
+                    } | {
                         /** Format: uri */
                         cancelUrl?: string | null;
                         currency: string;
@@ -11261,6 +13483,8 @@ export interface operations {
                         /** Format: uri */
                         successUrl?: string | null;
                     };
+                    /** @enum {string} */
+                    provider?: "stripe" | "paddle";
                 };
             };
         };
@@ -11700,6 +13924,299 @@ export interface operations {
             };
         };
     };
+    merchantGetV1BillingAccountsByBillingAccountIdInvoices: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                status?: "draft" | "open" | "paid" | "uncollectible" | "void";
+            };
+            header: {
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                billingAccountId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1BillingAccountsByBillingAccountIdInvoicesResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantGetV1BillingAccountsByBillingAccountIdInvoicesByInvoiceId: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                billingAccountId: string;
+                invoiceId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1BillingAccountsByBillingAccountIdInvoicesByInvoiceIdResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     merchantGetV1BillingAccountsByBillingAccountIdPaymentSetupSessionsBySessionId: {
         parameters: {
             query?: never;
@@ -11871,6 +14388,349 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["getV1BillingAccountsByBillingAccountIdPromotionRedemptionsResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantGetV1BillingAccountsByBillingAccountIdProviderOperationsByOperationId: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                billingAccountId: string;
+                operationId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            /** Format: date-time */
+                            createdAt: string;
+                            errorCode: string | null;
+                            /** Format: uuid */
+                            id: string;
+                            operation: string;
+                            /** @enum {string} */
+                            provider: "apple" | "google" | "stripe" | "paddle";
+                            providerObjectId: string | null;
+                            /** @enum {string} */
+                            status: "prepared" | "in_flight" | "reconciling" | "requires_review" | "succeeded" | "failed";
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantGetV1BillingAccountsByBillingAccountIdRefunds: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header: {
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                billingAccountId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            amountMinor: number;
+                            /** @enum {string} */
+                            basis: "full" | "remaining_time" | "unconsumed_credit";
+                            billingAccountId: string;
+                            cancelImmediately: boolean;
+                            /** Format: date-time */
+                            completedAt: string | null;
+                            /** Format: date-time */
+                            createdAt: string;
+                            currency: string;
+                            externalInvoiceId: string | null;
+                            failureCode: string | null;
+                            /** Format: uuid */
+                            id: string;
+                            /** @enum {string} */
+                            mode: "full" | "prorated";
+                            /** @enum {string} */
+                            provider: "stripe";
+                            providerPaymentId: string;
+                            providerRefundId: string | null;
+                            /** Format: uuid */
+                            purchaseId: string | null;
+                            reason: string;
+                            /** @enum {string} */
+                            status: "requested" | "pending" | "succeeded" | "failed" | "requires_review";
+                            /** @enum {string} */
+                            targetKind: "subscription_payment" | "purchase";
+                            /** Format: date-time */
+                            updatedAt: string;
+                        }[];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
                 };
             };
             /** @description Request failed (400); see the error code and request ID. */
@@ -13249,6 +16109,20 @@ export interface operations {
                             name: string;
                             unit: string;
                         }[];
+                        gifts?: {
+                            codeCount?: number;
+                            codeValidDays: number;
+                            key: string;
+                            name: string;
+                            promotionKey: string;
+                            providerBindings: {
+                                /** @enum {string} */
+                                channel: "ios" | "android" | "web";
+                                productKey: string;
+                                /** @enum {string} */
+                                provider: "apple" | "google" | "stripe" | "paddle";
+                            }[];
+                        }[];
                         plans: {
                             baseAmountMinor?: number | null;
                             basePrice?: {
@@ -13267,7 +16141,7 @@ export interface operations {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 }[];
                                 /** @enum {string} */
                                 taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -13366,7 +16240,7 @@ export interface operations {
                                             channel: "ios" | "android" | "web";
                                             productKey: string;
                                             /** @enum {string} */
-                                            provider: "apple" | "google" | "stripe";
+                                            provider: "apple" | "google" | "stripe" | "paddle";
                                         }[];
                                         /** @enum {string} */
                                         taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -13406,7 +16280,7 @@ export interface operations {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "apple" | "google" | "stripe";
+                                        provider: "apple" | "google" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -13447,7 +16321,7 @@ export interface operations {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "apple" | "google" | "stripe";
+                                        provider: "apple" | "google" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -13489,7 +16363,7 @@ export interface operations {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             }[];
                             providerPriced?: {
                                 /** @enum {string} */
@@ -13500,7 +16374,7 @@ export interface operations {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 }[];
                             } | null;
                             tierRank?: number;
@@ -13526,6 +16400,7 @@ export interface operations {
                             walletFeatureKey: string;
                         }[];
                         retiredFeatureKeys?: string[];
+                        retiredGiftKeys?: string[];
                         retiredPlanKeys?: string[];
                         retiredTopupKeys?: string[];
                         topups: {
@@ -13551,7 +16426,7 @@ export interface operations {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             }[];
                             quantity: string;
                         }[];
@@ -13868,6 +16743,20 @@ export interface operations {
                             name: string;
                             unit: string;
                         }[];
+                        gifts?: {
+                            codeCount?: number;
+                            codeValidDays: number;
+                            key: string;
+                            name: string;
+                            promotionKey: string;
+                            providerBindings: {
+                                /** @enum {string} */
+                                channel: "ios" | "android" | "web";
+                                productKey: string;
+                                /** @enum {string} */
+                                provider: "apple" | "google" | "stripe" | "paddle";
+                            }[];
+                        }[];
                         plans: {
                             baseAmountMinor?: number | null;
                             basePrice?: {
@@ -13886,7 +16775,7 @@ export interface operations {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 }[];
                                 /** @enum {string} */
                                 taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -13985,7 +16874,7 @@ export interface operations {
                                             channel: "ios" | "android" | "web";
                                             productKey: string;
                                             /** @enum {string} */
-                                            provider: "apple" | "google" | "stripe";
+                                            provider: "apple" | "google" | "stripe" | "paddle";
                                         }[];
                                         /** @enum {string} */
                                         taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -14025,7 +16914,7 @@ export interface operations {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "apple" | "google" | "stripe";
+                                        provider: "apple" | "google" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -14066,7 +16955,7 @@ export interface operations {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "apple" | "google" | "stripe";
+                                        provider: "apple" | "google" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -14108,7 +16997,7 @@ export interface operations {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             }[];
                             providerPriced?: {
                                 /** @enum {string} */
@@ -14119,7 +17008,7 @@ export interface operations {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 }[];
                             } | null;
                             tierRank?: number;
@@ -14145,6 +17034,7 @@ export interface operations {
                             walletFeatureKey: string;
                         }[];
                         retiredFeatureKeys?: string[];
+                        retiredGiftKeys?: string[];
                         retiredPlanKeys?: string[];
                         retiredTopupKeys?: string[];
                         topups: {
@@ -14170,7 +17060,7 @@ export interface operations {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             }[];
                             quantity: string;
                         }[];
@@ -14316,7 +17206,7 @@ export interface operations {
                 cursor?: string | null;
                 limit?: number;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
             };
             header: {
                 "X-Quotum-Environment": "sandbox" | "production";
@@ -14956,7 +17846,7 @@ export interface operations {
                 from?: string;
                 limit?: number;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 reason?: "purchase_verified" | "provider_webhook" | "expiry_reconciliation" | "provider_reconciliation" | "usage_changed";
                 status?: "pending" | "processing" | "succeeded" | "failed";
                 to?: string;
@@ -15113,7 +18003,7 @@ export interface operations {
                 limit?: number;
                 orderId?: string;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 purchaseKind?: "subscription" | "consumable" | "non_consumable";
                 status?: "completed" | "refunded" | "revoked" | "voided";
                 to?: string;
@@ -15273,7 +18163,7 @@ export interface operations {
                 limit?: number;
                 processingStatus?: "pending" | "processing" | "processed" | "skipped" | "failed";
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 to?: string;
             };
             header: {
@@ -15428,7 +18318,7 @@ export interface operations {
                 limit?: number;
                 needsAttention?: "true" | "false";
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 status?: "active" | "grace_period" | "billing_retry" | "cancelled" | "expired" | "refunded" | "revoked";
                 to?: string;
             };
@@ -15874,7 +18764,7 @@ export interface operations {
                 from?: string;
                 limit?: number;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 reason?: "purchase_verified" | "provider_webhook" | "expiry_reconciliation" | "provider_reconciliation" | "usage_changed";
                 status?: "pending" | "processing" | "succeeded" | "failed";
                 to?: string;
@@ -16483,6 +19373,12 @@ export interface operations {
             content: {
                 "application/json": {
                     allowedChannels?: ("web" | "ios" | "android")[];
+                    appleOffers?: {
+                        /** @enum {string} */
+                        objectKind: "apple_promotional_offer" | "apple_offer_code";
+                        offerIdentifier: string;
+                        productExternalId: string;
+                    }[];
                     codes?: {
                         billingAccountId?: string | null;
                         code: string;
@@ -16827,6 +19723,310 @@ export interface operations {
             };
         };
     };
+    merchantPostV1AdminPromotionsAppleOffers: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                promotionKey: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    objectKind: "apple_promotional_offer" | "apple_offer_code";
+                    offerIdentifier: string;
+                    productExternalId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1AdminPromotionsByPromotionKeyResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantPostV1AdminPromotionsAppleOffersRetire: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                offerId: string;
+                promotionKey: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1AdminPromotionsByPromotionKeyResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     merchantPostV1AdminPromotionsByPromotionKeyArchive: {
         parameters: {
             query?: never;
@@ -16980,6 +20180,7 @@ export interface operations {
                 active?: "true" | "false";
                 cursor?: string;
                 limit?: number;
+                source?: "operator" | "gift";
             };
             header: {
                 "X-Quotum-Environment": "sandbox" | "production";
@@ -17730,6 +20931,180 @@ export interface operations {
             };
         };
     };
+    merchantPostV1AdminPromotionsByPromotionKeyTerms: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                promotionKey: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    discount?: {
+                        /** @enum {string} */
+                        duration: "once" | "repeating" | "forever";
+                        durationMonths?: number | null;
+                        percentOffBps: number;
+                        /** @enum {string} */
+                        type: "percent";
+                    } | {
+                        amounts: {
+                            amountOffMinor: number;
+                            currency: string;
+                        }[];
+                        /** @enum {string} */
+                        duration: "once" | "repeating" | "forever";
+                        durationMonths?: number | null;
+                        /** @enum {string} */
+                        type: "amount";
+                    };
+                    metadata?: {
+                        [key: string]: unknown;
+                    };
+                    name?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["postV1AdminPromotionsByPromotionKeyTermsResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     merchantGetV1AdminProvidersCapabilities: {
         parameters: {
             query?: never;
@@ -17884,7 +21259,7 @@ export interface operations {
                 limit?: number;
                 orderId?: string;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 purchaseKind?: "subscription" | "consumable" | "non_consumable";
                 status?: "completed" | "refunded" | "revoked" | "voided";
                 to?: string;
@@ -18034,7 +21409,7 @@ export interface operations {
             query?: {
                 channel?: "ios" | "android" | "web";
                 from?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 to?: string;
             };
             header: {
@@ -18190,7 +21565,7 @@ export interface operations {
                 limit?: number;
                 processingStatus?: "pending" | "processing" | "processed" | "skipped" | "failed";
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 to?: string;
             };
             header: {
@@ -18637,7 +22012,7 @@ export interface operations {
                 limit?: number;
                 needsAttention?: "true" | "false";
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 status?: "active" | "grace_period" | "billing_retry" | "cancelled" | "expired" | "refunded" | "revoked";
                 to?: string;
             };
@@ -18810,6 +22185,1839 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["getV1AdminUsageEventsResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantGetV1AdminWebhookDeliveries: {
+        parameters: {
+            query?: {
+                billingAccountId?: string;
+                cursor?: string;
+                endpointId?: string;
+                eventType?: string;
+                limit?: number;
+                status?: "pending" | "processing" | "succeeded" | "failed";
+            };
+            header: {
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            attempts: number;
+                            billingAccountId: null | string;
+                            createdAt: string;
+                            deliveredAt: null | string;
+                            endpointId: string;
+                            eventId: string;
+                            eventType: string;
+                            id: string;
+                            lastAttemptAt: null | string;
+                            lastError: null | string;
+                            lastStatusCode: null | number;
+                            nextAttemptAt: null | string;
+                            occurredAt: string;
+                            /** @enum {string} */
+                            status: "pending" | "processing" | "succeeded" | "failed";
+                        }[];
+                        pagination: {
+                            nextCursor: null | string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantPostV1AdminWebhookDeliveriesByDeliveryIdRetry: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                deliveryId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            deliveryId: string;
+                            /** @enum {string} */
+                            status: "pending";
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantGetV1AdminWebhookEndpoints: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            createdAt: string;
+                            createdBy: string;
+                            description: null | string;
+                            /** @enum {string|null} */
+                            disabledReason: "operator" | "failing" | null;
+                            enabled: boolean;
+                            eventTypes: string[];
+                            failingSince: null | string;
+                            id: string;
+                            previousSecretExpiresAt: null | string;
+                            secretGeneration: number;
+                            updatedAt: string;
+                            url: string;
+                        }[];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantPostV1AdminWebhookEndpoints: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    description?: string | null;
+                    /** @default true */
+                    enabled?: boolean;
+                    /** @default [] */
+                    eventTypes?: string[];
+                    url: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            endpoint: {
+                                createdAt: string;
+                                createdBy: string;
+                                description: null | string;
+                                /** @enum {string|null} */
+                                disabledReason: "operator" | "failing" | null;
+                                enabled: boolean;
+                                eventTypes: string[];
+                                failingSince: null | string;
+                                id: string;
+                                previousSecretExpiresAt: null | string;
+                                secretGeneration: number;
+                                updatedAt: string;
+                                url: string;
+                            };
+                            secret: null | string;
+                            secretDisclosed: boolean;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Successful response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            endpoint: {
+                                createdAt: string;
+                                createdBy: string;
+                                description: null | string;
+                                /** @enum {string|null} */
+                                disabledReason: "operator" | "failing" | null;
+                                enabled: boolean;
+                                eventTypes: string[];
+                                failingSince: null | string;
+                                id: string;
+                                previousSecretExpiresAt: null | string;
+                                secretGeneration: number;
+                                updatedAt: string;
+                                url: string;
+                            };
+                            secret: null | string;
+                            secretDisclosed: boolean;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantGetV1AdminWebhookEndpointsByEndpointId: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            createdAt: string;
+                            createdBy: string;
+                            description: null | string;
+                            /** @enum {string|null} */
+                            disabledReason: "operator" | "failing" | null;
+                            enabled: boolean;
+                            eventTypes: string[];
+                            failingSince: null | string;
+                            id: string;
+                            previousSecretExpiresAt: null | string;
+                            secretGeneration: number;
+                            updatedAt: string;
+                            url: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantDeleteV1AdminWebhookEndpointsByEndpointId: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            /** @enum {boolean} */
+                            deleted: true;
+                            id: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantPatchV1AdminWebhookEndpointsByEndpointId: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    description?: string | null;
+                    enabled?: boolean;
+                    eventTypes?: string[];
+                    url?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            createdAt: string;
+                            createdBy: string;
+                            description: null | string;
+                            /** @enum {string|null} */
+                            disabledReason: "operator" | "failing" | null;
+                            enabled: boolean;
+                            eventTypes: string[];
+                            failingSince: null | string;
+                            id: string;
+                            previousSecretExpiresAt: null | string;
+                            secretGeneration: number;
+                            updatedAt: string;
+                            url: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantPostV1AdminWebhookEndpointsByEndpointIdReplay: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @default [] */
+                    eventTypes?: string[];
+                    /** Format: date-time */
+                    from: string;
+                    /** Format: date-time */
+                    to: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            queued: number;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantPostV1AdminWebhookEndpointsByEndpointIdRotateSecret: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @default 24 */
+                    overlapHours?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            endpoint: {
+                                createdAt: string;
+                                createdBy: string;
+                                description: null | string;
+                                /** @enum {string|null} */
+                                disabledReason: "operator" | "failing" | null;
+                                enabled: boolean;
+                                eventTypes: string[];
+                                failingSince: null | string;
+                                id: string;
+                                previousSecretExpiresAt: null | string;
+                                secretGeneration: number;
+                                updatedAt: string;
+                                url: string;
+                            };
+                            secret: null | string;
+                            secretDisclosed: boolean;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantPostV1AdminWebhookEndpointsByEndpointIdTest: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            deliveryId: string;
+                            eventId: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    merchantGetV1AdminWebhookEventTypes: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Quotum-Environment": "sandbox" | "production";
+                "X-Quotum-Organization": string;
+                "X-Quotum-Project": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            deliverable: string[];
+                            subscribable: string[];
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
                 };
             };
             /** @description Request failed (400); see the error code and request ID. */
@@ -19227,7 +24435,7 @@ export interface operations {
                 "X-Quotum-Step-Up-Grant"?: string;
             };
             path: {
-                kind: "stripe" | "apple" | "google" | "projection";
+                kind: "stripe" | "apple" | "google" | "paddle" | "projection";
             };
             cookie?: never;
         };
@@ -19394,7 +24602,7 @@ export interface operations {
                 "X-Quotum-Step-Up-Grant"?: string;
             };
             path: {
-                kind: "stripe" | "apple" | "google" | "projection";
+                kind: "stripe" | "apple" | "google" | "paddle" | "projection";
             };
             cookie?: never;
         };
@@ -19558,7 +24766,7 @@ export interface operations {
                 "X-Quotum-Step-Up-Grant"?: string;
             };
             path: {
-                kind: "stripe" | "apple" | "google" | "projection";
+                kind: "stripe" | "apple" | "google" | "paddle" | "projection";
             };
             cookie?: never;
         };
@@ -19730,7 +24938,7 @@ export interface operations {
                 "X-Quotum-Step-Up-Grant"?: string;
             };
             path: {
-                kind: "stripe" | "apple" | "google" | "projection";
+                kind: "stripe" | "apple" | "google" | "paddle" | "projection";
             };
             cookie?: never;
         };
@@ -19766,6 +24974,7 @@ export interface operations {
                             draftId: string;
                             eventVerified: boolean;
                             identity: string;
+                            unverifiedPermissions?: string[];
                         };
                         /** @enum {boolean} */
                         success: true;
@@ -19933,7 +25142,7 @@ export interface operations {
                                 /** Format: uuid */
                                 id: string;
                                 /** @enum {string} */
-                                kind: "stripe" | "apple" | "google" | "projection";
+                                kind: "stripe" | "apple" | "google" | "paddle" | "projection";
                                 revision: number;
                                 settings: {
                                     [key: string]: unknown;
@@ -21268,7 +26477,7 @@ export interface operations {
                                 /** Format: uuid */
                                 id: string;
                                 /** @enum {string} */
-                                kind: "stripe" | "apple" | "google" | "projection";
+                                kind: "stripe" | "apple" | "google" | "paddle" | "projection";
                                 revision: number;
                                 settings: {
                                     [key: string]: unknown;
@@ -21998,6 +27207,521 @@ export interface operations {
             };
         };
     };
+    getMcpBillingChange: {
+        parameters: {
+            query?: never;
+            header?: {
+                "Idempotency-Key"?: string;
+                "X-CSRF-Token"?: string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            action: string;
+                            after?: unknown;
+                            approvalUrl: string;
+                            before?: unknown;
+                            body?: unknown;
+                            createdAt: string;
+                            expiresAt: string;
+                            /** Format: uuid */
+                            id: string;
+                            parameters: string[];
+                            reason: string;
+                            requestHash: string;
+                            result?: unknown;
+                            scope: components["schemas"]["MerchantScope"];
+                            status: string;
+                            stepUp: {
+                                action: string;
+                                target: string;
+                            } | null;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    approveMcpBillingChange: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    requestHash: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            action: string;
+                            after?: unknown;
+                            approvalUrl: string;
+                            before?: unknown;
+                            body?: unknown;
+                            createdAt: string;
+                            expiresAt: string;
+                            /** Format: uuid */
+                            id: string;
+                            parameters: string[];
+                            reason: string;
+                            requestHash: string;
+                            result?: unknown;
+                            scope: components["schemas"]["MerchantScope"];
+                            status: string;
+                            stepUp: {
+                                action: string;
+                                target: string;
+                            } | null;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    rejectMcpBillingChange: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    requestHash: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            action: string;
+                            after?: unknown;
+                            approvalUrl: string;
+                            before?: unknown;
+                            body?: unknown;
+                            createdAt: string;
+                            expiresAt: string;
+                            /** Format: uuid */
+                            id: string;
+                            parameters: string[];
+                            reason: string;
+                            requestHash: string;
+                            result?: unknown;
+                            scope: components["schemas"]["MerchantScope"];
+                            status: string;
+                            stepUp: {
+                                action: string;
+                                target: string;
+                            } | null;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     listMcpConnections: {
         parameters: {
             query?: never;
@@ -22033,6 +27757,7 @@ export interface operations {
                                 expiresAt: string;
                                 /** Format: uuid */
                                 id: string;
+                                scopes: string[];
                             }[];
                             mcpUrl: string | null;
                         };
@@ -22349,9 +28074,12 @@ export interface operations {
                                 name: string;
                             };
                             environments: {
+                                canPropose: boolean;
                                 organizationName: string;
                                 projectName: string;
                                 scope: components["schemas"]["MerchantScope"];
+                                /** @enum {string} */
+                                status: "active" | "inactive";
                             }[];
                             principal: {
                                 email: string;
@@ -22359,6 +28087,7 @@ export interface operations {
                                 id: string;
                                 name: string;
                             };
+                            scopes: string[];
                             selection: components["schemas"]["MerchantScope"] | null;
                         };
                         /** @enum {boolean} */
@@ -23230,6 +28959,156 @@ export interface operations {
             };
         };
     };
+    createProject: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    key: string;
+                    name: string;
+                    organizationSlug: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["createProjectResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     getApiPlatformProvisioningById: {
         parameters: {
             query?: never;
@@ -23823,6 +29702,462 @@ export interface operations {
             };
         };
     };
+    postApiPlatformSecondFactorEnrolment: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    code?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: components["schemas"]["SecondFactorEnrolmentView"];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postApiPlatformSecondFactorEnrolmentConfirm: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    code: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: components["schemas"]["SecondFactorRecoveryCodesView"];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postApiPlatformSecondFactorRecoveryCodes: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                Origin: string;
+                "X-CSRF-Token": string;
+                "X-Quotum-Step-Up-Grant"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    code: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: components["schemas"]["SecondFactorRecoveryCodesView"];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     getApiPlatformSession: {
         parameters: {
             query?: never;
@@ -24279,12 +30614,12 @@ export interface operations {
             content: {
                 "application/json": {
                     /** @enum {string} */
-                    action: "catalog.publish" | "operations.recover" | "operations.write" | "connections.manage" | "environment.activate" | "credentials.rotate" | "credentials.rotate_read_only" | "credentials.revoke_read_only";
+                    action: "catalog.publish" | "operations.recover" | "operations.write" | "connections.manage" | "webhooks.manage" | "environment.activate" | "credentials.rotate" | "credentials.rotate_read_only" | "credentials.revoke_read_only";
                     request?: {
                         body?: unknown;
                         idempotencyKey: string;
                         /** @enum {string} */
-                        method: "POST" | "PUT" | "DELETE";
+                        method: "POST" | "PUT" | "PATCH" | "DELETE";
                         path: string;
                     };
                     returnTo: string;
@@ -24589,7 +30924,7 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    [key: string]: unknown;
+                    code: string;
                 };
             };
         };
@@ -26442,6 +32777,166 @@ export interface operations {
             };
         };
     };
+    postV1AdminBillingAccountsByBillingAccountIdProviderOperationsByOperationIdReconcile: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                billingAccountId: string;
+                operationId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            /** Format: date-time */
+                            createdAt: string;
+                            errorCode: string | null;
+                            /** Format: uuid */
+                            id: string;
+                            operation: string;
+                            /** @enum {string} */
+                            provider: "apple" | "google" | "stripe" | "paddle";
+                            providerObjectId: string | null;
+                            /** @enum {string} */
+                            status: "prepared" | "in_flight" | "reconciling" | "requires_review" | "succeeded" | "failed";
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     getV1AdminCatalog: {
         parameters: {
             query?: never;
@@ -26880,6 +33375,363 @@ export interface operations {
             };
         };
     };
+    getV1AdminCatalogBindings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            active: boolean;
+                            /** @enum {string} */
+                            channel: "ios" | "android" | "web";
+                            externalPriceId: string | null;
+                            externalProductId: string;
+                            /** Format: uuid */
+                            productId: string;
+                            productKey: string;
+                            /** @enum {string} */
+                            provider: "apple" | "google" | "stripe" | "paddle";
+                            /** Format: uuid */
+                            storeProductId: string;
+                        }[];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminCatalogBindingsAdopt: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                "X-Billing-Actor": string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    credits?: number;
+                    entitlementKey?: string;
+                    externalPriceId: string;
+                    externalProductId: string;
+                    /** @enum {string} */
+                    kind: "subscription" | "topup" | "gift";
+                    name: string;
+                    productKey: string;
+                    /** @enum {string} */
+                    provider?: "stripe";
+                } | {
+                    /** @enum {string} */
+                    billingPeriod?: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                    billingPeriodCount?: number;
+                    credits: number;
+                    currency?: string;
+                    entitlementKey: string;
+                    externalProductId: string;
+                    /** @enum {string} */
+                    kind: "subscription" | "topup";
+                    name: string;
+                    priceAmountMinor?: number;
+                    productKey: string;
+                    /** @enum {string} */
+                    provider: "apple";
+                } | {
+                    /** @enum {string} */
+                    billingPeriod?: "day" | "week" | "month" | "quarter" | "semi_annual" | "year";
+                    billingPeriodCount?: number;
+                    credits: number;
+                    currency?: string;
+                    entitlementKey: string;
+                    externalPriceId?: string;
+                    externalProductId: string;
+                    /** @enum {string} */
+                    kind: "subscription" | "topup";
+                    name: string;
+                    priceAmountMinor?: number;
+                    productKey: string;
+                    /** @enum {string} */
+                    provider: "google";
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            active: boolean;
+                            /** @enum {string} */
+                            channel: "ios" | "android" | "web";
+                            externalPriceId: string | null;
+                            externalProductId: string;
+                            /** Format: uuid */
+                            productId: string;
+                            productKey: string;
+                            /** @enum {string} */
+                            provider: "apple" | "google" | "stripe" | "paddle";
+                            /** Format: uuid */
+                            storeProductId: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     postV1AdminCatalogPreview: {
         parameters: {
             query?: never;
@@ -26908,6 +33760,20 @@ export interface operations {
                             name: string;
                             unit: string;
                         }[];
+                        gifts?: {
+                            codeCount?: number;
+                            codeValidDays: number;
+                            key: string;
+                            name: string;
+                            promotionKey: string;
+                            providerBindings: {
+                                /** @enum {string} */
+                                channel: "ios" | "android" | "web";
+                                productKey: string;
+                                /** @enum {string} */
+                                provider: "apple" | "google" | "stripe" | "paddle";
+                            }[];
+                        }[];
                         plans: {
                             baseAmountMinor?: number | null;
                             basePrice?: {
@@ -26926,7 +33792,7 @@ export interface operations {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 }[];
                                 /** @enum {string} */
                                 taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -27025,7 +33891,7 @@ export interface operations {
                                             channel: "ios" | "android" | "web";
                                             productKey: string;
                                             /** @enum {string} */
-                                            provider: "apple" | "google" | "stripe";
+                                            provider: "apple" | "google" | "stripe" | "paddle";
                                         }[];
                                         /** @enum {string} */
                                         taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -27065,7 +33931,7 @@ export interface operations {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "apple" | "google" | "stripe";
+                                        provider: "apple" | "google" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -27106,7 +33972,7 @@ export interface operations {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "apple" | "google" | "stripe";
+                                        provider: "apple" | "google" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -27148,7 +34014,7 @@ export interface operations {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             }[];
                             providerPriced?: {
                                 /** @enum {string} */
@@ -27159,7 +34025,7 @@ export interface operations {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 }[];
                             } | null;
                             tierRank?: number;
@@ -27185,6 +34051,7 @@ export interface operations {
                             walletFeatureKey: string;
                         }[];
                         retiredFeatureKeys?: string[];
+                        retiredGiftKeys?: string[];
                         retiredPlanKeys?: string[];
                         retiredTopupKeys?: string[];
                         topups: {
@@ -27210,7 +34077,7 @@ export interface operations {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             }[];
                             quantity: string;
                         }[];
@@ -27516,6 +34383,20 @@ export interface operations {
                             name: string;
                             unit: string;
                         }[];
+                        gifts?: {
+                            codeCount?: number;
+                            codeValidDays: number;
+                            key: string;
+                            name: string;
+                            promotionKey: string;
+                            providerBindings: {
+                                /** @enum {string} */
+                                channel: "ios" | "android" | "web";
+                                productKey: string;
+                                /** @enum {string} */
+                                provider: "apple" | "google" | "stripe" | "paddle";
+                            }[];
+                        }[];
                         plans: {
                             baseAmountMinor?: number | null;
                             basePrice?: {
@@ -27534,7 +34415,7 @@ export interface operations {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 }[];
                                 /** @enum {string} */
                                 taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -27633,7 +34514,7 @@ export interface operations {
                                             channel: "ios" | "android" | "web";
                                             productKey: string;
                                             /** @enum {string} */
-                                            provider: "apple" | "google" | "stripe";
+                                            provider: "apple" | "google" | "stripe" | "paddle";
                                         }[];
                                         /** @enum {string} */
                                         taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -27673,7 +34554,7 @@ export interface operations {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "apple" | "google" | "stripe";
+                                        provider: "apple" | "google" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -27714,7 +34595,7 @@ export interface operations {
                                         channel: "ios" | "android" | "web";
                                         productKey: string;
                                         /** @enum {string} */
-                                        provider: "apple" | "google" | "stripe";
+                                        provider: "apple" | "google" | "stripe" | "paddle";
                                     }[];
                                     /** @enum {string} */
                                     taxBehavior: "inclusive" | "exclusive" | "unspecified";
@@ -27756,7 +34637,7 @@ export interface operations {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             }[];
                             providerPriced?: {
                                 /** @enum {string} */
@@ -27767,7 +34648,7 @@ export interface operations {
                                     channel: "ios" | "android" | "web";
                                     productKey: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 }[];
                             } | null;
                             tierRank?: number;
@@ -27793,6 +34674,7 @@ export interface operations {
                             walletFeatureKey: string;
                         }[];
                         retiredFeatureKeys?: string[];
+                        retiredGiftKeys?: string[];
                         retiredPlanKeys?: string[];
                         retiredTopupKeys?: string[];
                         topups: {
@@ -27818,7 +34700,7 @@ export interface operations {
                                 channel: "ios" | "android" | "web";
                                 productKey: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             }[];
                             quantity: string;
                         }[];
@@ -27964,7 +34846,7 @@ export interface operations {
                 cursor?: string | null;
                 limit?: number;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
             };
             header?: never;
             path?: never;
@@ -28714,6 +35596,536 @@ export interface operations {
             };
         };
     };
+    postV1AdminCustomerErasures: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                "X-Billing-Actor": string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @default [] */
+                    acknowledge?: ("forfeit_paid_balances" | "forfeit_lifetime_purchases")[];
+                    /** @enum {string} */
+                    basis: "data_subject_request" | "merchant_offboarding" | "legal_order" | "other";
+                    billingAccountId: string;
+                    reference?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            erasure: {
+                                acknowledged: ("forfeit_paid_balances" | "forfeit_lifetime_purchases")[];
+                                actor: string;
+                                /** @enum {string} */
+                                basis: "data_subject_request" | "merchant_offboarding" | "legal_order" | "other";
+                                completedAt: null | string;
+                                counts: {
+                                    [key: string]: number;
+                                };
+                                id: string;
+                                lastError: null | string;
+                                reference: null | string;
+                                requestedAt: string;
+                                /** @enum {string} */
+                                state: "requested" | "running" | "verifying" | "completed" | "failed";
+                                step: null | string;
+                                tombstoneExpiresAt: string;
+                            };
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Successful response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            erasure: {
+                                acknowledged: ("forfeit_paid_balances" | "forfeit_lifetime_purchases")[];
+                                actor: string;
+                                /** @enum {string} */
+                                basis: "data_subject_request" | "merchant_offboarding" | "legal_order" | "other";
+                                completedAt: null | string;
+                                counts: {
+                                    [key: string]: number;
+                                };
+                                id: string;
+                                lastError: null | string;
+                                reference: null | string;
+                                requestedAt: string;
+                                /** @enum {string} */
+                                state: "requested" | "running" | "verifying" | "completed" | "failed";
+                                step: null | string;
+                                tombstoneExpiresAt: string;
+                            };
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1AdminCustomerErasuresByErasureId: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                erasureId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            acknowledged: ("forfeit_paid_balances" | "forfeit_lifetime_purchases")[];
+                            actor: string;
+                            /** @enum {string} */
+                            basis: "data_subject_request" | "merchant_offboarding" | "legal_order" | "other";
+                            completedAt: null | string;
+                            counts: {
+                                [key: string]: number;
+                            };
+                            id: string;
+                            lastError: null | string;
+                            reference: null | string;
+                            requestedAt: string;
+                            /** @enum {string} */
+                            state: "requested" | "running" | "verifying" | "completed" | "failed";
+                            step: null | string;
+                            tombstoneExpiresAt: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminCustomerErasuresPreview: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    billingAccountId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            blockers: {
+                                count: number;
+                                kind: string;
+                            }[];
+                            forfeits: {
+                                lifetimePurchases: number;
+                                paidBalanceFeatures: number;
+                            };
+                            requiredAcknowledgements: ("forfeit_paid_balances" | "forfeit_lifetime_purchases")[];
+                            rows: {
+                                [key: string]: number;
+                            };
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     getV1AdminCustomersByCustomerId: {
         parameters: {
             query?: never;
@@ -28863,7 +36275,7 @@ export interface operations {
                 from?: string;
                 limit?: number;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 reason?: "purchase_verified" | "provider_webhook" | "expiry_reconciliation" | "provider_reconciliation" | "usage_changed";
                 status?: "pending" | "processing" | "succeeded" | "failed";
                 to?: string;
@@ -29015,7 +36427,7 @@ export interface operations {
                 limit?: number;
                 orderId?: string;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 purchaseKind?: "subscription" | "consumable" | "non_consumable";
                 status?: "completed" | "refunded" | "revoked" | "voided";
                 to?: string;
@@ -29170,7 +36582,7 @@ export interface operations {
                 limit?: number;
                 processingStatus?: "pending" | "processing" | "processed" | "skipped" | "failed";
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 to?: string;
             };
             header?: never;
@@ -29320,7 +36732,7 @@ export interface operations {
                 limit?: number;
                 needsAttention?: "true" | "false";
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 status?: "active" | "grace_period" | "billing_retry" | "cancelled" | "expired" | "refunded" | "revoked";
                 to?: string;
             };
@@ -30628,7 +38040,7 @@ export interface operations {
                 from?: string;
                 limit?: number;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 reason?: "purchase_verified" | "provider_webhook" | "expiry_reconciliation" | "provider_reconciliation" | "usage_changed";
                 status?: "pending" | "processing" | "succeeded" | "failed";
                 to?: string;
@@ -31208,6 +38620,12 @@ export interface operations {
             content: {
                 "application/json": {
                     allowedChannels?: ("web" | "ios" | "android")[];
+                    appleOffers?: {
+                        /** @enum {string} */
+                        objectKind: "apple_promotional_offer" | "apple_offer_code";
+                        offerIdentifier: string;
+                        productExternalId: string;
+                    }[];
                     codes?: {
                         billingAccountId?: string | null;
                         code: string;
@@ -31547,6 +38965,298 @@ export interface operations {
             };
         };
     };
+    postV1AdminPromotionsAppleOffers: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                promotionKey: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    objectKind: "apple_promotional_offer" | "apple_offer_code";
+                    offerIdentifier: string;
+                    productExternalId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1AdminPromotionsByPromotionKeyResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminPromotionsAppleOffersRetire: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                offerId: string;
+                promotionKey: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1AdminPromotionsByPromotionKeyResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     postV1AdminPromotionsByPromotionKeyArchive: {
         parameters: {
             query?: never;
@@ -31694,6 +39404,7 @@ export interface operations {
                 active?: "true" | "false";
                 cursor?: string;
                 limit?: number;
+                source?: "operator" | "gift";
             };
             header?: never;
             path: {
@@ -32416,6 +40127,530 @@ export interface operations {
             };
         };
     };
+    postV1AdminPromotionsByPromotionKeyTerms: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                promotionKey: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    discount?: {
+                        /** @enum {string} */
+                        duration: "once" | "repeating" | "forever";
+                        durationMonths?: number | null;
+                        percentOffBps: number;
+                        /** @enum {string} */
+                        type: "percent";
+                    } | {
+                        amounts: {
+                            amountOffMinor: number;
+                            currency: string;
+                        }[];
+                        /** @enum {string} */
+                        duration: "once" | "repeating" | "forever";
+                        durationMonths?: number | null;
+                        /** @enum {string} */
+                        type: "amount";
+                    };
+                    metadata?: {
+                        [key: string]: unknown;
+                    };
+                    name?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["postV1AdminPromotionsByPromotionKeyTermsResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1AdminProviderCustomerUnlinksByBillingAccountId: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                billingAccountId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            actor: string;
+                            billingAccountId: string;
+                            createdAt: string;
+                            externalCustomerId: string;
+                            id: string;
+                            linkedAt: string;
+                            /** @enum {string} */
+                            provider: "stripe";
+                            providerAccountId: null | string;
+                            reason: string;
+                        }[];
+                        pagination: {
+                            nextCursor: null | string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminProviderCustomerUnlinksByBillingAccountId: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                "X-Billing-Actor": string;
+            };
+            path: {
+                billingAccountId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    externalCustomerId: string;
+                    /** @enum {string} */
+                    provider: "stripe";
+                    reason: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            unlink: {
+                                actor: string;
+                                billingAccountId: string;
+                                createdAt: string;
+                                externalCustomerId: string;
+                                id: string;
+                                linkedAt: string;
+                                /** @enum {string} */
+                                provider: "stripe";
+                                providerAccountId: null | string;
+                                reason: string;
+                            };
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Successful response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            unlink: {
+                                actor: string;
+                                billingAccountId: string;
+                                createdAt: string;
+                                externalCustomerId: string;
+                                id: string;
+                                linkedAt: string;
+                                /** @enum {string} */
+                                provider: "stripe";
+                                providerAccountId: null | string;
+                                reason: string;
+                            };
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     getV1AdminProvidersCapabilities: {
         parameters: {
             query?: never;
@@ -32565,7 +40800,7 @@ export interface operations {
                 limit?: number;
                 orderId?: string;
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 purchaseKind?: "subscription" | "consumable" | "non_consumable";
                 status?: "completed" | "refunded" | "revoked" | "voided";
                 to?: string;
@@ -32847,7 +41082,7 @@ export interface operations {
             query?: {
                 channel?: "ios" | "android" | "web";
                 from?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 to?: string;
             };
             header?: never;
@@ -32998,7 +41233,7 @@ export interface operations {
                 limit?: number;
                 processingStatus?: "pending" | "processing" | "processed" | "skipped" | "failed";
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 to?: string;
             };
             header?: never;
@@ -33415,6 +41650,145 @@ export interface operations {
             };
         };
     };
+    postV1AdminSubscriptionChangesByChangeIdRetry: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                changeId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["postV1AdminSubscriptionChangesByChangeIdRetryResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     getV1AdminSubscriptions: {
         parameters: {
             query?: {
@@ -33427,7 +41801,7 @@ export interface operations {
                 limit?: number;
                 needsAttention?: "true" | "false";
                 productKey?: string;
-                provider?: "apple" | "google" | "stripe";
+                provider?: "apple" | "google" | "stripe" | "paddle";
                 status?: "active" | "grace_period" | "billing_retry" | "cancelled" | "expired" | "refunded" | "revoked";
                 to?: string;
             };
@@ -33590,6 +41964,2057 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["getV1AdminUsageEventsResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminUsageInvoiceAdjustmentsByAdjustmentIdRetry: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                adjustmentId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["postV1AdminSubscriptionChangesByChangeIdRetryResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminUsageInvoicePeriodsByPeriodIdRetry: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                periodId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["postV1AdminSubscriptionChangesByChangeIdRetryResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1AdminWebhookDeliveries: {
+        parameters: {
+            query?: {
+                billingAccountId?: string;
+                cursor?: string;
+                endpointId?: string;
+                eventType?: string;
+                limit?: number;
+                status?: "pending" | "processing" | "succeeded" | "failed";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            attempts: number;
+                            billingAccountId: null | string;
+                            createdAt: string;
+                            deliveredAt: null | string;
+                            endpointId: string;
+                            eventId: string;
+                            eventType: string;
+                            id: string;
+                            lastAttemptAt: null | string;
+                            lastError: null | string;
+                            lastStatusCode: null | number;
+                            nextAttemptAt: null | string;
+                            occurredAt: string;
+                            /** @enum {string} */
+                            status: "pending" | "processing" | "succeeded" | "failed";
+                        }[];
+                        pagination: {
+                            nextCursor: null | string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminWebhookDeliveriesByDeliveryIdRetry: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                deliveryId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            deliveryId: string;
+                            /** @enum {string} */
+                            status: "pending";
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1AdminWebhookEndpoints: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            createdAt: string;
+                            createdBy: string;
+                            description: null | string;
+                            /** @enum {string|null} */
+                            disabledReason: "operator" | "failing" | null;
+                            enabled: boolean;
+                            eventTypes: string[];
+                            failingSince: null | string;
+                            id: string;
+                            previousSecretExpiresAt: null | string;
+                            secretGeneration: number;
+                            updatedAt: string;
+                            url: string;
+                        }[];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminWebhookEndpoints: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                "X-Billing-Actor": string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    description?: string | null;
+                    /** @default true */
+                    enabled?: boolean;
+                    /** @default [] */
+                    eventTypes?: string[];
+                    url: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            endpoint: {
+                                createdAt: string;
+                                createdBy: string;
+                                description: null | string;
+                                /** @enum {string|null} */
+                                disabledReason: "operator" | "failing" | null;
+                                enabled: boolean;
+                                eventTypes: string[];
+                                failingSince: null | string;
+                                id: string;
+                                previousSecretExpiresAt: null | string;
+                                secretGeneration: number;
+                                updatedAt: string;
+                                url: string;
+                            };
+                            secret: null | string;
+                            secretDisclosed: boolean;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Successful response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            endpoint: {
+                                createdAt: string;
+                                createdBy: string;
+                                description: null | string;
+                                /** @enum {string|null} */
+                                disabledReason: "operator" | "failing" | null;
+                                enabled: boolean;
+                                eventTypes: string[];
+                                failingSince: null | string;
+                                id: string;
+                                previousSecretExpiresAt: null | string;
+                                secretGeneration: number;
+                                updatedAt: string;
+                                url: string;
+                            };
+                            secret: null | string;
+                            secretDisclosed: boolean;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1AdminWebhookEndpointsByEndpointId: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            createdAt: string;
+                            createdBy: string;
+                            description: null | string;
+                            /** @enum {string|null} */
+                            disabledReason: "operator" | "failing" | null;
+                            enabled: boolean;
+                            eventTypes: string[];
+                            failingSince: null | string;
+                            id: string;
+                            previousSecretExpiresAt: null | string;
+                            secretGeneration: number;
+                            updatedAt: string;
+                            url: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    deleteV1AdminWebhookEndpointsByEndpointId: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            /** @enum {boolean} */
+                            deleted: true;
+                            id: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    patchV1AdminWebhookEndpointsByEndpointId: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    description?: string | null;
+                    enabled?: boolean;
+                    eventTypes?: string[];
+                    url?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            createdAt: string;
+                            createdBy: string;
+                            description: null | string;
+                            /** @enum {string|null} */
+                            disabledReason: "operator" | "failing" | null;
+                            enabled: boolean;
+                            eventTypes: string[];
+                            failingSince: null | string;
+                            id: string;
+                            previousSecretExpiresAt: null | string;
+                            secretGeneration: number;
+                            updatedAt: string;
+                            url: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminWebhookEndpointsByEndpointIdReplay: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @default [] */
+                    eventTypes?: string[];
+                    /** Format: date-time */
+                    from: string;
+                    /** Format: date-time */
+                    to: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            queued: number;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminWebhookEndpointsByEndpointIdRotateSecret: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+                "X-Billing-Actor": string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @default 24 */
+                    overlapHours?: number;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            endpoint: {
+                                createdAt: string;
+                                createdBy: string;
+                                description: null | string;
+                                /** @enum {string|null} */
+                                disabledReason: "operator" | "failing" | null;
+                                enabled: boolean;
+                                eventTypes: string[];
+                                failingSince: null | string;
+                                id: string;
+                                previousSecretExpiresAt: null | string;
+                                secretGeneration: number;
+                                updatedAt: string;
+                                url: string;
+                            };
+                            secret: null | string;
+                            secretDisclosed: boolean;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1AdminWebhookEndpointsByEndpointIdTest: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Billing-Actor": string;
+            };
+            path: {
+                endpointId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            deliveryId: string;
+                            eventId: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1AdminWebhookEventTypes: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            deliverable: string[];
+                            subscribable: string[];
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
                 };
             };
             /** @description Request failed (400); see the error code and request ID. */
@@ -34171,7 +44596,7 @@ export interface operations {
                     maxPurchasesPerInterval?: number;
                     maxSpendMinor?: number | null;
                     /** @enum {string} */
-                    provider: "apple" | "google" | "stripe";
+                    provider: "apple" | "google" | "stripe" | "paddle";
                     thresholdQuantity: string;
                     topupKey: string;
                 };
@@ -35050,6 +45475,8 @@ export interface operations {
                         };
                         /** Format: uri */
                         successUrl?: string | null;
+                        /** @enum {string} */
+                        uiMode?: "hosted" | "embedded";
                     } | {
                         allowPromotionCodes?: boolean;
                         /** Format: uri */
@@ -35062,6 +45489,8 @@ export interface operations {
                         promotionCode?: string | null;
                         /** Format: uri */
                         successUrl?: string | null;
+                        /** @enum {string} */
+                        uiMode?: "hosted" | "embedded";
                     } | {
                         carryOver?: {
                             balances?: string[];
@@ -35091,6 +45520,23 @@ export interface operations {
                         /** @enum {string} */
                         kind: "uncancel";
                     } | {
+                        cancelImmediately?: boolean;
+                        /** @enum {string} */
+                        kind: "refund";
+                        /** @enum {string} */
+                        mode: "full" | "prorated";
+                        reason: string;
+                        target: {
+                            externalSubscriptionId: string;
+                            /** @enum {string} */
+                            type: "subscription_payment";
+                        } | {
+                            /** Format: uuid */
+                            purchaseId: string;
+                            /** @enum {string} */
+                            type: "purchase";
+                        };
+                    } | {
                         /** Format: uri */
                         cancelUrl?: string | null;
                         currency: string;
@@ -35107,6 +45553,8 @@ export interface operations {
                         /** Format: uri */
                         successUrl?: string | null;
                     };
+                    /** @enum {string} */
+                    provider?: "stripe" | "paddle";
                 };
             };
         };
@@ -36245,6 +46693,431 @@ export interface operations {
             };
         };
     };
+    getV1BillingAccountsByBillingAccountIdGifts: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                billingAccountId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1BillingAccountsByBillingAccountIdGiftsResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1BillingAccountsByBillingAccountIdInvoices: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                status?: "draft" | "open" | "paid" | "uncollectible" | "void";
+            };
+            header?: never;
+            path: {
+                billingAccountId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1BillingAccountsByBillingAccountIdInvoicesResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1BillingAccountsByBillingAccountIdInvoicesByInvoiceId: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                billingAccountId: string;
+                invoiceId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["getV1BillingAccountsByBillingAccountIdInvoicesByInvoiceIdResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     postV1BillingAccountsByBillingAccountIdLicenseAssignments: {
         parameters: {
             query?: never;
@@ -37124,9 +47997,13 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** Format: uuid */
+                    appleOfferId?: string;
                     /** @enum {string} */
                     channel: "web" | "ios" | "android";
                     code: string;
+                    /** Format: uuid */
+                    subscriptionId?: string;
                 };
             };
         };
@@ -37278,6 +48155,370 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["getV1BillingAccountsByBillingAccountIdPromotionRedemptionsByRedemptionIdResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1BillingAccountsApplePromotionSignatures: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+            };
+            path: {
+                billingAccountId: string;
+                redemptionId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            appleOffer: {
+                                appAccountToken: string;
+                                expiresAt: string;
+                                keyId: string;
+                                nonce: string;
+                                offerIdentifier: string;
+                                productId: string;
+                                signature: string;
+                                timestamp: number;
+                            };
+                            duplicate: boolean;
+                            /** @enum {string} */
+                            kind: "provider_action_required";
+                            /** @enum {string} */
+                            provider: "apple";
+                            redemption: {
+                                actor: string;
+                                amountDiscountMinor: null | number;
+                                amountSubtotalMinor: null | number;
+                                amountTotalMinor: null | number;
+                                appliedAt: null | string;
+                                billingAccountId: string;
+                                /** @enum {string} */
+                                channel: "web" | "ios" | "android";
+                                code: null | string;
+                                createdAt: string;
+                                currency: null | string;
+                                externalSubscriptionId: null | string;
+                                id: string;
+                                lastObservedTransactionId?: string | null;
+                                /** @enum {string|null} */
+                                limitViolation: "global" | "first_purchase" | "not_applicable" | "inactive" | "expired" | null;
+                                planGrant?: {
+                                    endedAt: null | string;
+                                    endsAt: string;
+                                    id: string;
+                                    planKey: string;
+                                    planVersion: number;
+                                    startsAt: string;
+                                    /** @enum {string} */
+                                    status: "active" | "expired" | "ended" | "superseded";
+                                } | null;
+                                promotionCodeId: null | string;
+                                promotionKey: string;
+                                /** @enum {string} */
+                                provider: "quotum" | "stripe" | "apple" | "google" | "paddle";
+                                providerObjectId?: string | null;
+                                providerOfferType?: string | null;
+                                providerTransactionId?: string | null;
+                                reason: null | string;
+                                releasedAt: null | string;
+                                reservedUntil: null | string;
+                                reversedAt: null | string;
+                                /** @enum {string} */
+                                source: "api_redeem" | "commercial_action" | "stripe_hosted_checkout" | "apple_offer" | "google_offer";
+                                /** @enum {string} */
+                                status: "reserved" | "applied" | "released" | "reversed";
+                                stripeCheckoutSessionId: null | string;
+                            };
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1BillingAccountsByBillingAccountIdProviderOperationsByOperationId: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                billingAccountId: string;
+                operationId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            /** Format: date-time */
+                            createdAt: string;
+                            errorCode: string | null;
+                            /** Format: uuid */
+                            id: string;
+                            operation: string;
+                            /** @enum {string} */
+                            provider: "apple" | "google" | "stripe" | "paddle";
+                            providerObjectId: string | null;
+                            /** @enum {string} */
+                            status: "prepared" | "in_flight" | "reconciling" | "requires_review" | "succeeded" | "failed";
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
                 };
             };
             /** @description Request failed (400); see the error code and request ID. */
@@ -37677,6 +48918,164 @@ export interface operations {
             };
         };
     };
+    postV1BillingAccountsByBillingAccountIdProvidersPaddleCheckoutSessions: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+            };
+            path: {
+                billingAccountId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: email */
+                    email?: string;
+                    productKey: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            duplicate: boolean;
+                            sessionId: string;
+                            /** Format: uri */
+                            url: string;
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     postV1BillingAccountsByBillingAccountIdProvidersStripeCheckoutSessions: {
         parameters: {
             query?: never;
@@ -37700,6 +49099,8 @@ export interface operations {
                     };
                     /** Format: uri */
                     successUrl?: string | null;
+                    /** @enum {string} */
+                    uiMode?: "hosted" | "embedded";
                 };
             };
         };
@@ -38258,6 +49659,181 @@ export interface operations {
             };
         };
     };
+    getV1BillingAccountsByBillingAccountIdRefunds: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                billingAccountId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            amountMinor: number;
+                            /** @enum {string} */
+                            basis: "full" | "remaining_time" | "unconsumed_credit";
+                            billingAccountId: string;
+                            cancelImmediately: boolean;
+                            /** Format: date-time */
+                            completedAt: string | null;
+                            /** Format: date-time */
+                            createdAt: string;
+                            currency: string;
+                            externalInvoiceId: string | null;
+                            failureCode: string | null;
+                            /** Format: uuid */
+                            id: string;
+                            /** @enum {string} */
+                            mode: "full" | "prorated";
+                            /** @enum {string} */
+                            provider: "stripe";
+                            providerPaymentId: string;
+                            providerRefundId: string | null;
+                            /** Format: uuid */
+                            purchaseId: string | null;
+                            reason: string;
+                            /** @enum {string} */
+                            status: "requested" | "pending" | "succeeded" | "failed" | "requires_review";
+                            /** @enum {string} */
+                            targetKind: "subscription_payment" | "purchase";
+                            /** Format: date-time */
+                            updatedAt: string;
+                        }[];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
     postV1BillingAccountsByBillingAccountIdSubscriptionsBySubscriptionIdChanges: {
         parameters: {
             query?: never;
@@ -38607,7 +50183,7 @@ export interface operations {
                             supersededBy: {
                                 externalSubscriptionId: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             } | null;
                         }[];
                         pagination: {
@@ -38791,7 +50367,7 @@ export interface operations {
                                 supersededBy: {
                                     externalSubscriptionId: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 } | null;
                             };
                         };
@@ -38830,7 +50406,7 @@ export interface operations {
                                 supersededBy: {
                                     externalSubscriptionId: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 } | null;
                             };
                         };
@@ -38998,7 +50574,7 @@ export interface operations {
                             supersededBy: {
                                 externalSubscriptionId: string;
                                 /** @enum {string} */
-                                provider: "apple" | "google" | "stripe";
+                                provider: "apple" | "google" | "stripe" | "paddle";
                             } | null;
                         };
                         /** @enum {boolean} */
@@ -39176,7 +50752,7 @@ export interface operations {
                                 supersededBy: {
                                     externalSubscriptionId: string;
                                     /** @enum {string} */
-                                    provider: "apple" | "google" | "stripe";
+                                    provider: "apple" | "google" | "stripe" | "paddle";
                                 } | null;
                             };
                         };
@@ -39307,7 +50883,7 @@ export interface operations {
     getV1BillingAccountsByBillingAccountIdUsageAlertEvents: {
         parameters: {
             query?: {
-                limit?: number | null;
+                limit?: number;
             };
             header?: never;
             path: {
@@ -40530,7 +52106,7 @@ export interface operations {
                             featureId: string;
                             occurredAt: string | null;
                             /** @enum {string} */
-                            operation: "consume";
+                            operation: "consume" | "confirm";
                             operationId: string;
                             rated: {
                                 featureId: string;
@@ -40544,6 +52120,7 @@ export interface operations {
                             };
                             receiptId: string;
                             recordedAt: string;
+                            reservationId?: string;
                             usage: {
                                 featureId: string;
                                 unit: string;
@@ -40845,19 +52422,10 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    entityId?: string | null;
-                    /** @default 300 */
+                    entityId?: string;
                     expiresInSeconds?: number;
-                    featureKey: string;
-                    filters?: {
-                        [key: string]: string | number | boolean;
-                    };
-                    metadata?: {
-                        [key: string]: unknown;
-                    };
-                    /** Format: date-time */
-                    occurredAt?: string | null;
-                    quantity: string;
+                    featureId: string;
+                    value: string;
                 };
             };
         };
@@ -40869,6 +52437,167 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["postV1BillingAccountsByBillingAccountIdUsageReservationsResponse200"];
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    getV1BillingAccountsByBillingAccountIdUsageReservationsByReservationId: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                billingAccountId: string;
+                reservationId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            billingAccountId: string;
+                            confirmedValue: string | null;
+                            createdAt: string;
+                            entityId: string | null;
+                            expiresAt: string;
+                            featureId: string;
+                            finalizedAt: string | null;
+                            receiptId: string | null;
+                            reservationId: string;
+                            /** @enum {string} */
+                            status: "active" | "confirmed" | "released" | "expired";
+                            usage: {
+                                featureId: string;
+                                unit: string;
+                                value: string;
+                            };
+                        };
+                        /** @enum {boolean} */
+                        success: true;
+                    };
                 };
             };
             /** @description Request failed (400); see the error code and request ID. */
@@ -41005,12 +52734,7 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    metadata?: {
-                        [key: string]: unknown;
-                    };
-                    /** Format: date-time */
-                    occurredAt?: string | null;
-                    quantity: string;
+                    value: string;
                 };
             };
         };
@@ -41609,6 +53333,10 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
+                        /** @enum {string} */
+                        missingPermission?: "event_read" | "connected_account_read";
+                        /** @enum {string} */
+                        reason?: "signature_invalid" | "verification_failed" | "mode_mismatch" | "account_mismatch" | "event_not_found" | "event_mismatch" | "stale_event" | "missing_permission" | "authentication_failed" | "provider_unavailable" | "connection_changed";
                         /** @enum {boolean} */
                         success: false;
                     };
@@ -41913,6 +53641,159 @@ export interface operations {
                 content: {
                     "application/json": {
                         data: components["schemas"]["GoogleWebhookResult"];
+                        /** @enum {boolean} */
+                        success: true;
+                    };
+                };
+            };
+            /** @description Request failed (400); see the error code and request ID. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (401); see the error code and request ID. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (403); see the error code and request ID. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (404); see the error code and request ID. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (409); see the error code and request ID. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (410); see the error code and request ID. */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (413); see the error code and request ID. */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (415); see the error code and request ID. */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (422); see the error code and request ID. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (429); see the error code and request ID. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (500); see the error code and request ID. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (501); see the error code and request ID. */
+            501: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+            /** @description Request failed (503); see the error code and request ID. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuotumError"];
+                };
+            };
+        };
+    };
+    postV1ProjectsByProjectKeyWebhooksPaddle: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                projectKey: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    [key: string]: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: {
+                            eventType: string;
+                            /** @enum {string} */
+                            status: "queued";
+                        };
                         /** @enum {boolean} */
                         success: true;
                     };

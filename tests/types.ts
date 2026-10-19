@@ -42,3 +42,35 @@ export function typeAssertions(quotum: Quotum, result: ConsumeResult, check: Che
 		check.balance;
 	}
 }
+
+export async function reservationTypes(quotum: Quotum) {
+	const account = quotum.account("payer");
+	const reserved = await account.reserve({ featureId: "tokens", value: 100n, operationId: "job" });
+	if (reserved.allowed) {
+		await account.confirm({
+			reservationId: reserved.reservationId,
+			value: "60",
+			operationId: "job",
+		});
+	} else {
+		// @ts-expect-error A denied reservation has no hold identity.
+		reserved.reservationId;
+	}
+	const result = await account.getOperation({ operation: "confirm", operationId: "job" });
+	if (result.status === "completed" && result.outcome.allowed) {
+		const receipt: string = result.outcome.receiptId;
+		void receipt;
+	}
+	const released = await account.release({ reservationId: "hold", operationId: "job" });
+	// @ts-expect-error Release reports state, not an authorization verdict.
+	released.allowed;
+	// @ts-expect-error Confirm always needs an actual value.
+	account.confirm({ reservationId: "hold", operationId: "job" });
+	account.entity("child").reserve({
+		featureId: "tokens",
+		value: 100,
+		operationId: "job",
+		// @ts-expect-error Entity scope is bound by the handle, never overridden.
+		entityId: "other",
+	});
+}

@@ -5,14 +5,15 @@ import {
 	QuotumError,
 } from "./errors.js";
 import type { Fetch, QuotumOptions, RequestOptions } from "./types.js";
-import { consumeResult, identifier, object, protocol, segment, timestamp } from "./validation.js";
+import { identifier, object, protocol, segment, timestamp } from "./validation.js";
 
 interface RequestSpec<T> {
 	method?: "GET" | "POST" | "PUT";
 	path: string;
 	body?: object;
 	validate: (value: unknown) => T;
-	operation?: OperationIdentity & { featureId: string };
+	operation?: OperationIdentity & { featureId?: string };
+	preflight?: { path: string; validate: (value: unknown) => void };
 }
 
 function retries(value: number): number {
@@ -245,8 +246,24 @@ export class Transport {
 			return payload.data;
 		};
 		const run = async (): Promise<T> => {
+			let retriesUsed = 0;
+			if (spec.preflight) {
+				for (let attempt = 0; ; attempt++) {
+					try {
+						spec.preflight.validate(await once(spec.preflight.path, "GET"));
+						break;
+					} catch (error) {
+						if (!(error instanceof QuotumError) || !error.retryable || attempt >= maxRetries)
+							throw error;
+						retriesUsed++;
+						await pause(
+							Math.max(error.retryAfterMs ?? 0, 250 * 2 ** attempt * (0.5 + Math.random())),
+						);
+					}
+				}
+			}
 			let failure: QuotumError | undefined;
-			for (let attempt = 0; attempt <= maxRetries; attempt++) {
+			for (let attempt = 0; attempt <= maxRetries - retriesUsed; attempt++) {
 				ensureActive();
 				inFlightMutation = spec.operation !== undefined;
 				try {
@@ -279,7 +296,7 @@ export class Transport {
 				if (
 					failure.code === "OPERATION_IN_PROGRESS" ||
 					!failure.retryable ||
-					attempt === maxRetries
+					attempt === maxRetries - retriesUsed
 				)
 					break;
 				await pause(
@@ -293,23 +310,18 @@ export class Transport {
 					identity.entityId === null ? "" : `?entityId=${encodeURIComponent(identity.entityId)}`;
 				try {
 					const value = await once(
-						`/v1/billing-accounts/${segment(identity.billingAccountId)}/usage/operations/consume/${segment(identity.operationId)}${query}`,
+						`/v1/billing-accounts/${segment(identity.billingAccountId)}/usage/operations/${identity.operation}/${segment(identity.operationId)}${query}`,
 						"GET",
 					);
 					if (
 						!object(value) ||
-						value.operation !== "consume" ||
+						value.operation !== identity.operation ||
 						value.operationId !== identity.operationId
 					)
 						protocol();
 					if (value.status === "completed") {
 						if (!timestamp(value.completedAt)) protocol();
-						const result = consumeResult(
-							value.outcome,
-							identity.operationId,
-							identity.entityId,
-							identity.featureId,
-						);
+						const result = spec.validate(value.outcome);
 						uncertain = false;
 						return spec.validate(result);
 					}
