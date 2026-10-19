@@ -30,7 +30,13 @@ npm trust list @quotum/sdk
 ```
 
 Do not add an npm write token to CI. `v0.1.0-rc.0` is the first tag; later RCs increment `rc.N`.
-The workflow verifies registry integrity, provenance, the `next` tag and a clean installation.
+The separate verification job checks registry integrity, the `next` tag and a clean installation.
+It runs `npm audit signatures --json --include-attestations` to verify Sigstore trust evidence,
+then checks the verified npm GitHub Actions SLSA v1 bundle against the exact tarball digest,
+release workflow identity and `GITHUB_SHA`. Unknown provenance formats fail closed. If registry
+visibility or verification fails after publication, rerun failed jobs to retry verification without
+publishing that immutable version again. Metadata visibility is retried 36 times at ten-second
+intervals, with bounded request timeouts.
 An ownership/setup failure leaves a tested candidate; it is not a published release. Keep a development
 snapshot at `0.1.0-dev.1` until the public source pin and candidate gates are satisfied.
 

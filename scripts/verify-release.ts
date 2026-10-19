@@ -3,25 +3,40 @@ import { createHash } from "node:crypto";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { verifyAuditedProvenance } from "./release-provenance.js";
 
 const tarballPath = process.argv[2];
 if (!tarballPath) throw new Error("Usage: bun scripts/verify-release.ts <tested-tarball>");
 const pkg = JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8"));
 const tarball = await readFile(resolve(tarballPath));
 const integrity = `sha512-${createHash("sha512").update(tarball).digest("base64")}`;
+const revision = process.env.GITHUB_SHA;
+if (!revision || !/^[a-f0-9]{40}$/.test(revision))
+	throw new Error("GITHUB_SHA must identify the tested release commit");
 let published:
 	| { dist: { integrity: string; tarball: string; attestations?: { url: string } } }
 	| undefined;
-for (let attempt = 0; attempt < 6; attempt++) {
-	const response = await fetch("https://registry.npmjs.org/@quotum%2Fsdk", { redirect: "error" });
-	if (response.ok) {
-		const registry = await response.json();
-		if (registry["dist-tags"]?.next === pkg.version && registry.versions?.[pkg.version]) {
-			published = registry.versions[pkg.version];
-			break;
+for (let attempt = 0; attempt < 36; attempt++) {
+	try {
+		const response = await fetch("https://registry.npmjs.org/@quotum%2Fsdk", {
+			redirect: "error",
+			signal: AbortSignal.timeout(10_000),
+			headers: { "cache-control": "no-cache" },
+		});
+		if (response.ok) {
+			const registry = await response.json();
+			const candidate = registry.versions?.[pkg.version];
+			if (candidate && candidate.dist.integrity !== integrity)
+				throw new Error("The published version differs from the tested tarball");
+			if (registry["dist-tags"]?.next === pkg.version && candidate?.dist.attestations?.url) {
+				published = candidate;
+				break;
+			}
 		}
+	} catch (error) {
+		if (!(error instanceof TypeError) && !(error instanceof DOMException)) throw error;
 	}
-	if (attempt < 5) await new Promise((resolve) => setTimeout(resolve, 5000));
+	if (attempt < 35) await new Promise((resolve) => setTimeout(resolve, 10_000));
 }
 if (!published || published.dist.integrity !== integrity)
 	throw new Error("The next tag must contain the exact tested tarball");
@@ -39,6 +54,7 @@ if (
 	throw new Error("The registry download differs from the tested tarball");
 
 const work = await mkdtemp(join(tmpdir(), "quotum-published-"));
+let source: ReturnType<typeof verifyAuditedProvenance>;
 try {
 	await writeFile(join(work, "package.json"), JSON.stringify({ private: true, type: "module" }));
 	execFileSync(
@@ -53,6 +69,22 @@ try {
 		],
 		{ cwd: work, stdio: "inherit" },
 	);
+	const audit = execFileSync(
+		"npm",
+		[
+			"audit",
+			"signatures",
+			"--json",
+			"--include-attestations",
+			"--registry=https://registry.npmjs.org",
+		],
+		{ cwd: work, encoding: "utf8", maxBuffer: 8 * 1024 * 1024 },
+	);
+	source = verifyAuditedProvenance(JSON.parse(audit), {
+		version: pkg.version,
+		revision,
+		sha512: createHash("sha512").update(tarball).digest("hex"),
+	});
 	await writeFile(
 		join(work, "smoke.mjs"),
 		`import { createQuotum } from '@quotum/sdk';
@@ -72,6 +104,7 @@ const report = {
 	integrity,
 	sha256: createHash("sha256").update(tarball).digest("hex"),
 	provenance: published.dist.attestations.url,
+	source,
 };
 await mkdir(new URL("../artifacts/", import.meta.url), { recursive: true });
 await writeFile(

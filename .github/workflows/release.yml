@@ -12,13 +12,14 @@ jobs:
   package:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
-      - uses: oven-sh/setup-bun@v2
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
           bun-version: 1.4.3
-      - uses: actions/setup-node@v4
+          no-cache: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
       - name: Require a release tag on main
@@ -37,7 +38,7 @@ jobs:
           mv quotum-sdk-*.tgz release/
           cd release
           sha256sum quotum-sdk-*.tgz > checksums.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: sdk-candidate
           path: release/
@@ -50,17 +51,18 @@ jobs:
       matrix:
         node: [22, 24]
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
           bun-version: 1.4.3
-      - uses: actions/setup-node@v4
+          no-cache: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: ${{ matrix.node }}
-      - uses: denoland/setup-deno@v2
+      - uses: denoland/setup-deno@22d081ff2d3a40755e97629de92e3bcbfa7cf2ed # v2
         with:
           deno-version: v2.x
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: sdk-candidate
           path: release
@@ -68,7 +70,7 @@ jobs:
         working-directory: release
       - run: bun install --frozen-lockfile
       - run: bun run test:packed ./release/quotum-sdk-*.tgz
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: sdk-runtime-node-${{ matrix.node }}
           path: artifacts/packed-report.json
@@ -76,18 +78,19 @@ jobs:
     needs: package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
           bun-version: 1.4.3
-      - uses: actions/setup-node@v4
+          no-cache: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
       - id: api
         run: |
           # shellcheck disable=SC2016
           bun -e 'const s = await Bun.file("contracts/v1/source.json").json(); if (s.workingTree || !/^[a-f0-9]{40}$/.test(s.revision)) throw new Error("A public API pin is required"); process.stdout.write(`revision=${s.revision}\n`)' >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: quotumapp/quotum
           ref: ${{ steps.api.outputs.revision }}
@@ -96,7 +99,7 @@ jobs:
       - name: Require the server contract to have merged
         run: git merge-base --is-ancestor HEAD origin/main
         working-directory: server
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: sdk-candidate
           path: release
@@ -108,7 +111,7 @@ jobs:
       - run: bun run openapi:check
         working-directory: server
       - run: bun run test:http ./server ./release/quotum-sdk-*.tgz
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: sdk-http-conformance
           path: artifacts/http-report.json
@@ -120,24 +123,46 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
           bun-version: 1.4.3
-      - uses: actions/setup-node@v4
+          no-cache: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: sdk-candidate
           path: release
       - run: sha256sum -c checksums.txt
         working-directory: release
+      - run: npm install --global npm@11.19.1 --ignore-scripts --no-audit --no-fund
       - name: Publish the tested artifact with npm OIDC
         run: npm publish ./release/quotum-sdk-*.tgz --access public --tag next --ignore-scripts
+  verify:
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.4.3
+          no-cache: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+      - run: npm install --global npm@11.19.1 --ignore-scripts --no-audit --no-fund
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: sdk-candidate
+          path: release
+      - run: sha256sum -c checksums.txt
+        working-directory: release
       - name: Verify registry integrity, provenance and installation
         run: bun scripts/verify-release.ts ./release/quotum-sdk-*.tgz
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: sdk-publication
           path: artifacts/publication.json
