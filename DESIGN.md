@@ -5,8 +5,8 @@
 Quotum owns billing, transactions, authorization, catalog policy, HTTP schemas and error codes.
 The SDK owns ergonomic handles, precise value normalization, transport and bounded recovery.
 OpenAPI is copied from a full public API commit and SHA-256 checked; generated HTTP types and the
-operation coverage inventory are committed. [SURFACE.md](SURFACE.md) names all 100 trusted
-operations and marks the nine implemented HTTP operations; generation fails on an unmapped addition. The SDK has no server runtime or private repository dependency.
+operation coverage inventory are committed. [SURFACE.md](SURFACE.md) names every trusted
+operation and marks the implemented preview operations; generation fails on an unmapped addition. The SDK has no server runtime or private repository dependency.
 A local working-tree contract is allowed for development and rejected by release checks.
 
 ## Application and operator clients
@@ -40,7 +40,8 @@ reads and usage corrections declared by OpenAPI. Audited mutations require an ex
 and refuse before dispatch if it is absent. The coverage manifest classifies operations by OpenAPI security, not `/admin`
 path prefixes. Project-authenticated catalog reads remain application operations.
 
-No operator factory, reservation helper or checkout stub is exported in the first preview.
+The preview exports reservation methods on both account and entity handles. Operator and
+commercial factories remain later work.
 Merchant `/api`, provider webhook ingress and MCP transport are not SDK outbound-client surfaces.
 Gateway authentication is deferred. The feature-descriptor generator is a separate CLI package;
 customer-token browser hooks are another package and never accept project API keys.
@@ -65,11 +66,10 @@ is authoritative; generated feature descriptors and checks cannot authorize futu
 
 ## Delivery gates
 
-The first working preview implements explicit accounts/entities, checks, consumption, recovery and
+The first working preview implements explicit accounts/entities, checks, consumption, reservations, recovery and
 receipts, with API-key authentication. It is independently versioned from the HTTP API. During
 pre-1.0 cutover, update affected API, bundled-client, MCP, merchant and UI callers together; no legacy
-aliases are added to check/consume. Deferred reservation/correction endpoints retain their existing
-wire contract until their coordinated increment.
+aliases are added to check/consume/reserve/confirm. Corrections retain their existing wire contract.
 
 A release candidate requires the public API commit containing this contract, `api:check-release`,
 the exact packed JS/TS runtime matrix, real HTTP conformance, tarball checksum and test evidence.
@@ -86,20 +86,19 @@ or mock transport test alone is insufficient evidence of billing correctness.
 | --- | --- | --- |
 | Accounts/entities | Explicit idempotent account PUT/GET, entity create/get and exact scopes | Entity access checks must remain authoritative for reservation lookups |
 | Check/consume | Final field names, feature-kind validation, compact outcomes and version-2 recovery | Keep canonical input and atomic receipt/outcome semantics across server changes |
-| Receipts | Immutable consume snapshot, bounded deduction pages, opaque IDs | Extend receipt kinds and reservation references for confirm/track |
-| Reserve/confirm/release | Existing server-only wire retained | Adopt public field/result shapes and pinned TTL semantics; add reservation reads and uncertainty tests |
+| Receipts | Immutable consume/confirm snapshots, reservation references, bounded deduction pages | Extend receipt kinds for track |
+| Reserve/confirm/release | Compact outcomes, exact entity scope, logical state reads and bounded recovery | Keep TTL, race and uncertain-finalization conformance as the server evolves |
 | Track | No server route or SDK method | Publish non-gating/postpaid policy and implement an independent post-fact operation |
 | Commercial actions | Existing server preview/execute retained | Account-bound methods, exact provider capability checks, endpoint-specific reconciliation |
 | Catalog/feature types | Generated HTTP DTOs and complete endpoint inventory | Separate CLI to generate project feature capabilities; runtime authority stays server-side |
 | Release | Development tarball pinned to a public API commit | Matching consumer updates and the exact RC conformance artifact |
 
-Later usage signatures follow `reserve({ featureId, value, operationId, expiresInSeconds? })`,
+Implemented reservation signatures are `reserve({ featureId, value, operationId, expiresInSeconds? })`,
 `confirm({ reservationId, value, operationId })`, `release({ reservationId, operationId })`,
-`getReservation(reservationId)` and `track({ featureId, value, operationId, occurredAt? })`, each
-with final request options and the same bound account/entity scope. These are target signatures;
-they become exports only with their accepted server contracts. Reserve's value is an upper bound,
-confirm's is positive actual usage within it, and zero actual usage uses release. `track` returns
-a receipt or a typed error, with no authorization verdict.
+`getReservation(reservationId)`, each with final request options and the same bound account/entity
+scope. Finalization verifies scope with a state read before dispatch, within the original call
+deadline and retry budget. `track({ featureId, value, operationId, occurredAt? })` remains a target. Reserve's value is an upper bound,
+confirm's is positive actual usage within it, and zero actual usage uses release. The target `track` returns a receipt or a typed error, with no authorization verdict.
 
 Commercial target calls are `account.commercial.preview(input, options?)` and
 `account.commercial.execute({ previewToken, operationId }, options?)`; result and action unions

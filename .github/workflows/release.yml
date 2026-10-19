@@ -1,0 +1,143 @@
+name: Publish SDK preview
+on:
+  push:
+    tags: ["v0.1.0-rc.*"]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sdk-release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Require a release tag on main
+        run: |
+          test "$GITHUB_REF_TYPE" = tag
+          # shellcheck disable=SC2016
+          bun -e 'const p = await Bun.file("package.json").json(); if (!/^0\.1\.0-rc\.(0|[1-9]\d*)$/.test(p.version) || process.env.GITHUB_REF_NAME !== `v${p.version}`) throw new Error("Release tag and candidate version must match")'
+          git merge-base --is-ancestor HEAD origin/main
+      - run: bun install --frozen-lockfile
+      - run: bun run quality
+      - run: bun run api:check-release
+      - name: Build the candidate once
+        run: |
+          bun run pack:rc
+          mkdir release
+          mv quotum-sdk-*.tgz release/
+          cd release
+          sha256sum quotum-sdk-*.tgz > checksums.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdk-candidate
+          path: release/
+          if-no-files-found: error
+  runtimes:
+    needs: package
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk-candidate
+          path: release
+      - run: sha256sum -c checksums.txt
+        working-directory: release
+      - run: bun install --frozen-lockfile
+      - run: bun run test:packed ./release/quotum-sdk-*.tgz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdk-runtime-node-${{ matrix.node }}
+          path: artifacts/packed-report.json
+  http:
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: api
+        run: |
+          # shellcheck disable=SC2016
+          bun -e 'const s = await Bun.file("contracts/v1/source.json").json(); if (s.workingTree || !/^[a-f0-9]{40}$/.test(s.revision)) throw new Error("A public API pin is required"); process.stdout.write(`revision=${s.revision}\n`)' >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: quotumapp/quotum
+          ref: ${{ steps.api.outputs.revision }}
+          fetch-depth: 0
+          path: server
+      - name: Require the server contract to have merged
+        run: git merge-base --is-ancestor HEAD origin/main
+        working-directory: server
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk-candidate
+          path: release
+      - run: sha256sum -c checksums.txt
+        working-directory: release
+      - run: bun install --frozen-lockfile
+      - run: bun install --frozen-lockfile
+        working-directory: server
+      - run: bun run openapi:check
+        working-directory: server
+      - run: bun run test:http ./server ./release/quotum-sdk-*.tgz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdk-http-conformance
+          path: artifacts/http-report.json
+  publish:
+    needs: [package, runtimes, http]
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdk-candidate
+          path: release
+      - run: sha256sum -c checksums.txt
+        working-directory: release
+      - name: Publish the tested artifact with npm OIDC
+        run: npm publish ./release/quotum-sdk-*.tgz --access public --tag next --ignore-scripts
+      - name: Verify registry integrity, provenance and installation
+        run: bun scripts/verify-release.ts ./release/quotum-sdk-*.tgz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdk-publication
+          path: artifacts/publication.json

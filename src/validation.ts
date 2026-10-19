@@ -56,8 +56,11 @@ export const nullableString = (value: unknown): value is string | null =>
 export function protocol(): never {
 	throw new QuotumError("PROTOCOL_ERROR", "Quotum returned an invalid response");
 }
-const numeric = (value: unknown) => string(value) && /^-?(?:0|[1-9]\d*)(?:\.\d+)?$/u.test(value);
-function quantity(value: unknown): boolean {
+export const numeric = (value: unknown): value is string =>
+	string(value) && /^-?(?:0|[1-9]\d*)(?:\.\d+)?$/u.test(value);
+export function quantity(
+	value: unknown,
+): value is { featureId: string; unit: string; value: string } {
 	return object(value) && string(value.featureId) && string(value.unit) && numeric(value.value);
 }
 const optionalTimestamp = (value: Record<string, unknown>, key: string) =>
