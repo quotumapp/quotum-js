@@ -22,7 +22,21 @@ snapshots cannot satisfy that remote gate. The tag-triggered `release.yml` workf
 npm trusted publishing. It requires both SDK and pinned API commits on their main branches,
 Node 22/24 plus Bun/Deno/Workers packed conformance, real HTTP including the reference application,
 and the protected `npm` environment. Set the environment protection rules and publisher trust
-before tagging. The npm scope owner authenticates interactively once and configures:
+before approving the publish job. npm requires the package to exist before trusted publishing can
+be configured ([npm trust prerequisites](https://docs.npmjs.com/cli/v11/commands/npm-trust/#prerequisites)).
+An anonymous registry 404 may also indicate a private package: the scope owner first checks it
+while authenticated. If the package is new, use a separately reviewed, functional SDK bootstrap
+artifact at `0.0.0-bootstrap.0` to create it once. The bootstrap changes only candidate package
+metadata and README, must pass packed/runtime and real-HTTP conformance, and is published by the
+owner interactively under `bootstrap`. Keep `0.1.0-rc.0` unused for the OIDC workflow:
+
+```sh
+npm login
+npm publish /path/to/quotum-sdk-0.0.0-bootstrap.0.tgz --access public --tag bootstrap --ignore-scripts
+```
+
+The bootstrap is a proposed one-time owner action, not an automated release or provenance evidence.
+Once the package exists, the npm scope owner configures:
 
 ```sh
 npm trust github @quotum/sdk --repo quotumapp/quotum-js --file release.yml --environment npm --allow-publish
