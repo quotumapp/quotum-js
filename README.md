@@ -6,7 +6,8 @@ runtime dependencies. Licensed under Apache-2.0.
 
 This is a pre-1.0 preview. `contracts/v1/source.json` records the matching API revision; a
 `workingTree` snapshot is development-only and cannot be published. The reservation increment
-adds unknown-cost AI workflows to the existing consumption preview. Install a tested local or CI tarball:
+adds unknown-cost AI workflows to the existing consumption preview. Run it against the API revision
+recorded in that file or a compatible later revision. Install a tested local or CI tarball:
 
 ```sh
 npm install /path/to/quotum-sdk-0.1.0-rc.0.tgz
@@ -148,10 +149,10 @@ reads no environment variables and accepts an explicit `fetch` implementation.
 bun install --frozen-lockfile
 bun run quality
 bun run build
-bun run api:check-preview                 # current local contract
+bun run api:check                         # committed contract and generated files
 bun run pack:preview
-bun scripts/test-packed.ts ./quotum-sdk-0.1.0-dev.1.tgz --node-lts
-bun scripts/test-http.ts /path/to/quotum-api ./quotum-sdk-0.1.0-dev.1.tgz
+bun scripts/test-packed.ts ./quotum-sdk-0.1.0-rc.0.tgz --node-lts
+bun scripts/test-http.ts /path/to/quotum-api ./quotum-sdk-0.1.0-rc.0.tgz
 ```
 
 Builds use the committed types and work offline. Contract updates are deliberate:
