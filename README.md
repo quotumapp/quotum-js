@@ -123,7 +123,7 @@ SDK checkout and build the package:
 ```sh
 export QUOTUM_BASE_URL=http://localhost:3000
 export QUOTUM_API_KEY="$TOKEN"
-export QUOTUM_ACCOUNT_ID=sdk-example
+export QUOTUM_ACCOUNT_ID="sdk-example-$(date +%s)"
 
 # Run these commands from the SDK checkout.
 bun install --frozen-lockfile
