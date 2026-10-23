@@ -5,10 +5,10 @@ export function knownCostBilling(config: QuotumOptions) {
 	const quotum = createQuotum(config);
 	return {
 		onboard: (customerId: string) => quotum.account(customerId).create(),
-		authorize: async (customerId: string, jobId: string, tokens: bigint) => {
+		authorize: async (customerId: string, jobId: string, value: bigint) => {
 			const result = await quotum.account(customerId).consume({
-				featureId: "model_tokens",
-				value: tokens,
+				featureId: "api_calls",
+				value,
 				operationId: jobId,
 			});
 			if (!result.allowed) return { allowed: false as const, reason: result.reason };

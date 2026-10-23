@@ -5,10 +5,10 @@ export function knownCostBilling(config) {
 	const quotum = createQuotum(config);
 	return {
 		onboard: (customerId) => quotum.account(customerId).create(),
-		authorize: (customerId, jobId, tokens) =>
+		authorize: (customerId, jobId, value) =>
 			quotum.account(customerId).consume({
-				featureId: "model_tokens",
-				value: tokens,
+				featureId: "api_calls",
+				value,
 				operationId: jobId,
 			}),
 	};

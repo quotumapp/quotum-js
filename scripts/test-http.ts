@@ -42,6 +42,7 @@ try {
 				"src",
 				"scripts",
 				"tests",
+				"examples",
 				"migrations",
 				"contracts",
 				"bun.lock",
@@ -55,14 +56,28 @@ try {
 	const example = join(work, "ai-reservations.mjs");
 	await cp(new URL("../examples/ai-reservations.mjs", import.meta.url), example);
 	const helper = (name: string) => JSON.stringify(join(api, "tests/integration/helpers", name));
+	const source = (name: string) => JSON.stringify(join(api, "src", name));
 	const harness = `
 import { afterAll, beforeAll, describe, expect, it } from "bun:test";
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 import { createQuotum } from ${sdk};
+import { parseCatalogImports } from ${source("catalog/import-config.ts")};
+import { syncConfiguredCatalog } from ${source("catalog/provision.ts")};
 import { createLocalPostgresContext, describeLocalPostgres, integrationProjectContext } from ${helper("local-postgres.ts")};
 import { resetAndSeedIntegrationData } from ${helper("catalog-fixtures.ts")};
 import { publishAiCreditsCatalog } from ${helper("metering-catalog.ts")};
 import { createIntegrationApp } from ${helper("app-fixture.ts")};
 const lane = describeLocalPostgres(describe, describe.skip);
+async function runReferenceApp({baseUrl, apiKey, accountId, stateDirectory, featureId}, ...args) {
+ const child = Bun.spawn(["node", ${JSON.stringify(example)}, "--state-dir", stateDirectory, ...args], {
+  env: {PATH: process.env.PATH, QUOTUM_BASE_URL: baseUrl, QUOTUM_API_KEY: apiKey, QUOTUM_ACCOUNT_ID: accountId,
+   ...(featureId === undefined ? {} : {QUOTUM_FEATURE_ID: featureId})}, stdout: "pipe", stderr: "pipe"});
+ const [stdout, stderr, code] = await Promise.all([new Response(child.stdout).text(), new Response(child.stderr).text(), child.exited]);
+ expect(stdout.includes(apiKey) || stderr.includes(apiKey)).toBe(false);
+ return {code, stdout, stderr};
+}
 let context, server, account, entity, quotum, credential;
 lane("packed public SDK over real HTTP", () => {
  beforeAll(async () => {
@@ -105,7 +120,7 @@ lane("packed public SDK over real HTTP", () => {
   expect((await entity.listReceiptDeductions({receiptId: result.receiptId, limit: 1})).items).toHaveLength(1);
   await expect(account.getReceipt(result.receiptId)).rejects.toMatchObject({code: "RECEIPT_NOT_FOUND", status: 404});
   expect(await entity.consume({featureId: "model_tokens", value: "100.000", operationId: "packed/job"})).toEqual(result);
-  const [count] = await context.sql\x60SELECT count(*)::int AS events FROM usage_events\x60;
+  const [count] = await context.sql\x60SELECT count(*)::int AS events FROM usage_events WHERE project_id = \${integrationProjectContext().projectInstanceId} AND customer_id = (SELECT id FROM customers WHERE project_id = \${integrationProjectContext().projectInstanceId} AND billing_account_id = 'packed-payer')\x60;
   expect(count.events).toBe(1);
  });
  it("recovers reserve, confirm and release over HTTP without duplicating holds or usage", async () => {
@@ -136,18 +151,13 @@ lane("packed public SDK over real HTTP", () => {
  it("runs the installed reference application through restart, response loss, zero usage, denial and expiry", async () => {
   await quotum.account("reference-app").create();
   await context.repository.grantAllocation(integrationProjectContext(), {billingAccountId: "reference-app", featureKey: "ai_credits", quantity: "10", sourceKind: "credit_grant", sourceKey: "reference-grant"});
-  const run = async (...args) => {
-   const child = Bun.spawn(["node", ${JSON.stringify(example)}, "--state-dir", ${JSON.stringify(join(work, "jobs"))}, ...args], {
-    env: {PATH: process.env.PATH, QUOTUM_BASE_URL: server.url.origin, QUOTUM_API_KEY: credential, QUOTUM_ACCOUNT_ID: "reference-app"}, stdout: "pipe", stderr: "pipe"});
-   const [stdout, stderr, code] = await Promise.all([new Response(child.stdout).text(), new Response(child.stderr).text(), child.exited]);
-   expect(stdout.includes(credential) || stderr.includes(credential)).toBe(false);
-   return {code, stdout, stderr};
-  };
+  const run = (...args) => runReferenceApp({baseUrl: server.url.origin, apiKey: credential, accountId: "reference-app",
+   stateDirectory: ${JSON.stringify(join(work, "jobs"))}, featureId: "model_tokens"}, ...args);
   const stopped = await run("--job", "restart", "--crash-after-work");
   expect(stopped.code).not.toBe(0);
   const restarted = await run("--job", "restart", "--drop-response", "confirm");
   expect(restarted.code).toBe(0);
-  expect(JSON.parse(restarted.stdout)).toMatchObject({phase: "confirmed", workRuns: 1, actualValue: "60"});
+  expect(JSON.parse(restarted.stdout)).toMatchObject({phase: "confirmed", featureId: "model_tokens", workRuns: 1, actualValue: "2"});
   for (const [scenario, phase] of [["zero", "released"], ["denied", "denied"], ["expired", "expired"]]) {
    const result = await run("--job", scenario, "--scenario", scenario, "--drop-response", scenario === "zero" ? "release" : "reserve");
    expect(result.code).toBe(0);
@@ -155,6 +165,95 @@ lane("packed public SDK over real HTTP", () => {
   }
  });
 
+});
+
+lane("packed SDK after the API quickstart", () => {
+ let context, server, quotum, credential;
+ let usageMutations = 0;
+ const stateDirectory = ${JSON.stringify(join(work, "quickstart-jobs"))};
+ const fixtureDirectory = ${JSON.stringify(join(api, "examples/quickstart"))};
+ const run = (accountId, args, featureId) => runReferenceApp({baseUrl: server.url.origin, apiKey: credential,
+  accountId, stateDirectory, featureId}, ...args);
+ beforeAll(async () => {
+  context = await createLocalPostgresContext();
+  await resetAndSeedIntegrationData(context.sql);
+  await syncConfiguredCatalog(parseCatalogImports(await readFile(join(fixtureDirectory, "catalog-import.json"), "utf8")),
+   context.projectContextResolver, context.db);
+  const fixture = createIntegrationApp(context);
+  server = Bun.serve({hostname: "127.0.0.1", port: 0, fetch: request => {
+   if (request.method === "POST" && new URL(request.url).pathname.includes("/usage/")) usageMutations++;
+   return fixture.app.handle(request);
+  }});
+  const authorization = new Headers(fixture.authHeaders()).get("authorization");
+  if (!authorization) throw new Error("Missing disposable test credential");
+  credential = authorization.slice(7);
+  quotum = createQuotum({baseUrl: server.url.origin, apiKey: credential});
+  const headers = {...fixture.authHeaders(), "content-type": "application/json",
+   "x-billing-operator-key": context.env.operatorApiKey, "x-billing-actor": "quickstart@example.com"};
+  for (const [name, expectedRevision] of [["catalog.json", null], ["catalog-plans.json", 1]]) {
+   const catalog = JSON.parse(await readFile(join(fixtureDirectory, name), "utf8"));
+   const previewResponse = await fetch(new URL("/v1/admin/catalog/preview", server.url), {
+    method: "POST", headers, body: JSON.stringify({expectedRevision, catalog})});
+   const preview = await previewResponse.json();
+   expect({status: previewResponse.status, error: preview.error}).toEqual({status: 200, error: undefined});
+   const published = await fetch(new URL("/v1/admin/catalog/publish", server.url), {
+    method: "POST", headers, body: JSON.stringify({expectedRevision, catalog, previewToken: preview.data.previewToken})});
+   expect({status: published.status, error: (await published.json()).error}).toEqual({status: 200, error: undefined});
+  }
+ });
+ afterAll(async () => { server?.stop(true); await context?.sql.close(); });
+ it("consumes and replays, then runs the unchanged reservation example with the quickstart balance", async () => {
+  const account = quotum.account("quickstart-sdk");
+  await account.create();
+  const input = {featureId: "api_calls", value: "3", operationId: "quickstart-consume"};
+  const consumed = await account.consume(input);
+  expect(consumed).toMatchObject({allowed: true, balance: {granted: "100", available: "97"}});
+  expect(await account.consume(input)).toEqual(consumed);
+  const result = await run("quickstart-sdk", ["--job", "quickstart-reservation", "--drop-response", "confirm"]);
+  expect({code: result.code, stderr: result.stderr}).toEqual({code: 0, stderr: ""});
+  const job = JSON.parse(result.stdout);
+  expect(job).toMatchObject({phase: "confirmed", featureId: "api_calls", workRuns: 1, actualValue: "2",
+   outcome: {allowed: true, status: "confirmed", balance: {held: "0", available: "95"}}});
+  expect(await account.getReservation(job.reservationId)).toMatchObject({status: "confirmed", usage: {value: "3"}, confirmedValue: "2"});
+  expect(await account.getReceipt(job.outcome.receiptId)).toMatchObject({operation: "confirm", reservationId: job.reservationId});
+  const deductions = await account.listReceiptDeductions({receiptId: job.outcome.receiptId});
+  expect(deductions.items).toHaveLength(1);
+  expect(deductions.items[0]).toMatchObject({value: "2"});
+  const replay = await run("quickstart-sdk", ["--job", "quickstart-reservation"]);
+  expect(replay.code).toBe(0);
+  expect(JSON.parse(replay.stdout)).toEqual(job);
+  expect(await account.check({featureId: "api_calls", value: "1"})).toMatchObject({balance: {held: "0", available: "95"}});
+  const [count] = await context.sql\x60SELECT count(*)::int AS events FROM usage_events WHERE project_id = \${integrationProjectContext().projectInstanceId} AND reservation_id = \${job.reservationId}\x60;
+  expect(count.events).toBe(1);
+ });
+ it("preserves measured jobs and refuses changed features and legacy identities before usage mutations", async () => {
+  const accountId = "quickstart-identity";
+  const args = ["--job", "guarded-job"];
+  const stopped = await run(accountId, [...args, "--crash-after-work"]);
+  expect(stopped.code).not.toBe(0);
+  const file = join(stateDirectory, createHash("sha256").update("guarded-job").digest("hex") + ".json");
+  const saved = await readFile(file, "utf8");
+  expect(JSON.parse(saved)).toMatchObject({phase: "measured", featureId: "api_calls", actualValue: "2", workRuns: 1});
+  const before = usageMutations;
+  const changed = await run(accountId, args, "model_tokens");
+  expect(changed.code).not.toBe(0);
+  expect(changed.stderr).toContain("Job identity is already bound to other inputs");
+  expect(await readFile(file, "utf8")).toBe(saved);
+  expect(usageMutations).toBe(before);
+  const legacy = JSON.parse(saved);
+  delete legacy.featureId;
+  const oldState = JSON.stringify(legacy);
+  await writeFile(file, oldState);
+  const refused = await run(accountId, args);
+  expect(refused.code).not.toBe(0);
+  expect(refused.stderr).toContain("Saved job has no feature identity");
+  expect(await readFile(file, "utf8")).toBe(oldState);
+  expect(usageMutations).toBe(before);
+  await writeFile(file, saved);
+  const resumed = await run(accountId, args);
+  expect(resumed.code).toBe(0);
+  expect(JSON.parse(resumed.stdout)).toMatchObject({phase: "confirmed", workRuns: 1});
+ });
 });
 `;
 	const test = join(work, "packed-sdk.test.ts");
@@ -185,6 +284,9 @@ lane("packed public SDK over real HTTP", () => {
 					"zero usage",
 					"denial",
 					"logical expiry",
+					"quickstart catalog onboarding",
+					"quickstart consumption and reservation replay",
+					"saved feature identity and legacy state guards",
 				],
 			},
 			null,
