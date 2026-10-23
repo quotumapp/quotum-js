@@ -25,8 +25,8 @@ await workspace.create({ kind: 'workspace' });
 
 try {
   const result = await workspace.consume({
-    featureId: 'model_tokens',
-    value: '150',
+    featureId: 'api_calls',
+    value: '3',
     operationId: job.id,
   });
   if (result.allowed) {
@@ -111,12 +111,22 @@ cancellation. Account creation is safely retryable; arbitrary entity upserts are
 ## AI reservation reference application
 
 The runnable [reference app](examples/ai-reservations.mjs) uses real Quotum HTTP and a deterministic
-AI job, so it needs no AI provider account. Configure a backend with the API quickstart's
-`model_tokens` feature and a funded `ai_credits` wallet, then supply `QUOTUM_BASE_URL`,
-`QUOTUM_API_KEY`, and `QUOTUM_ACCOUNT_ID` through your shell or secret store. An optional
-`QUOTUM_ENTITY_ID` binds the workflow to a workspace. Build the package before running from source:
+job, so it needs no AI provider account. Complete steps 1–8 of the
+[API quickstart](https://github.com/quotumapp/quotum/blob/main/docs/quickstart.md), including
+publication of the plan examples, and keep its server running. The example defaults to the
+quickstart's `api_calls` feature, rated at one `ai_credits` credit per unit. A fresh account receives
+100 monthly credits from the free plan when the example creates it.
+
+In the quickstart shell, export the configuration using its existing `TOKEN`, then change to this
+SDK checkout and build the package:
 
 ```sh
+export QUOTUM_BASE_URL=http://localhost:3000
+export QUOTUM_API_KEY="$TOKEN"
+export QUOTUM_ACCOUNT_ID="sdk-example-$(date +%s)"
+
+# Run these commands from the SDK checkout.
+bun install --frozen-lockfile
 bun run build
 node examples/ai-reservations.mjs --job generation-1 --drop-response confirm
 node examples/ai-reservations.mjs --job generation-2 --crash-after-work
@@ -126,15 +136,24 @@ node examples/ai-reservations.mjs --job refused-1 --scenario denied
 node examples/ai-reservations.mjs --job expired-1 --scenario expired
 ```
 
-The partial job reserves 100 tokens and confirms 60. Jobs persist identity and measured usage under
-`.quotum-example/`; rerunning a measured job confirms it without running work again. `--drop-response`
+The partial job reserves 3 units and confirms 2. These small illustrative quantities also fit the
+starter catalog's balance after its sample consumption. An optional `QUOTUM_ENTITY_ID` binds the
+workflow to a workspace. To use your own meter, set `QUOTUM_FEATURE_ID` (for example,
+`model_tokens`) after publishing that feature and funding its allowance or wallet. The API quickstart
+does not create `model_tokens`; the example creates accounts and entities, not catalog features.
+
+Jobs persist their feature, identity and measured usage under `.quotum-example/`; rerunning a
+measured job confirms it without running work again. A saved job cannot switch features. Files from
+older versions without a recorded feature are preserved and refused: reconcile those jobs using the
+original example version and its original inputs before starting new jobs. `--drop-response`
 accepts `reserve`, `confirm`, or `release` and simulates a lost response after server commit.
 The same job ID can identify all three phases because operation kind separates their identities.
 An expired reserve replay is an acceptance snapshot: read current state before starting work.
 
-Replace the deterministic job with a provider only after accounting for every billable token in the
-upper bound and choosing a sufficient TTL. TTL defaults to 300 seconds, accepts 1–86,400, and cannot
-be extended. Failed confirmations retain measurements for recovery and never trigger release.
+Replace the deterministic job with a provider only after choosing the meter and accounting for all
+billable usage in that feature's units in the upper bound, with a sufficient TTL. TTL defaults to
+300 seconds, accepts 1–86,400, and cannot be extended. Failed confirmations retain measurements for
+recovery and never trigger release.
 The example admits one worker per job; after an actual process kill, establish that the worker has
 stopped before removing its stale `.lock` directory. A saved `running` phase requires reconciliation:
 it never assumes that unmeasured work was unused. This is a reference workflow, not a job queue.

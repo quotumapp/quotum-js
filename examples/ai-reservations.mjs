@@ -18,6 +18,7 @@ const {
 	QUOTUM_API_KEY: apiKey,
 	QUOTUM_ACCOUNT_ID: accountId,
 	QUOTUM_ENTITY_ID: entityId,
+	QUOTUM_FEATURE_ID: featureId = "api_calls",
 } = process.env;
 if (!baseUrl || !apiKey || !accountId || !values.job)
 	throw new Error(
@@ -83,8 +84,13 @@ try {
 		jobId: values.job,
 		accountId,
 		entityId: entityId ?? null,
+		featureId,
 		scenario: values.scenario,
 	};
+	if (job && !Object.hasOwn(job, "featureId"))
+		throw new Error(
+			"Saved job has no feature identity. Reconcile it with the original example version before starting a new job.",
+		);
 	if (job && Object.keys(identity).some((key) => job[key] !== identity[key]))
 		throw new Error("Job identity is already bound to other inputs");
 	if (!job) {
@@ -97,8 +103,8 @@ try {
 		);
 	if (job.phase === "new") {
 		const hold = await usage.reserve({
-			featureId: "model_tokens",
-			value: values.scenario === "denied" ? "1000000000000" : "100",
+			featureId,
+			value: values.scenario === "denied" ? "1000000000000" : "3",
 			operationId: job.jobId,
 			...(values.scenario === "expired" ? { expiresInSeconds: 1 } : {}),
 		});
@@ -120,10 +126,10 @@ try {
 		} else {
 			job.phase = "running";
 			await save(job);
-			// Replace only this deterministic job with your AI provider. Include every billable token
-			// in the reserved upper bound. Persist measured usage before attempting confirmation.
+			// Replace only this deterministic job with your provider. Express the upper bound and
+			// measured usage in the selected feature's units; persist usage before confirmation.
 			job.workRuns++;
-			job.actualValue = values.scenario === "zero" ? "0" : "60";
+			job.actualValue = values.scenario === "zero" ? "0" : "2";
 			job.phase = "measured";
 			await save(job);
 			if (values["crash-after-work"])
